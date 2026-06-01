@@ -1,0 +1,41 @@
+global:
+- id: preserve
+  question: Are unrelated regions, identity, lighting, viewpoint, and background preserved?
+  weight: 0.25
+- id: visual_quality
+  question: Is the edited image visually plausible and free of obvious artifacts?
+  weight: 0.2
+- id: no_extra
+  question: Does the edit avoid unrelated objects, text, or style changes?
+  weight: 0.15
+cognitive:
+- id: reasoning
+  question: Does the edit reflect the required reasoning or knowledge instead of a
+    superficial visual change?
+  weight: 0.25
+- id: evidence
+  question: Is each non-obvious factual or symbolic claim supported by image observation,
+    search, or solver evidence?
+  weight: 0.15
+grade_style:
+- id: answer_correct
+  question: Is the discipline-specific answer or state correct?
+  weight: 0.45
+- id: rubric_visible
+  question: Is the required result visible and readable in the edited image?
+  weight: 0.2
+rise_style:
+- id: target_state
+  question: Does the image show the correct target state implied by the instruction?
+  weight: 0.4
+- id: source_consistency
+  question: Does the edited result preserve the source object's identity and context?
+  weight: 0.25
+kris_style:
+- id: knowledge_plausibility
+  question: Is the result plausible under the required factual, conceptual, or procedural
+    knowledge?
+  weight: 0.4
+- id: relation_binding
+  question: Are multi-object relations and constraints maintained?
+  weight: 0.2

@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "created_at": "2026-05-31T17:15:07Z",
+  "version": "v1",
+  "total_tasks": 10000,
+  "unique_instructions": 9422,
+  "unique_source_file_sha": 5093,
+  "unique_teacher_file_sha": 5093,
+  "unique_negative_file_sha": 5093,
+  "benchmark_alignment_coverage": 10000,
+  "exact_benchmark_text_rejects": 0,
+  "missing_renders": [],
+  "review_sample_path": "reports/data_quality/review_sample_v1.jsonl",
+  "review_sheet_paths": [
+    "reports/data_quality/review_sheets/review_sheet_v1_000.png",
+    "reports/data_quality/review_sheets/review_sheet_v1_001.png",
+    "reports/data_quality/review_sheets/review_sheet_v1_002.png",
+    "reports/data_quality/review_sheets/review_sheet_v1_003.png"
+  ]
+}

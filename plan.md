@@ -6,6 +6,7 @@
 
 **目标 Benchmark**：
 - **RISE-Bench** (NeurIPS 2025 DB Oral): 360 样本，4 类推理编辑（Temporal/Causal/Spatial/Logical），当前最强 GPT-4o-Native 仅 35.9% accuracy
+  - 注：RISEBench 公开 arXiv v4 (arXiv:2504.02826) 摘要报告 GPT-4o-Image accuracy 为 28.8%；35.9% 可能来自后续 leaderboard 或不同评测版本。正式实验前需要冻结 benchmark/evaluator 版本并核对引用。
 - **GRADE**: 520 样本，10 学科知识编辑（数学/物理/化学/生物/计算机/经济/历史/地理/音乐/体育），当前最强 Nano Banana Pro 仅 46.2%
 
 **核心卖点**：现有编辑模型直接"看指令就改图"，缺乏推理和知识检索能力。RISEvolve 让 agent 先推理、搜索、规划，再输出结构化编辑指令给下游模型执行，本质是**把 reasoning 从编辑模型中解耦出来交给专门的 agent**。
@@ -503,6 +504,8 @@ python grade_eval.py --results grade_results/
 ```
 rise-evolve/
 ├── plan.md                     # 本文件
+├── survey.md                   # agentic training / reasoning editing 调研
+├── data_pipeline.md            # RISE/GRADE/KRIS 对齐的数据构造 pipeline
 ├── genevolve/                   # fork from GenEvolve, 改造
 │   ├── system_prompt.py         # 编辑版 system prompt
 │   ├── agent.py                 # 加入 analyze_image 工具
@@ -524,11 +527,18 @@ rise-evolve/
 │   │       └── edit_region_planning.md
 │   └── generator.py             # 对接编辑模型（非生成模型）
 ├── data/
+│   ├── benchmarks/              # RISE/GRADE/KRIS 快照、指纹、去污染索引
+│   ├── taxonomy/                # benchmark-derived taxonomy/checklist templates
 │   ├── recipes/                 # prompt 生成 recipe
+│   ├── tasks/                   # materialized task JSONL
+│   ├── images/                  # source/reference/generated/programmatic images
 │   ├── trajectories/            # teacher trajectory
-│   ├── sft/                     # 过滤后 SFT 数据
-│   └── rl/                      # RL 训练数据
+│   ├── programs/                # edit program v2
+│   ├── renders/                 # teacher/student/negative renders
+│   ├── verifier/                # checklist/reward 校准数据
+│   └── splits/                  # sft/rl/verifier/ved/hard heldout split
 ├── scripts/
+│   ├── data/                    # freeze/mine/generate/materialize/filter/split
 │   ├── generate_recipes.py      # 生成 recipe
 │   ├── run_teacher.py           # 跑 teacher trajectory
 │   ├── filter_trajectories.py   # 过滤
@@ -544,3 +554,315 @@ rise-evolve/
     ├── rise_bench/
     └── grade/
 ```
+
+---
+
+## 11. 文献调研后的 Plan v2 增补
+
+详细调研见 `survey.md`。核心判断是：2026 年的 reasoning-centric image editing 已经出现 DDA-Thinker、MIRA、RePlan、ThinkRL-Edit、EditThinker、Edit-R1、RewardHarness 等强相关工作。RISEvolve 不能只定位为“给 editor 前面加 thinker”，而应明确为 **tool-orchestrated self-evolving editing agent**：学习源图分析、知识检索、参考图选择、技能路由、区域规划、atomic verification 和 edit-program synthesis 的完整决策过程。
+
+### 11.1 更新后的 novelty 定位
+
+| 对比对象 | 已覆盖内容 | RISEvolve 需要强调的差异 |
+|----------|------------|--------------------------|
+| DDA-Thinker | 固定 editor，优化 thinker；dual-atomic reward | RISEvolve 不只是 planner，还学习 search/image_search/skill/memory 的工具编排，并用 best-worst experience distillation 提供 token-level 决策监督 |
+| MIRA | perception-reasoning-action loop；SFT+GRPO | RISEvolve 面向知识和推理密集任务，显式做外部知识 grounding 和参考图 grounding |
+| RePlan | region-aligned planning | RISEvolve 将 region planning 纳入 edit program 和 reward，同时覆盖 temporal/causal/logical/discipline reasoning |
+| Edit-R1 / EditReward | 编辑 reward/verifier | RISEvolve 可以使用 verifier，但优化对象是 agentic edit-program policy |
+| RewardHarness | 自演化 reward skill library | RISEvolve 演化的是编辑 agent 的工具和计划经验，而不只是 judge 上下文 |
+| GenEvolve | 生成任务的 tool-orchestrated VED | RISEvolve 改成源图条件下的 visual-cognitive editing experience，增加区域、保真、推理正确性和 editor gap 诊断 |
+
+建议论文主张：
+
+> RISEvolve trains a self-evolving, tool-orchestrated image editing agent that converts reasoning- and knowledge-intensive edit requests into executable, region-aware edit programs. Unlike planner-only approaches, it jointly learns source-image analysis, knowledge retrieval, reference selection, skill activation, atomic verification, and edit-program synthesis through visual-cognitive experience distillation.
+
+### 11.2 Edit Program v2
+
+原来的 `edit_prompt + refs + reasoning_chain + edit_region` 不够区分 plan quality 和 editor execution。建议输出 schema 升级为：
+
+```json
+{
+  "source_scene_graph": {
+    "objects": [],
+    "attributes": [],
+    "relations": [],
+    "current_state": "",
+    "uncertain_observations": []
+  },
+  "task_family": "temporal|causal|spatial|logical|discipline|mixed",
+  "knowledge_facts": [
+    {"claim": "", "source": "search|skill|model", "used_in_plan": true}
+  ],
+  "target_scene_description": "理想编辑结果的文字描述，用于 checklist 和 judge",
+  "edit_operations": [
+    {
+      "op": "add|remove|replace|transform|move|style|text|geometry",
+      "target": "",
+      "region": "",
+      "desired_change": "",
+      "preserve": []
+    }
+  ],
+  "reference_images": [
+    {"img_id": "IMG_001", "role": "identity|material|layout|domain_reference", "note": ""}
+  ],
+  "preservation_constraints": [
+    "背景、光照、相机视角、无关对象和主体身份保持不变"
+  ],
+  "negative_constraints": [
+    "不要新增无关对象；不要改变未指定文字；不要全图风格漂移"
+  ],
+  "atomic_checklist": {
+    "cognitive": [],
+    "visual": [],
+    "preservation": [],
+    "readability": []
+  },
+  "editor_prompt": "给下游 editor 的精炼可执行指令",
+  "failure_modes_to_watch": []
+}
+```
+
+关键变化：
+- `target_scene_description` 作为 DDA-Thinker/Edit-R1 式 checklist synthesis 的锚点，降低 judge 噪声。
+- `edit_operations` 把复杂指令拆成 region-aware atomic edits，便于定位 planner failure。
+- `atomic_checklist` 同时服务训练 reward、离线过滤和失败诊断。
+- `negative_constraints` 专门抑制 over-editing，这是当前编辑模型常见失败。
+
+### 11.3 工具设计 v2
+
+在现有四个工具基础上，建议把工具分成必选和可选两层：
+
+| 工具 | 类型 | 用途 |
+|------|------|------|
+| `analyze_image(image, focus)` | 必选 | 源图对象、关系、状态、可编辑区域 |
+| `search(queries)` | 条件必选 | 学科知识、物理/历史/生物事实、规则 |
+| `image_search(query)` | 条件必选 | 获取目标状态、材质、历史外观、图示参考 |
+| `query_edit_knowledge(skill)` | 必选/可选 | 激活任务族策略和失败规避 |
+| `ground_region(image, target)` | 可选 | 输出 bbox/mask/region phrase，支持 RePlan/RC-GRPO 风格局部保真 |
+| `solve_symbolic(problem)` | 可选 | 数独、迷宫、算式、棋盘等 logical 类任务 |
+| `verify_edit(source, instruction, program, edited)` | 训练/评测 | checklist-based verifier，返回失败项和诊断 |
+
+工具策略要加入 reward：
+- 重复 query、未使用证据、无关检索惩罚。
+- 对无需检索的简单 case，允许 agent 不调用 `search`。
+- 对 GRADE/历史/科学 case，缺少知识 grounding 直接降低 `R_cognitive`。
+
+### 11.4 奖励函数 v2
+
+建议从单一 weighted sum 改成多头 reward，并分别归一化 advantage，避免 DDA-Thinker/ThinkRL-Edit 指出的 reward fusion bias。
+
+```
+R_cognitive: edit_program 是否逻辑正确、知识正确、可执行、checklist 完整
+R_visual: edited_image 是否满足目标变化、视觉自然、无 artifact
+R_preserve: 非编辑区是否保持一致，结合 VLM + PSNR/SSIM/LPIPS/DINO/mask similarity
+R_tool: 工具调用是否必要、有效、无重复，证据是否进入 final program
+```
+
+训练时可以实现为：
+
+```
+Adv = normalize(R_cognitive) + normalize(R_visual) + normalize(R_preserve) + 0.2 * normalize(R_tool)
+```
+
+或更严格地做 separate-GRPO：
+- cognitive group 更新 plan/reasoning/tool tokens；
+- visual/preserve group 更新 editor_prompt、region、negative_constraints tokens；
+- tool group 更新 tool-call decision tokens。
+
+Judge prompt 应先从 `target_scene_description` 生成二值 checklist，再逐项判断，最后汇总分数。不要直接让 VLM 给 1-5 总分。
+
+### 11.5 数据构造 v2
+
+训练数据建议分四层，而不是只从 benchmark recipe 和通用编辑数据改造：
+
+| 数据层 | 来源 | 目标 |
+|--------|------|------|
+| 基础编辑 | MagicBrush、InstructPix2Pix、ImgEdit | 学会常规 edit program 格式 |
+| 推理编辑 | RISEBench recipe、Reason50K、CompBench、ByteMorph | temporal/causal/spatial/logical |
+| 知识编辑 | GRADE recipe、KRIS-Bench taxonomy、学科知识库 | discipline/factual/conceptual/procedural |
+| agentic hard cases | SFT/RL 中失败样本自扩展 | 针对模型弱点做 curriculum |
+
+每条 teacher trajectory 增加：
+1. rational target description；
+2. atomic checklist；
+3. tool evidence usage map；
+4. editor feasibility note：判断这个计划是否是当前 editor 能执行的。
+
+过滤时新增：
+- `target_scene_description` 与 `editor_prompt` 是否一致；
+- checklist 是否可视觉验证；
+- source image 分析是否错误；
+- final prompt 是否引入未被知识或参考图支持的新事实；
+- 是否存在 teacher reasoning 正确但 editor 明显做不到的样本，进入单独的 hard/editor-gap split。
+
+### 11.6 训练路线 v2
+
+建议把阶段拆得更可控：
+
+| 阶段 | 目标 | 数据量建议 | 产出 |
+|------|------|------------|------|
+| Stage 0: Prompted agent baseline | 不训练，仅用强 VLM planner 跑 RISE/GRADE 小样本 | 100-200 eval | 确认 editor 上限和 failure taxonomy |
+| Stage 1: SFT format cold start | 学会 ReAct、工具调用、edit program v2 | 3K-8K trajectories | 可稳定输出 JSON 和 checklist |
+| Stage 2: Verifier/judge calibration | 训练或固化 checklist judge | 1K-5K preference/checklist | 降低 reward 噪声 |
+| Stage 3: GRPO on agent | 优化 tool/plan/program tokens | 300-800 steps | 提升 reasoning/edit correctness |
+| Stage 4: Visual-Cognitive Experience Distillation | best-worst 经验蒸馏 | 与 Stage 3 联合 | 学到可迁移工具和计划策略 |
+| Stage 5: targeted self-evolution | 只对失败族扩数据 | 1K-3K hard cases | 改善 RISE logical/GRADE 弱学科 |
+
+Stage 3/4 的 experience slot 建议调整为：
+
+| Slot | 内容 |
+|------|------|
+| `M_analyze` | 源图观察和 region 判断差异 |
+| `M_knowledge` | 需要检索/无需检索的判断，事实使用情况 |
+| `M_reference` | 参考图角色分配和引用方式 |
+| `M_reasoning` | temporal/causal/spatial/logical/discipline 推理差异 |
+| `M_region` | edit vs preserve 区域规划差异 |
+| `M_editor` | 哪些 prompt 写法更适合固定 editor 执行 |
+| `M_failure` | over-edit、under-edit、hallucination、symbolic rendering 失败规避 |
+
+### 11.7 实验和消融
+
+必须补的 baseline：
+- direct editor：Qwen-Image-Edit / FLUX.1 Kontext / Gemini / GPT-4o-Image；
+- prompted planner：GPT-4o/Gemini 生成 edit prompt + same editor；
+- DDA-like：无 search/image_search/memory，仅 thinker 输出 plan；
+- RePlan-like：region planner + same editor；
+- MIRA/EditThinker-like：iterative critique-refine；
+- RISEvolve-SFT；
+- RISEvolve-GRPO；
+- RISEvolve-GRPO+VED。
+
+关键消融：
+- no `analyze_image`；
+- no `search`；
+- no `image_search`；
+- no `query_edit_knowledge`；
+- no `target_scene_description`；
+- no `atomic_checklist`；
+- no `edit_region` / no preserve reward；
+- weighted-sum reward vs separate/normalized reward；
+- no VED；
+- no tool penalty；
+- different editor backends。
+
+需要报告的诊断：
+- thinker correct / editor fail 的比例；
+- editor correct despite weak plan 的比例；
+- search 使用率、有效率、重复率；
+- 每类 reasoning 的 reward breakdown；
+- 非编辑区保真指标；
+- checklist 与人工评审一致性。
+
+### 11.8 风险更新
+
+| 风险 | 更新判断 | 应对 |
+|------|----------|------|
+| Novelty 被 planner-only 工作覆盖 | 高 | 主张 tool-orchestrated self-evolution + knowledge/reference grounding + VED，不只说 thinker |
+| Judge reward hacking | 高 | checklist、双 judge、少量人工校准、EditReward/Edit-R1 交叉验证 |
+| Editor 执行力限制 logical/math | 高 | oracle-plan upper bound、failure attribution、必要时 logical 类走 specialized solver + text rendering editor |
+| 工具过度调用 | 中 | `R_tool`、knowledge boundary audit、按任务族限制预算 |
+| 数据成本 | 中 | 先做 1K-2K 高质量 proof，验证提升后再扩到 10K |
+
+### 11.9 最近两周执行优先级
+
+1. 固定评测版本：拉取 RISEBench、GRADE、KRIS-Bench，确认 license、数据格式、leaderboard 指标。
+2. 先实现 prompted RISEvolve baseline：不训练，用 Gemini/GPT-4o 按 edit program v2 生成计划，接 Qwen-Image-Edit/FLUX.1 Kontext。
+3. 在 100 个样本上做 failure taxonomy：planner fail、knowledge fail、region fail、editor fail、judge fail。
+4. 写 10 个 skill markdown，每个包含 observation checklist、search recipe、region recipe、editor prompt recipe、common failures。
+5. 生成 500 条 teacher trajectories，人工抽检 50 条，验证 schema 和 checklist 是否稳定。
+6. 再决定是否进入 3K-8K SFT 数据生成。
+
+### 11.10 数据构造 Pipeline v1
+
+详细方案见 `data_pipeline.md`。核心原则是：RISE/GRADE/KRIS 只用于 official eval、taxonomy mining、rubric abstraction 和 decontamination，不把 benchmark 原图、指令、GT、reference、annotation 或其同义改写放进训练集。
+
+数据流固定为：
+
+```text
+benchmark snapshots
+  -> benchmark fingerprints
+  -> taxonomy/checklist templates
+  -> recipe bank
+  -> source image pool
+  -> materialized tasks
+  -> teacher trajectories
+  -> edit renders and rollouts
+  -> filtering/scoring
+  -> SFT/RL/verifier/VED splits
+```
+
+首批任务分布：
+
+| Bucket | 占比 | 覆盖重点 |
+|--------|------|----------|
+| RISE-like | 40% | temporal/causal/spatial/logical，logical 先保底 15% 但优先程序渲染 |
+| GRADE-like | 35% | 10 个学科域，借鉴 `questions` rubric 生成 checklist |
+| KRIS-like | 25% | factual/conceptual/procedural knowledge，覆盖 anomaly、multi-element、temporal、viewpoint |
+
+Pilot v0 目标：
+
+| 产物 | 数量 |
+|------|------|
+| recipe candidates | 1,200 |
+| source images | 800 |
+| materialized tasks | 600 |
+| teacher trajectories | 500 |
+| accepted SFT | 300 |
+| RL prompts | 100 |
+| verifier items | 300-500 |
+| human audit | 100 tasks |
+
+Full v1 目标是在 pilot 通过后扩到 8K-9K materialized tasks、5K-6K accepted teacher trajectories、1K-1.5K RL prompts、5K-10K verifier items。
+
+实现优先级：
+
+1. `freeze_benchmarks.py`：记录 RISE/GRADE/KRIS 版本、license、evaluator、text/image fingerprints。
+2. `mine_taxonomy.py`：只抽象 taxonomy 和 checklist templates，不导出 benchmark 原样样本。
+3. `generate_recipes.py`：按 RISE/GRADE/KRIS-derived taxonomy 生成 recipe candidates，并做 text decontamination。
+4. `acquire_source_images.py` + `materialize_tasks.py`：绑定新 source image，生成统一 task schema。
+5. `run_teacher.py`：生成 ReAct trajectory、tool evidence map、rational target description、edit program v2。
+6. `render_edits.py` + `filter_data.py`：生成 teacher/student/negative renders，按 schema、decontamination、evidence、program、render、human audit gates 过滤。
+7. `build_splits.py`：按 recipe/entity/source/template 隔离构建 SFT、RL、verifier、VED、hard heldout。
+
+当前 v0 已落地为轻量脚本版：
+
+| 脚本 | 状态 | 作用 |
+|------|------|------|
+| `scripts/data/freeze_benchmarks.py` | 已实现 | 冻结 RISE/GRADE/KRIS 公开入口，生成 benchmark text fingerprint |
+| `scripts/data/mine_taxonomy.py` | 已实现 | 输出 taxonomy、checklist templates、curated knowledge bank |
+| `scripts/data/build_pilot_dataset.py` | 已实现 | 生成程序化 source/teacher/negative images、tasks、teacher trajectories、programs、splits |
+| `scripts/data/validate_dataset.py` | 已实现 | 检查 JSONL、图片路径、split、checklist 权重、exact decontamination |
+
+v0 产物：
+
+| 产物 | 数量 |
+|------|------|
+| `data/tasks/tasks_v0.jsonl` | 600 tasks |
+| `data/trajectories/teacher_trajectories_v0.jsonl` | 600 teacher trajectories |
+| `data/renders/render_metadata_v0.jsonl` | 600 teacher + 600 negative renders |
+| `data/splits/sft_train_v0.jsonl` | 300 SFT trajectories |
+| `data/splits/rl_prompt_train_v0.jsonl` | 100 RL prompts |
+| `data/splits/verifier_train_v0.jsonl` | 200 verifier items |
+| `data/splits/ved_memory_train_v0.jsonl` | 25 experience pairs |
+| `data/splits/hard_heldout_v0.jsonl` | 25 heldout tasks |
+
+v0 的定位是先打通 agentic data schema 和训练文件格式。它使用程序化图像，因此可验证、可重复、成本低；下一轮 v1 应把 GRADE-like 学科题扩到更多参数化模板，同时接入真实/生成 source image 和强 teacher editor，提升视觉多样性。
+
+v1 已扩到 1w agentic 数据：
+
+| 产物 | 数量 |
+|------|------|
+| tasks / recipes / edit programs / teacher trajectories | 10,000 each |
+| source images / teacher renders / negative renders | 10,000 each |
+| verifier items | 20,000 |
+| preference pairs / experience pairs | 10,000 / 10,000 |
+| SFT train / val | 7,000 / 500 |
+| RL prompts | 1,000 |
+| verifier train items | 2,000 |
+| VED memory pairs | 300 |
+| hard heldout | 200 |
+
+v1 分布为 RISE-like 4,000、GRADE-like 3,500、KRIS-like 2,500。`scripts/data/validate_dataset.py --version v1` 已通过，exact benchmark text match 为 0。v1 还加入了 instruction paraphrase、benchmark alignment metadata、task-level visual jitter；当前 instruction 去重约 9.4K/10K，source PNG 精确哈希约 5K 个桶。下一步质量提升应集中在：增加更多 GRADE 参数化生成器、接入真实/生成 source image、加入 CLIP/DINO semantic decontamination、对 200-500 条样本做人工抽检。
+
+已补充审阅产物：`scripts/data/audit_dataset.py --version v1 --sample-size 96` 会输出 `reports/data_quality/audit_v1.json`、`review_sample_v1.jsonl` 和 4 张 source/teacher/negative 三联 contact sheet，便于人工快速抽检知识正确性、区域保真和 negative case 难度。

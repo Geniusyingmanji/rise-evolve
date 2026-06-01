@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "created_at": "2026-05-31T17:14:09Z",
+  "version": "v1",
+  "counts": {
+    "tasks": 10000,
+    "recipes": 10000,
+    "trajectories": 10000,
+    "programs": 10000,
+    "renders": 20000,
+    "verifier_items": 20000,
+    "filters": 10000
+  },
+  "split_counts": {
+    "sft_train": 7000,
+    "rl_prompt_train": 1000,
+    "verifier_train": 1000,
+    "sft_val": 500,
+    "hard_heldout": 200,
+    "ved_memory_train": 300
+  },
+  "family_counts": {
+    "RISE_like": 4000,
+    "GRADE_like": 3500,
+    "KRIS_like": 2500
+  },
+  "domain_counts": {
+    "everyday_common_sense": 1000,
+    "everyday_physics": 1000,
+    "geometry": 1000,
+    "logic": 1000,
+    "math": 350,
+    "physics": 350,
+    "chemistry": 350,
+    "biology": 975,
+    "computer_science": 350,
+    "economics": 350,
+    "history": 350,
+    "geography": 350,
+    "music": 350,
+    "sports": 350,
+    "practical_knowledge": 1250,
+    "everyday_procedure": 625
+  },
+  "errors": []
+}

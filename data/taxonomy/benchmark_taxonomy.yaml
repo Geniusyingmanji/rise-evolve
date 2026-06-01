@@ -1,0 +1,56 @@
+created_at: '2026-05-31T16:48:14Z'
+source: abstracted_from_RISE_GRADE_KRIS_without_copying_samples
+benchmark_families:
+  RISE_like:
+    weight_pilot: 0.4
+    families:
+      temporal_reasoning:
+      - aging_decay
+      - growth
+      - seasonal_change
+      - charging_discharging
+      - settling_drying
+      causal_reasoning:
+      - force_deformation
+      - thermal_phase_change
+      - fluid_dynamics
+      - chemical_effect
+      - biological_response
+      spatial_reasoning:
+      - viewpoint_change
+      - 3d_rotation
+      - occlusion
+      - relative_position
+      - object_rearrangement
+      logical_reasoning:
+      - math_symbolic
+      - board_game
+      - maze_path
+      - rule_based_pattern
+      - counting_constraint
+  GRADE_like:
+    weight_pilot: 0.35
+    domains:
+    - math
+    - physics
+    - chemistry
+    - biology
+    - computer_science
+    - economics
+    - history
+    - geography
+    - music
+    - sports
+  KRIS_like:
+    weight_pilot: 0.25
+    knowledge_types:
+    - factual
+    - conceptual
+    - procedural
+    families:
+    - anomaly_correction
+    - multi_element_composition
+    - temporal_prediction
+    - viewpoint_change
+    - rule_based_reasoning
+    - entity_attribute_edit

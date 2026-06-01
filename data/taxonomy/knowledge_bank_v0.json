@@ -1,0 +1,92 @@
+{
+  "math_linear_equation": {
+    "queries": [
+      "linear equation solve ax plus b equals c",
+      "how to solve one variable linear equations"
+    ],
+    "facts": [
+      "A one-variable linear equation ax + b = c is solved by x = (c - b) / a."
+    ]
+  },
+  "physics_refraction": {
+    "queries": [
+      "light ray bends toward normal entering denser medium",
+      "Snell law refraction diagram"
+    ],
+    "facts": [
+      "When light enters a denser transparent medium from air, the refracted ray bends toward the normal."
+    ]
+  },
+  "chemistry_litmus": {
+    "queries": [
+      "blue litmus paper acid turns red",
+      "acid base indicator litmus color"
+    ],
+    "facts": [
+      "Blue litmus paper turns red in acidic solution."
+    ]
+  },
+  "biology_lifecycle": {
+    "queries": [
+      "butterfly life cycle caterpillar chrysalis",
+      "larva pupa butterfly stages"
+    ],
+    "facts": [
+      "A caterpillar forms a chrysalis before emerging as an adult butterfly."
+    ]
+  },
+  "cs_bst": {
+    "queries": [
+      "binary search tree insertion rule",
+      "BST insert smaller left greater right"
+    ],
+    "facts": [
+      "In a binary search tree, smaller values go to the left subtree and larger values to the right subtree."
+    ]
+  },
+  "economics_demand_shift": {
+    "queries": [
+      "demand increase shifts curve right",
+      "supply demand graph demand increase"
+    ],
+    "facts": [
+      "An increase in demand shifts the demand curve to the right."
+    ]
+  },
+  "temporal_fruit_decay": {
+    "queries": [
+      "fruit ripening browning spots over time",
+      "banana peel brown spots ripening"
+    ],
+    "facts": [
+      "Many fruits darken, soften, and develop brown or black spots as they ripen or decay."
+    ]
+  },
+  "thermal_ice_melt": {
+    "queries": [
+      "ice melts into water under heat",
+      "solid ice phase change heat"
+    ],
+    "facts": [
+      "Heating ice above its melting point changes it from solid ice to liquid water."
+    ]
+  },
+  "spatial_occlusion": {
+    "queries": [
+      "occlusion object behind another object visibility",
+      "visual spatial relation behind in front"
+    ],
+    "facts": [
+      "An object placed behind another object should be partially hidden by the front object."
+    ]
+  },
+  "traffic_light_order": {
+    "queries": [
+      "traffic light color order red yellow green",
+      "standard traffic signal vertical order"
+    ],
+    "facts": [
+      "A standard vertical traffic light places red at the top, yellow in the middle, and green at the bottom."
+    ]
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "total_tasks": 10000,
+  "by_split": {
+    "sft_train": 7000,
+    "sft_val": 500,
+    "rl_prompt_train": 1000,
+    "verifier_train": 1000,
+    "ved_memory_train": 300,
+    "hard_heldout": 200
+  },
+  "by_benchmark_family": {
+    "RISE_like": 4000,
+    "GRADE_like": 3500,
+    "KRIS_like": 2500
+  },
+  "by_task_family": {
+    "temporal_reasoning": 1000,
+    "causal_reasoning": 1000,
+    "spatial_reasoning": 1000,
+    "logical_reasoning": 1000,
+    "discipline_reasoning": 3500,
+    "anomaly_correction": 625,
+    "entity_attribute_edit": 625,
+    "multi_element_composition": 625,
+    "procedural_knowledge": 625
+  },
+  "by_sub_family": {
+    "aging_decay": 500,
+    "growth": 500,
+    "thermal_phase_change": 500,
+    "force_deformation": 500,
+    "3d_rotation": 500,
+    "occlusion": 500,
+    "rule_based_pattern": 500,
+    "maze_path": 500,
+    "symbolic_math": 350,
+    "physics_refraction": 350,
+    "chemistry_indicator": 350,
+    "biology_lifecycle": 350,
+    "computer_science_tree": 350,
+    "economics_curve_shift": 350,
+    "history_architecture_restoration": 350,
+    "geography_river_process": 350,
+    "music_notation": 350,
+    "sports_rule_spatial": 350,
+    "factual_order_correction": 625,
+    "species_trait": 625,
+    "social_convention": 625,
+    "process_result": 625
+  },
+  "by_domain": {
+    "everyday_common_sense": 1000,
+    "everyday_physics": 1000,
+    "geometry": 1000,
+    "logic": 1000,
+    "math": 350,
+    "physics": 350,
+    "chemistry": 350,
+    "biology": 975,
+    "computer_science": 350,
+    "economics": 350,
+    "history": 350,
+    "geography": 350,
+    "music": 350,
+    "sports": 350,
+    "practical_knowledge": 1250,
+    "everyday_procedure": 625
+  },
+  "by_difficulty": {
+    "2": 4800,
+    "3": 4000,
+    "4": 1200
+  },
+  "unique_source_ahash": 287,
+  "unique_teacher_ahash": 295,
+  "unique_negative_ahash": 248,
+  "created_at": "2026-05-31T17:12:57Z"
+}
