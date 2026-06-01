@@ -12,6 +12,22 @@ python3 scripts/data/validate_dataset.py --version v0
 python3 scripts/data/build_pilot_dataset.py --num-tasks 10000 --version v1 --seed 531
 python3 scripts/data/validate_dataset.py --version v1
 python3 scripts/data/audit_dataset.py --version v1 --sample-size 96
+
+# Real-image source discovery and seed collection
+python3 scripts/data/collect_real_edit_sources.py \
+  --version v2_seed \
+  --hf-per-source 12 \
+  --wiki-per-query 2
+python3 scripts/data/audit_real_sources.py --version v2_seed
+
+# Randomized HF-only expansion example
+python3 scripts/data/collect_real_edit_sources.py \
+  --version v2_hf150 \
+  --hf-per-source 30 \
+  --skip-wikimedia \
+  --randomize \
+  --seed 601
+python3 scripts/data/audit_real_sources.py --version v2_hf150 --sheet-limit 30
 ```
 
 Main outputs:
@@ -42,3 +58,21 @@ Current v1 outputs:
 - `reports/data_quality/audit_v1.json`
 - `reports/data_quality/review_sample_v1.jsonl`
 - `reports/data_quality/review_sheets/review_sheet_v1_*.png`
+
+Real-image seed outputs:
+
+- `data/sources/real_edit_source_catalog.json`: searched and curated source catalog.
+- `reports/data_sources/real_edit_source_report.md`: license/use summary.
+- `data/sources/real_edit_pairs_sample_v2_seed.jsonl`: sampled source/target/instruction pairs from training-like public datasets.
+- `data/sources/wikimedia_source_pool_v2_seed.jsonl`: licensed Wikimedia source/reference images.
+- `data/tasks/real_seed_prompts_v2_seed.jsonl`: real-source candidate edit prompts that still need strong-editor targets.
+- `data/real_edits/v2_seed/`: downloaded seed images.
+- `reports/data_sources/real_source_audit_*.json`: automatic integrity, diversity, decontamination, and missing-image audit.
+- `reports/data_sources/real_pair_sheet_*.png`: stratified source/target review sheet.
+
+Current expanded HF sample:
+
+- `data/sources/real_edit_pairs_sample_v2_hf150.jsonl`: 141 safety-filtered real edit pairs.
+- `data/sources/real_edit_pairs_rejected_v2_hf150.jsonl`: 9 text-safety rejected pairs.
+- `data/real_edits/v2_hf150/`: downloaded real edit pair images.
+- `reports/data_sources/real_source_audit_v2_hf150.json`: audit report.

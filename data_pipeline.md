@@ -204,6 +204,57 @@ data/taxonomy/difficulty_rubric.yaml
 
 Recipe 是抽象任务蓝图，不绑定具体 benchmark 样本。LLM 只看 taxonomy 和少量人工写的模板，不直接看 benchmark 原始样本。
 
+### 6.0 Real-image source expansion
+
+v1 的程序图适合可控 reasoning bootstrap，但不足以覆盖真实图像编辑的纹理、光照、背景和非编辑区保真。v2 起增加真实图像 seed pool，入口脚本为：
+
+```bash
+python3 scripts/data/collect_real_edit_sources.py \
+  --version v2_seed \
+  --hf-per-source 12 \
+  --wiki-per-query 2
+```
+
+数据源分三类：
+
+| 类别 | 例子 | 用途 | 训练边界 |
+| --- | --- | --- | --- |
+| Public edit pairs | MagicBrush, ImagenHub filtered, AnyEdit train, OmniEdit train | 直接提供 source/target/instruction，用于 SFT、reward、editor-pair bootstrap | 只用 train/filtered；跑 safety、license、benchmark decontam 和 VLM 质量过滤 |
+| Photoshop-like before/after | MIT-Adobe FiveK, PPR10K | 训练全局/局部 retouching、preservation、visual quality reward | 只在许可允许时用；不把任意教程/博客图直接抓进训练 |
+| Licensed source/reference images | Wikimedia Commons, OpenImages metadata | 生成 RISE/GRADE/KRIS-like real-source edit prompts，后续用强 editor 生成 target | 保留 URL、license、artist、hash；target 生成后再进质量 gate |
+
+当前 seed 产物：
+
+```text
+data/sources/real_edit_source_catalog.json
+reports/data_sources/real_edit_source_report.md
+data/sources/real_edit_pairs_sample_v2_seed.jsonl
+data/sources/wikimedia_source_pool_v2_seed.jsonl
+data/tasks/real_seed_prompts_v2_seed.jsonl
+data/real_edits/v2_seed/
+```
+
+已实现的随机 HF-only 扩展采样：
+
+```bash
+python3 scripts/data/collect_real_edit_sources.py \
+  --version v2_hf150 \
+  --hf-per-source 30 \
+  --skip-wikimedia \
+  --randomize \
+  --seed 601
+python3 scripts/data/audit_real_sources.py --version v2_hf150 --sheet-limit 30
+```
+
+`v2_hf150` 当前包含 141 条 safety-filtered real edit pairs；另有 9 条灾害/攻击/爆炸/火灾等文本安全命中的样本写入 `data/sources/real_edit_pairs_rejected_v2_hf150.jsonl`，不进入候选 manifest。这个样本池用于调通真实图像 SFT/reward 数据格式，仍不能直接视为最终训练集。
+
+这些数据默认只是 **candidate pool**。进入正式训练前必须额外完成：
+
+1. 与 RISE/GRADE/KRIS 的 text exact/semantic、image pHash/DINO/CLIP 去污染。
+2. 许可分层：`cc-by/cc0/mit` 可优先；`cc-by-nc` 只用于 research；未知许可只做分析或 baseline。
+3. VLM difference-first 质量过滤：目标变化完成、非编辑区保真、无额外对象、无安全风险。
+4. 数据集 split 隔离：同一源图、同一 commons page、同一 HF row、同一实体不能跨 train/val/heldout。
+
 Recipe schema：
 
 ```json

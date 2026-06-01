@@ -1,0 +1,23 @@
+# Real Image Editing Source Search
+
+Generated: `2026-06-01T11:56:49Z`
+
+This catalog separates train-usable sources, research-only sources, license-review sources, and eval-only sources. Benchmark datasets such as RISE/GRADE/KRIS remain evaluation/decontamination-only.
+
+| Source | License | Status | Use | Notes |
+| --- | --- | --- | --- | --- |
+| `magicbrush_train` | cc-by-4.0 | usable_train | SFT, reward, editor_pair_bootstrap | Real source/target image-editing pairs with natural-language instructions and masks. Use train split only. |
+| `imagenhub_filtered` | cc-by-4.0 | usable_train_like | reward, editor_pair_bootstrap | Text-guided editing pairs with captions. Avoid dev split; use filtered/extra only for training candidates. |
+| `anyedit_train` | cc-by-4.0 | usable_train_with_filtering | SFT, reward, multimodal_edit_coverage | Large multimodal editing dataset. Filter unsafe content, visual-input-dependent rows, and low-quality instructions before training. |
+| `omniedit_train` | mit | usable_train_with_filtering | reward, editor_pair_bootstrap, edit_type_coverage | Large filtered source/edited pairs with quality scores. Apply safety and benchmark decontamination filters. |
+| `anyedit_thinking_train` | apache-2.0 | usable_train_with_filtering | SFT, reasoning_edit_bootstrap, critic_rationale | Reasoning-heavy AnyEdit subset with input/output images and thinking traces. Filter for hallucinated or weak target renders before training. |
+| `hq_edit` | cc-by-nc-4.0 | research_only_needs_sampling_adapter | reward, editor_pair_bootstrap | High-quality image-edit pairs, but non-commercial license. The dataset server currently does not expose rows reliably; use HF parquet shards with a dedicated adapter. |
+| `omniedit_got` | mit | metadata_only_needs_path_adapter | region_reasoning, edit_program_bootstrap | Contains grounding-oriented thought traces and image paths, but not direct Image columns through the dataset viewer. Needs a parquet/path adapter before image download. |
+| `seed_edit_openimages` | cc-by-nc-4.0 | research_only_metadata_first | source_pool, instruction_seed | Large edit annotations over OpenImages. Use metadata first; verify image license and avoid test/eval subsets. |
+| `seed_edit_unsplash` | cc-by-nc-4.0 | research_only_metadata_first | source_pool, instruction_seed | Large edit annotations over Unsplash. Check Unsplash terms and retain provenance. |
+| `instructpix2pix` | unspecified_on_hf | needs_license_review | baseline_only | Large synthetic edit-pair dataset. Do not mix into primary training until license and generation provenance are reviewed. |
+| `mit_adobe_fivek` | research_terms_or_other | photoshop_like_retouching_needs_terms_review | photo_retouching, preservation_reward | Classic before/after expert retouching dataset. Useful for Photoshop-like global edits, but not reasoning edits; verify redistribution terms. |
+| `ppr10k` | mirror_reports_apache_2_0_but_verify_upstream | photoshop_like_retouching_needs_terms_review | portrait_retouching, visual_quality_reward | Portrait retouching before/after data; useful for quality/preservation reward, not RISE/GRADE reasoning. |
+| `emu_edit_test` | unspecified_on_hf | excluded_eval_only | external_eval_only | Held-out test set. Do not use for training. |
+
+Photoshop-style before/after data should come from dataset releases such as MIT-Adobe FiveK or PPR10K, not arbitrary tutorial/blog images, unless each image has explicit reusable licensing and provenance.

@@ -1,0 +1,40 @@
+{
+  "version": "v2_hf150",
+  "generated_at": "2026-06-01T12:04:29Z",
+  "catalog_sources": 13,
+  "usable_or_train_like_sources": 5,
+  "hf_pair_samples": 141,
+  "wikimedia_source_images": 0,
+  "wikimedia_seed_tasks": 0,
+  "hf_pair_sources": [
+    "anyedit_thinking_train",
+    "anyedit_train",
+    "imagenhub_filtered",
+    "magicbrush_train",
+    "omniedit_train"
+  ],
+  "wikimedia_task_families": {},
+  "outputs": {
+    "catalog": "data/sources/real_edit_source_catalog.json",
+    "source_report": "reports/data_sources/real_edit_source_report.md",
+    "hf_pairs": "data/sources/real_edit_pairs_sample_v2_hf150.jsonl",
+    "wikimedia_pool": "data/sources/wikimedia_source_pool_v2_hf150.jsonl",
+    "wikimedia_tasks": "data/tasks/real_seed_prompts_v2_hf150.jsonl"
+  },
+  "policy": [
+    "Use train/filtered sources only for training candidates; exclude test/dev benchmark-style splits unless manually approved.",
+    "Do not train on RISE/GRADE/KRIS raw images, instructions, references, GT images, or annotations.",
+    "Photoshop/tutorial before-after web images require explicit license/provenance; arbitrary blog images are not collected.",
+    "Run image/text decontamination and VLM quality filtering before promoting this seed pool into SFT/RL splits."
+  ],
+  "hf_pair_source_counts": {
+    "anyedit_thinking_train": 21,
+    "anyedit_train": 30,
+    "imagenhub_filtered": 30,
+    "magicbrush_train": 30,
+    "omniedit_train": 30
+  },
+  "text_safety_rejected_pairs": 9,
+  "text_safety_rejected_path": "data/sources/real_edit_pairs_rejected_v2_hf150.jsonl",
+  "note": "hf_pair_samples is post text-safety filtering; rejected pairs are excluded from the candidate manifest."
+}

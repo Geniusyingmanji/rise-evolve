@@ -1,0 +1,45 @@
+{
+  "version": "v2_seed",
+  "generated_at": "2026-06-01T11:45:41Z",
+  "catalog_sources": 11,
+  "usable_or_train_like_sources": 4,
+  "hf_pair_samples": 32,
+  "wikimedia_source_images": 14,
+  "wikimedia_seed_tasks": 14,
+  "hf_pair_sources": [
+    "anyedit_train",
+    "imagenhub_filtered",
+    "magicbrush_train",
+    "omniedit_train"
+  ],
+  "wikimedia_task_families": {
+    "causal_reasoning": 2,
+    "discipline_reasoning": 3,
+    "factual_order_correction": 1,
+    "knowledge_reasoning": 2,
+    "temporal_reasoning": 6
+  },
+  "outputs": {
+    "catalog": "data/sources/real_edit_source_catalog.json",
+    "source_report": "reports/data_sources/real_edit_source_report.md",
+    "hf_pairs": "data/sources/real_edit_pairs_sample_v2_seed.jsonl",
+    "wikimedia_pool": "data/sources/wikimedia_source_pool_v2_seed.jsonl",
+    "wikimedia_tasks": "data/tasks/real_seed_prompts_v2_seed.jsonl"
+  },
+  "policy": [
+    "Use train/filtered sources only for training candidates; exclude test/dev benchmark-style splits unless manually approved.",
+    "Do not train on RISE/GRADE/KRIS raw images, instructions, references, GT images, or annotations.",
+    "Photoshop/tutorial before-after web images require explicit license/provenance; arbitrary blog images are not collected.",
+    "Run image/text decontamination and VLM quality filtering before promoting this seed pool into SFT/RL splits."
+  ],
+  "wikimedia_visual_rejected": 3,
+  "wikimedia_candidate_usable_after_spot_check": 11,
+  "wikimedia_renderable_seed_tasks": 11,
+  "wikimedia_task_families_renderable": {
+    "causal_reasoning": 1,
+    "discipline_reasoning": 3,
+    "factual_order_correction": 1,
+    "knowledge_reasoning": 2,
+    "temporal_reasoning": 4
+  }
+}

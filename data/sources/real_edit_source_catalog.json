@@ -1,0 +1,420 @@
+[
+  {
+    "source_id": "magicbrush_train",
+    "dataset_id": "osunlp/MagicBrush",
+    "url": "https://huggingface.co/datasets/osunlp/MagicBrush",
+    "license": "cc-by-4.0",
+    "split": "train",
+    "config": "default",
+    "schema": "magicbrush",
+    "status": "usable_train",
+    "recommended_use": [
+      "SFT",
+      "reward",
+      "editor_pair_bootstrap"
+    ],
+    "notes": "Real source/target image-editing pairs with natural-language instructions and masks. Use train split only.",
+    "hf_downloads": 5695,
+    "hf_likes": 109,
+    "hf_tags": [
+      "task_categories:text-to-image",
+      "task_categories:image-to-image",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "hf_card_license": "cc-by-4.0",
+    "hf_size_categories": [
+      "10K<n<100K"
+    ]
+  },
+  {
+    "source_id": "imagenhub_filtered",
+    "dataset_id": "ImagenHub/Text_Guided_Image_Editing",
+    "url": "https://huggingface.co/datasets/ImagenHub/Text_Guided_Image_Editing",
+    "license": "cc-by-4.0",
+    "split": "filtered",
+    "config": "default",
+    "schema": "imagenhub",
+    "status": "usable_train_like",
+    "recommended_use": [
+      "reward",
+      "editor_pair_bootstrap"
+    ],
+    "notes": "Text-guided editing pairs with captions. Avoid dev split; use filtered/extra only for training candidates.",
+    "hf_downloads": 251,
+    "hf_likes": 22,
+    "hf_tags": [
+      "task_categories:image-to-image",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:n<1K",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2310.01596",
+      "region:us"
+    ],
+    "hf_card_license": "cc-by-4.0",
+    "hf_size_categories": [
+      "n<1K"
+    ]
+  },
+  {
+    "source_id": "anyedit_train",
+    "dataset_id": "Bin1117/AnyEdit",
+    "url": "https://huggingface.co/datasets/Bin1117/AnyEdit",
+    "license": "cc-by-4.0",
+    "split": "train",
+    "config": "default",
+    "schema": "anyedit",
+    "status": "usable_train_with_filtering",
+    "recommended_use": [
+      "SFT",
+      "reward",
+      "multimodal_edit_coverage"
+    ],
+    "notes": "Large multimodal editing dataset. Filter unsafe content, visual-input-dependent rows, and low-quality instructions before training.",
+    "hf_downloads": 3948,
+    "hf_likes": 25,
+    "hf_tags": [
+      "task_categories:text-to-image",
+      "task_categories:image-to-image",
+      "language:en",
+      "license:cc-by-4.0",
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2411.15738",
+      "region:us",
+      "art"
+    ],
+    "hf_card_license": "cc-by-4.0",
+    "hf_size_categories": [
+      "1M<n<10M"
+    ]
+  },
+  {
+    "source_id": "omniedit_train",
+    "dataset_id": "TIGER-Lab/OmniEdit-Filtered-1.2M",
+    "url": "https://huggingface.co/datasets/TIGER-Lab/OmniEdit-Filtered-1.2M",
+    "license": "mit",
+    "split": "train",
+    "config": "default",
+    "schema": "omniedit",
+    "status": "usable_train_with_filtering",
+    "recommended_use": [
+      "reward",
+      "editor_pair_bootstrap",
+      "edit_type_coverage"
+    ],
+    "notes": "Large filtered source/edited pairs with quality scores. Apply safety and benchmark decontamination filters.",
+    "hf_downloads": 10904,
+    "hf_likes": 130,
+    "hf_tags": [
+      "language:en",
+      "license:mit",
+      "size_categories:1M<n<10M",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2411.07199",
+      "region:us",
+      "image"
+    ],
+    "hf_card_license": "mit",
+    "hf_size_categories": [
+      "1M<n<10M"
+    ]
+  },
+  {
+    "source_id": "anyedit_thinking_train",
+    "dataset_id": "Tangc03/anyedit_top2000_thinking",
+    "url": "https://huggingface.co/datasets/Tangc03/anyedit_top2000_thinking",
+    "license": "apache-2.0",
+    "split": "train",
+    "config": "default",
+    "schema": "anyedit_thinking",
+    "status": "usable_train_with_filtering",
+    "recommended_use": [
+      "SFT",
+      "reasoning_edit_bootstrap",
+      "critic_rationale"
+    ],
+    "notes": "Reasoning-heavy AnyEdit subset with input/output images and thinking traces. Filter for hallucinated or weak target renders before training.",
+    "hf_downloads": 73,
+    "hf_likes": 1,
+    "hf_tags": [
+      "task_categories:image-to-image",
+      "language:en",
+      "license:apache-2.0",
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:pandas",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us",
+      "image-editing",
+      "visual-reasoning",
+      "thinking-process"
+    ],
+    "hf_card_license": "apache-2.0",
+    "hf_size_categories": [
+      "1K<n<10K"
+    ]
+  },
+  {
+    "source_id": "hq_edit",
+    "dataset_id": "UCSC-VLAA/HQ-Edit",
+    "url": "https://huggingface.co/datasets/UCSC-VLAA/HQ-Edit",
+    "license": "cc-by-nc-4.0",
+    "split": "train",
+    "config": "default",
+    "schema": "hq_edit",
+    "status": "research_only_needs_sampling_adapter",
+    "recommended_use": [
+      "reward",
+      "editor_pair_bootstrap"
+    ],
+    "notes": "High-quality image-edit pairs, but non-commercial license. The dataset server currently does not expose rows reliably; use HF parquet shards with a dedicated adapter.",
+    "hf_downloads": 4406,
+    "hf_likes": 40,
+    "hf_tags": [
+      "language:en",
+      "license:cc-by-nc-4.0",
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2404.09990",
+      "region:us"
+    ],
+    "hf_card_license": "cc-by-nc-4.0",
+    "hf_size_categories": [
+      "100K<n<1M"
+    ]
+  },
+  {
+    "source_id": "omniedit_got",
+    "dataset_id": "LucasFang/OmniEdit-GoT",
+    "url": "https://huggingface.co/datasets/LucasFang/OmniEdit-GoT",
+    "license": "mit",
+    "split": "train",
+    "config": "default",
+    "schema": "omniedit_got_path_metadata",
+    "status": "metadata_only_needs_path_adapter",
+    "recommended_use": [
+      "region_reasoning",
+      "edit_program_bootstrap"
+    ],
+    "notes": "Contains grounding-oriented thought traces and image paths, but not direct Image columns through the dataset viewer. Needs a parquet/path adapter before image download.",
+    "hf_downloads": 359,
+    "hf_likes": 3,
+    "hf_tags": [
+      "license:mit",
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "hf_card_license": "mit",
+    "hf_size_categories": null
+  },
+  {
+    "source_id": "seed_edit_openimages",
+    "dataset_id": "AILab-CVC/SEED-Data-Edit-Part1-Openimages",
+    "url": "https://huggingface.co/datasets/AILab-CVC/SEED-Data-Edit-Part1-Openimages",
+    "license": "cc-by-nc-4.0",
+    "split": "annotation_jsonl",
+    "config": "raw",
+    "schema": "seed_edit_annotations",
+    "status": "research_only_metadata_first",
+    "recommended_use": [
+      "source_pool",
+      "instruction_seed"
+    ],
+    "notes": "Large edit annotations over OpenImages. Use metadata first; verify image license and avoid test/eval subsets.",
+    "hf_downloads": 427,
+    "hf_likes": 9,
+    "hf_tags": [
+      "task_categories:text-to-image",
+      "language:en",
+      "license:cc-by-nc-4.0",
+      "size_categories:1M<n<10M",
+      "format:json",
+      "modality:tabular",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:1811.00982",
+      "arxiv:2404.14396",
+      "arxiv:2304.02643",
+      "arxiv:2307.00716",
+      "region:us"
+    ],
+    "hf_card_license": "cc-by-nc-4.0",
+    "hf_size_categories": [
+      "1M<n<10M"
+    ]
+  },
+  {
+    "source_id": "seed_edit_unsplash",
+    "dataset_id": "AILab-CVC/SEED-Data-Edit-Part1-Unsplash",
+    "url": "https://huggingface.co/datasets/AILab-CVC/SEED-Data-Edit-Part1-Unsplash",
+    "license": "cc-by-nc-4.0",
+    "split": "annotation_jsonl",
+    "config": "raw",
+    "schema": "seed_edit_annotations",
+    "status": "research_only_metadata_first",
+    "recommended_use": [
+      "source_pool",
+      "instruction_seed"
+    ],
+    "notes": "Large edit annotations over Unsplash. Check Unsplash terms and retain provenance.",
+    "hf_downloads": 399,
+    "hf_likes": 9,
+    "hf_tags": [
+      "task_categories:text-to-image",
+      "language:en",
+      "license:cc-by-nc-4.0",
+      "size_categories:1M<n<10M",
+      "arxiv:2404.14396",
+      "arxiv:1811.00982",
+      "arxiv:2304.02643",
+      "arxiv:2307.00716",
+      "region:us"
+    ],
+    "hf_card_license": "cc-by-nc-4.0",
+    "hf_size_categories": [
+      "1M<n<10M"
+    ]
+  },
+  {
+    "source_id": "instructpix2pix",
+    "dataset_id": "timbrooks/instructpix2pix-clip-filtered",
+    "url": "https://huggingface.co/datasets/timbrooks/instructpix2pix-clip-filtered",
+    "license": "unspecified_on_hf",
+    "split": "train",
+    "config": "default",
+    "schema": "instructpix2pix",
+    "status": "needs_license_review",
+    "recommended_use": [
+      "baseline_only"
+    ],
+    "notes": "Large synthetic edit-pair dataset. Do not mix into primary training until license and generation provenance are reviewed.",
+    "hf_downloads": 2563,
+    "hf_likes": 47,
+    "hf_tags": [
+      "language:en",
+      "size_categories:100K<n<1M",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "arxiv:2211.09800",
+      "region:us"
+    ],
+    "hf_card_license": null,
+    "hf_size_categories": [
+      "100K<n<1M"
+    ]
+  },
+  {
+    "source_id": "mit_adobe_fivek",
+    "dataset_id": "MIT-Adobe FiveK / HF mirrors",
+    "url": "https://data.csail.mit.edu/graphics/fivek/",
+    "license": "research_terms_or_other",
+    "split": "train_only_if_mirror_has_split",
+    "config": "external",
+    "schema": "retouching_before_after",
+    "status": "photoshop_like_retouching_needs_terms_review",
+    "recommended_use": [
+      "photo_retouching",
+      "preservation_reward"
+    ],
+    "notes": "Classic before/after expert retouching dataset. Useful for Photoshop-like global edits, but not reasoning edits; verify redistribution terms."
+  },
+  {
+    "source_id": "ppr10k",
+    "dataset_id": "PPR10K / MMArt-PPR10k mirrors",
+    "url": "https://github.com/csjliang/PPR10K",
+    "license": "mirror_reports_apache_2_0_but_verify_upstream",
+    "split": "train",
+    "config": "external",
+    "schema": "portrait_retouching_before_after",
+    "status": "photoshop_like_retouching_needs_terms_review",
+    "recommended_use": [
+      "portrait_retouching",
+      "visual_quality_reward"
+    ],
+    "notes": "Portrait retouching before/after data; useful for quality/preservation reward, not RISE/GRADE reasoning.",
+    "hf_error": "401 Client Error: Unauthorized for url: https://huggingface.co/api/datasets/PPR10K%20/%20MMArt-PPR10k%20mirrors"
+  },
+  {
+    "source_id": "emu_edit_test",
+    "dataset_id": "facebook/emu_edit_test_set",
+    "url": "https://huggingface.co/datasets/facebook/emu_edit_test_set",
+    "license": "unspecified_on_hf",
+    "split": "test",
+    "config": "default",
+    "schema": "eval_only",
+    "status": "excluded_eval_only",
+    "recommended_use": [
+      "external_eval_only"
+    ],
+    "notes": "Held-out test set. Do not use for training.",
+    "hf_downloads": 196,
+    "hf_likes": 46,
+    "hf_tags": [
+      "size_categories:1K<n<10K",
+      "format:parquet",
+      "modality:image",
+      "modality:text",
+      "library:datasets",
+      "library:dask",
+      "library:mlcroissant",
+      "library:polars",
+      "region:us"
+    ],
+    "hf_card_license": null,
+    "hf_size_categories": null
+  }
+]

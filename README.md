@@ -104,8 +104,23 @@ Current scripts:
 | [`freeze_benchmarks.py`](scripts/data/freeze_benchmarks.py) | Freeze RISE/GRADE/KRIS public metadata and build text fingerprints for decontamination. |
 | [`mine_taxonomy.py`](scripts/data/mine_taxonomy.py) | Write benchmark-derived taxonomy, checklist templates, and a curated knowledge bank. |
 | [`build_pilot_dataset.py`](scripts/data/build_pilot_dataset.py) | Generate programmatic source/teacher/negative images, tasks, trajectories, programs, verifier items, and splits. |
+| [`collect_real_edit_sources.py`](scripts/data/collect_real_edit_sources.py) | Search and sample real image-editing datasets and licensed Wikimedia source images for the v2 real-image seed pool. |
 | [`validate_dataset.py`](scripts/data/validate_dataset.py) | Validate JSONL integrity, required fields, image paths, checklist weights, and exact benchmark text matches. |
 | [`audit_dataset.py`](scripts/data/audit_dataset.py) | Export audit stats, stratified review JSONL, and source/teacher/negative contact sheets. |
+
+Real-image seed collection:
+
+```bash
+python3 scripts/data/collect_real_edit_sources.py \
+  --version v2_seed \
+  --hf-per-source 12 \
+  --wiki-per-query 2
+python3 scripts/data/audit_real_sources.py --version v2_seed
+```
+
+This writes a source catalog, sampled real edit pairs, Wikimedia source images, and real-source edit prompts. It uses train/filtered splits only where possible, excludes eval-only sources, and still requires stronger VLM/image decontamination before promotion into SFT/RL splits.
+
+The current expanded HF-only sample is `v2_hf150`: 141 safety-filtered real source/target edit pairs from MagicBrush, ImagenHub filtered, AnyEdit, OmniEdit, and AnyEdit-thinking. See [`reports/data_sources/real_source_audit_v2_hf150.json`](reports/data_sources/real_source_audit_v2_hf150.json) and [`reports/data_sources/real_pair_sheet_v2_hf150.png`](reports/data_sources/real_pair_sheet_v2_hf150.png). It is still a candidate pool, not a final train split.
 
 ## Reproduce
 

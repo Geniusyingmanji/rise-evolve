@@ -1,0 +1,41 @@
+{
+  "version": "v2_seed",
+  "pair_rows": 32,
+  "pair_sources": {
+    "anyedit_train": 8,
+    "imagenhub_filtered": 8,
+    "magicbrush_train": 8,
+    "omniedit_train": 8
+  },
+  "pair_licenses": {
+    "cc-by-4.0": 24,
+    "mit": 8
+  },
+  "pair_unique_source_sha": 32,
+  "pair_unique_target_sha": 32,
+  "pair_unique_instructions": 32,
+  "pair_exact_benchmark_text_leaks": 0,
+  "pair_quality_rejects": 0,
+  "missing_pair_images": [],
+  "wikimedia_rows": 14,
+  "wikimedia_licenses": {
+    "CC BY 2.0": 1,
+    "CC BY 3.0": 1,
+    "CC BY 4.0": 1,
+    "CC BY-SA 2.0": 2,
+    "CC BY-SA 3.0": 2,
+    "CC BY-SA 4.0": 6,
+    "Public domain": 1
+  },
+  "wikimedia_manual_status": {
+    "candidate_passed_contact_sheet_spot_check": 11,
+    "rejected_query_mismatch": 3
+  },
+  "missing_wikimedia_images": [],
+  "real_seed_task_rows": 14,
+  "real_seed_task_status": {
+    "needs_strong_editor_target": 11,
+    "rejected_source_query_mismatch": 3
+  },
+  "real_seed_exact_benchmark_text_leaks": 0
+}
