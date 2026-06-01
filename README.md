@@ -157,6 +157,7 @@ Current scripts:
 | [`mine_taxonomy.py`](scripts/data/mine_taxonomy.py) | Write benchmark-derived taxonomy, checklist templates, and a curated knowledge bank. |
 | [`build_pilot_dataset.py`](scripts/data/build_pilot_dataset.py) | Generate programmatic source/teacher/negative images, tasks, trajectories, programs, verifier items, and splits. |
 | [`collect_real_edit_sources.py`](scripts/data/collect_real_edit_sources.py) | Search and sample real image-editing datasets and licensed Wikimedia source images for the v2 real-image seed pool. |
+| [`run_long_collection.py`](scripts/data/run_long_collection.py) | Run multi-cycle, quality-gated, decontaminated real edit-pair collection for 8-10h background jobs. |
 | [`validate_dataset.py`](scripts/data/validate_dataset.py) | Validate JSONL integrity, required fields, image paths, checklist weights, and exact benchmark text matches. |
 | [`audit_dataset.py`](scripts/data/audit_dataset.py) | Export audit stats, stratified review JSONL, and source/teacher/negative contact sheets. |
 
@@ -173,6 +174,19 @@ python3 scripts/data/audit_real_sources.py --version v2_seed
 This writes a source catalog, sampled real edit pairs, Wikimedia source images, and real-source edit prompts. It uses train/filtered splits only where possible, excludes eval-only sources, and still requires stronger VLM/image decontamination before promotion into SFT/RL splits.
 
 The current expanded HF-only sample is `v2_hf150`: 141 safety-filtered real source/target edit pairs from MagicBrush, ImagenHub filtered, AnyEdit, OmniEdit, and AnyEdit-thinking. See [`reports/data_sources/real_source_audit_v2_hf150.json`](reports/data_sources/real_source_audit_v2_hf150.json) and [`reports/data_sources/real_pair_sheet_v2_hf150.png`](reports/data_sources/real_pair_sheet_v2_hf150.png). It is still a candidate pool, not a final train split.
+
+Long-running collection:
+
+```bash
+python3 scripts/data/run_long_collection.py \
+  --prefix v2_long_YYYYMMDD \
+  --duration-hours 9 \
+  --max-accepted 1000 \
+  --hf-per-source 35 \
+  --pause-seconds 120
+```
+
+This writes cumulative accepted candidates to `data/sources/real_edit_pairs_candidate_<prefix>.jsonl`, rejects to `data/sources/real_edit_pairs_rejected_<prefix>.jsonl`, cycle logs to `logs/data_collection/<prefix>.jsonl`, and status/decontamination reports to `reports/data_sources/`.
 
 ## Reproduce
 

@@ -28,6 +28,14 @@ python3 scripts/data/collect_real_edit_sources.py \
   --randomize \
   --seed 601
 python3 scripts/data/audit_real_sources.py --version v2_hf150 --sheet-limit 30
+
+# Long-running quality-gated collection
+python3 scripts/data/run_long_collection.py \
+  --prefix v2_long_YYYYMMDD \
+  --duration-hours 9 \
+  --max-accepted 1000 \
+  --hf-per-source 35 \
+  --pause-seconds 120
 ```
 
 Main outputs:
@@ -76,3 +84,11 @@ Current expanded HF sample:
 - `data/sources/real_edit_pairs_rejected_v2_hf150.jsonl`: 9 text-safety rejected pairs.
 - `data/real_edits/v2_hf150/`: downloaded real edit pair images.
 - `reports/data_sources/real_source_audit_v2_hf150.json`: audit report.
+
+Long collection outputs:
+
+- `data/sources/real_edit_pairs_candidate_<prefix>.jsonl`: cumulative accepted, quality-gated candidate pairs.
+- `data/sources/real_edit_pairs_rejected_<prefix>.jsonl`: cumulative rejected rows with explicit reject reasons.
+- `logs/data_collection/<prefix>.jsonl`: per-command and per-cycle execution log.
+- `reports/data_sources/long_collection_status_<prefix>.json`: current job status.
+- `reports/data_sources/decontamination_<prefix>.json`: text benchmark decontamination report for candidates.
