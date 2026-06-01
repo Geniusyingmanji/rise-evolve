@@ -230,3 +230,69 @@
 8. CoCoEdit, arXiv:2602.14068
 9. GSI-Bench, arXiv:2604.20570
 10. KRIS-Bench, arXiv:2505.16707
+
+## 11. 2026-06-01 深入调研：GenEvolve、OPD 和编辑 RL
+
+### 11.1 GenEvolve 训练方法复盘
+
+GenEvolve 的公开代码位于 `https://github.com/MeiGen-AI/GenEvolve`，包含 OpenAI-compatible agent runtime、`search` / `image_search` / `query_knowledge` 三类工具、8 个 generation skill、Qwen-Image-Edit/Nano Banana Pro wrapper 和 benchmark evaluation 脚本。Hugging Face 发布了 Qwen3-VL-8B-based policy `MeiGen-AI/GenEvolve`，以及 `MeiGen-AI/GenEvolve-Data-Bench` 数据：SFT 9,000 trajectories、RL 3,175 prompts + GT images、Bench 594 prompts。需要注意：repo 明确说明 full training scripts are not included，训练实现要根据论文方法复现。
+
+论文中的训练流程可以抽象为：
+
+1. **SFT cold start**：用 teacher 轨迹训练 ReAct 工具协议。只优化 assistant-side trajectory tokens，user prompt 和 tool observations masked。
+2. **Prompt-reference program**：最终输出 `z=(g,R)`，其中 `g` 是 generator-facing prompt，`R` 是按 ordinal phrase 引用的 reference images，不输出 URL/ID。
+3. **Dual reward + GRPO**：每个 prompt 采样 K 条轨迹，render image 后用 `R = 0.5 R_img + 0.5 R_text` 打分；`R_img` 评估生成图，`R_text` 评估 program sufficiency；GRPO 优化同组相对优势。
+4. **Visual Experience Extraction**：同 prompt 的 best/worst 轨迹若 reward gap `Δ >= 0.20`，抽取 search strategy、knowledge activation、reference selection、prompt construction、failure avoidance 五类 experience。
+5. **Visual Experience Distillation / SDL**：student 看到普通 context，teacher branch 看到 patched experience context；teacher 不另生成轨迹，只对同一批 on-policy tokens 重新打分，用 sampled-token reverse-KL 做 dense token-level distillation。推理时只部署 student。
+
+对 RISEvolve 的最重要启示：如果把图像编辑也建模为 tool-orchestrated trajectory，训练主目标应该是 agent 的决策 token，而不是直接把所有 reward 压到 diffusion editor。
+
+### 11.2 近期 OPD 线索
+
+用户提到的 OPD 在近期工作中主要指 **On-Policy / Online Policy Distillation**。其共同点是：teacher 和 student 通常共享或相关参数，student 产生 on-policy rollouts，teacher 在 privileged context、specialized expert 或局部输入下对同一轨迹给 token/step-level dense supervision，从而减少纯 scalar RL 的方差和离线偏好训练的 distribution mismatch。
+
+相关工作：
+
+| 工作 | 方向 | 对 RISEvolve 的启示 |
+|---|---|---|
+| Vision-OPD, arXiv:2605.18740 | MLLM fine-detail perception；crop-conditioned teacher 蒸馏 full-image student | 可用于源图局部证据：teacher 看 crop/region，student 学会 full-image 下关注关键区域 |
+| DiffusionOPD, arXiv:2605.15055 | diffusion model 多任务 online policy distillation | 若后续训练 editor，可用 task-specific teacher distill 到统一 editor |
+| Flow-OPD, arXiv:2605.08063 | flow matching model 的 OPD，先单 reward teacher，再 on-policy distill unified student | 适合解决编辑中 prompt adherence、preservation、aesthetic 多 reward 的 seesaw |
+| GenEvolve SDL, arXiv:2605.21605 | visual experience conditioned teacher 蒸馏普通 student | 最直接可迁移到编辑 agent，改成 visual-cognitive editing experience |
+
+二维图像编辑方向目前更成熟的是 preference/RL post-training 和 reward model，OPD 还没有形成统一 benchmark 标准。因此 RISEvolve 可以把 OPD 具体化为 **Edit-OPD**：best/worst 编辑轨迹产生 visual-cognitive experience；teacher 看到 region/checklist/diagnostics 作为 privileged context；student 在普通 inference context 下学习这些 decision-token 偏好。
+
+### 11.3 图像编辑 RL / Preference 最新进展
+
+| 工作 | 结论 | 可借鉴点 |
+|---|---|---|
+| HP-Edit, arXiv:2604.19406 | human-preference post-training for image editing；构造 RealPref-50K 和 HP-Scorer，用 reward post-train editor | 可作为 editor-side RLHF 参考；也可借鉴 preference scorer |
+| EditHF-1M, arXiv:2603.14916 | 1M editing feedback，29M preference pairs，维度为 visual quality / instruction alignment / attribute preservation | RISEvolve verifier/reward 应显式拆这三维 |
+| ReasonEdit, arXiv:2605.07477 | 22K edited images + 113K CoT + 1.3M human judgments；用 GRPO 训练可解释编辑 evaluator | 可用于训练解释型 judge，不一定直接训练 planner |
+| Talk2Move, arXiv:2601.02356 | 对 object-level geometric transformation 使用 GRPO 和 object-centric spatial rewards | RISE spatial / region reward 的直接参考 |
+| RL-RIG, arXiv:2602.19974 | Generate-Reflect-Edit，Reflection-GRPO 同时训练 VLM actor 和 image editor | 支持 planner + editor 分阶段或联合优化 |
+| AlphaGRPO, arXiv:2605.12495 | UMM 上用 decompositional verifiable reward 做 GRPO，自反式生成/编辑 | `DVReward` 思路适合把复杂编辑指令拆成 atomic verifiable questions |
+| UniRef-Image-Edit, arXiv:2602.14186 | 多参考图编辑，SFT + RL；解决多参考一致性 | RISEvolve 的 reference roles 和 ordinal binding 可借鉴 |
+| ParetoSlider, arXiv:2604.20816 | 多目标 RL，推理时调 prompt adherence vs source fidelity 等 trade-off | 图像编辑 reward 不宜早期 scalarization，需保留多头指标 |
+| Diffusion LAIR, arXiv:2605.26491 | listwise reward-aware diffusion alignment，使用同 prompt 多候选分数 | 对底层 editor 后训练比 pairwise DPO 更适合 |
+| Diffusion-LPO, arXiv:2510.01540 | listwise preference optimization，覆盖 image editing | 可把 RISEvolve 的多候选 edited images 转成 listwise editor training data |
+
+### 11.4 推荐训练选择
+
+短期最适合 RISEvolve 的 RL 算法是 **GRPO + Edit-OPD**：
+
+- GRPO 负责用 rendered image / program reward 选择更好的完整轨迹。
+- Edit-OPD 负责把 best-vs-worst 的差异变成 dense token-level decision guidance。
+- DPO/IPO/ORPO 适合作为离线 preference warm-up，但不能替代 on-policy tool exploration。
+- PPO 成本更高，需要 value model；除非 GRPO 不稳定，否则不是首选。
+- DiffusionOPD/Flow-OPD 更适合第二阶段训练底层 editor，而不是第一阶段训练 agent。
+
+二维图像编辑的 OPD 改造应包含五个特化点：
+
+1. **Region-aware OPD**：teacher 看到 crop/mask/region diagnostics，student 学会全图输入下的区域定位。
+2. **Checklist-conditioned OPD**：teacher 看到失败 checklist，将失败项转成 action-level guidance。
+3. **Editor-gap-aware OPD**：区分 plan 正确但 editor 失败的情况，避免错误惩罚 reasoning tokens。
+4. **Tool-boundary OPD**：蒸馏何时需要 search/image_search/solve_symbolic，抑制工具过度调用。
+5. **Multi-editor OPD**：同一 program 用多个 editor 渲染，teacher 总结 editor-robust prompt/reference/region 写法。
+
+详细训练流程见 `training_plan.md`。

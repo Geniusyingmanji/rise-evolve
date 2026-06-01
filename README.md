@@ -4,7 +4,7 @@ RISEvolve is a reasoning-informed image editing agent project. The core idea is 
 
 This repository currently contains:
 
-- A literature and project plan: [`survey.md`](survey.md), [`plan.md`](plan.md), [`data_pipeline.md`](data_pipeline.md)
+- A literature and project plan: [`survey.md`](survey.md), [`plan.md`](plan.md), [`data_pipeline.md`](data_pipeline.md), [`training_plan.md`](training_plan.md)
 - A runnable data construction pipeline: [`scripts/data/`](scripts/data/)
 - A first large-scale agentic editing dataset: `v1`, with 10k tasks and 30k generated images
 
@@ -29,6 +29,8 @@ source image + instruction
 ```
 
 The generated data is intended for SFT, RL prompt generation, verifier training, and visual-cognitive experience distillation.
+
+The current recommended training route is documented in [`training_plan.md`](training_plan.md): SFT cold start, checklist-first verifier calibration, Edit-GRPO, and Edit-OPD / visual-cognitive experience distillation.
 
 ## Dataset v1
 
@@ -238,4 +240,3 @@ Recommended next steps:
 3. Add semantic decontamination with CLIP/DINO and text embeddings.
 4. Human-audit 200-500 examples and blacklist weak templates.
 5. Shard large JSONL files or use Git LFS if scaling beyond the current v1 dataset.
-

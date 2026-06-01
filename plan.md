@@ -866,3 +866,34 @@ v1 已扩到 1w agentic 数据：
 v1 分布为 RISE-like 4,000、GRADE-like 3,500、KRIS-like 2,500。`scripts/data/validate_dataset.py --version v1` 已通过，exact benchmark text match 为 0。v1 还加入了 instruction paraphrase、benchmark alignment metadata、task-level visual jitter；当前 instruction 去重约 9.4K/10K，source PNG 精确哈希约 5K 个桶。下一步质量提升应集中在：增加更多 GRADE 参数化生成器、接入真实/生成 source image、加入 CLIP/DINO semantic decontamination、对 200-500 条样本做人工抽检。
 
 已补充审阅产物：`scripts/data/audit_dataset.py --version v1 --sample-size 96` 会输出 `reports/data_quality/audit_v1.json`、`review_sample_v1.jsonl` 和 4 张 source/teacher/negative 三联 contact sheet，便于人工快速抽检知识正确性、区域保真和 negative case 难度。
+
+### 11.11 训练 Plan v3：GRPO + Edit-OPD
+
+详细训练方案已单独整理到 `training_plan.md`。这里记录关键决策：
+
+1. **优先训练 agent，不直接训练 editor**。RISE/GRADE/KRIS 的主要瓶颈是源图理解、知识/推理、区域规划、非编辑区保真和 checklist 验证；这些是离散工具/程序决策，先训练 VLM agent 更稳。
+2. **SFT 冷启动使用现有 v1 数据，但必须补 real-image / strong-editor trajectories**。当前 1w 程序化数据适合学 schema、工具协议和 verifier，但视觉分布太窄；进入正式 SFT 前建议加入 1K-3K 高质量真实图或强编辑器渲染轨迹。
+3. **主 RL 算法选 GRPO**。每个 prompt 采样 K=4-6 条 edit trajectories，render 后用多头 reward 打分，group-relative advantage 更新 assistant tokens。相比 PPO，GRPO 不需要 value model；相比 DPO，GRPO 能探索工具调用和 on-policy failure。
+4. **加入 Edit-OPD / Visual-Cognitive Experience Distillation**。同 prompt best/worst rollout 的差异被总结为 experience；teacher branch 看到 region/checklist/diagnostics/experience，student branch 不看；teacher 对同一批 on-policy tokens 重新打分，给 student dense token-level guidance。
+5. **Reward 必须多头记录，不能只保留总分**。推荐 heads：`R_cognitive`、`R_visual`、`R_preserve`、`R_region`、`R_tool`、`R_format`。先做 weighted reward，日志中保留 head breakdown；第二版再做 token-mask/head-aware advantage。
+6. **OPD 的二维图像编辑特化**：region-aware、checklist-conditioned、editor-gap-aware、tool-boundary、multi-editor。核心是把“哪里该改/哪里不能动/为什么失败/该不该检索”蒸馏到 agent 的决策 token。
+
+阶段计划：
+
+| 阶段 | 目标 | 验收 |
+|------|------|------|
+| Stage 0 | Prompted planner + fixed editor baseline | 100-200 dev cases failure taxonomy |
+| Stage 1 | SFT cold start | JSON/schema >98%，工具重复率 <10% |
+| Stage 2 | Verifier/reward calibration | checklist-human agreement 通过人工抽检 |
+| Stage 3 | Edit-GRPO | RISE/GRADE/KRIS dev reward 稳定提升 |
+| Stage 4 | Edit-OPD | 对比 GRPO-only 有额外提升，工具和 region error 下降 |
+| Stage 5 | Targeted self-evolution | 针对 weak buckets 扩 1K-3K hard cases |
+
+最近实现顺序：
+
+1. 把 `data/trajectories/teacher_trajectories_v1.jsonl` 转成 LLaMA-Factory/Qwen-VL SFT 格式。
+2. 实现 prompted RISEvolve baseline 和 editor adapter。
+3. 实现 checklist-first verifier，输出 reward head breakdown。
+4. 小规模 SFT 后跑 100-case dev eval。
+5. 做 K=4、50-100 step 的 GRPO debug，不开 OPD。
+6. 接入 experience memory、teacher context patch、SDL/Edit-OPD loss，再扩到 300-800 step。
