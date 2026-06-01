@@ -61,6 +61,15 @@ P0 data quality:
 - Produce a human review pack for at least 200-500 real-image candidates and record accept/reject reasons.
 - Keep benchmark-derived content out of train splits: no benchmark source images, target images, references, annotations, exact instructions, answer keys, or close paraphrases.
 
+P0 collaborator data intake:
+
+- Ask collaborators to prioritize real before/after edit pairs from Photoshop, Lightroom, retouching, inpainting, object removal, colorization, restoration, and composition workflows.
+- Prefer train/filtered/non-eval splits from public image-editing datasets; reject benchmark test/dev/eval splits unless they are used only for offline decontamination or held-out evaluation.
+- Accept source-only image pools only when license and provenance are clear, for example Wikimedia, OpenImages, Unsplash/Pexels-style licensed sources, or dataset train splits with redistribution terms checked.
+- Require a manifest for every batch with `source_url`, `license`, `dataset`, `split`, `source_image`, `target_image`, `instruction`, `edit_type`, `provenance_notes`, and `review_status`.
+- Keep negative/failure examples when provenance is valid: over-editing, missed edits, wrong region, wrong object identity, reasoning errors, and visible artifacts are useful for critic/reward training.
+- Quarantine any row with unclear license, missing split, benchmark overlap risk, unsafe content, low-resolution images, watermarks, heavy compression, or ambiguous before/after ordering.
+
 P0 training:
 
 - Implement the cold-start SFT launcher over agent trajectories and editor prompts.
