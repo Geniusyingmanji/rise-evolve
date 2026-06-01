@@ -157,11 +157,12 @@ loss_mask: assistant_tokens_only
 
 目标：先把 reward 稳住，再进入 GRPO。
 
-Reward 采用 checklist-first，不直接让 VLM 给总分：
+Reward 采用 checklist-first + difference-first，不直接让 VLM 给总分。`Trust Your Critic / FIRM` 证明了一个关键风险：编辑 reward 若用 `0.5 * execution + 0.5 * consistency`，模型会学会几乎不编辑来骗取高 consistency。FIRM 的 CME 用 `Execution * (0.6 + 0.4 * Consistency)` 把 execution 变成高 reward 的必要条件。RISEvolve 需要把这个思想扩展到 reasoning editing。
 
 1. 从 instruction + source analysis + target description 生成 atomic checklist。
-2. 逐项判断 edited image 是否满足。
-3. 汇总为多头 reward。
+2. 对 source/edited 做 difference-first observation，先描述 intended/missing/unintended/implied changes。
+3. 逐项判断 edited image 是否满足 checklist。
+4. 输出 reward heads 和 failure attribution。
 
 Reward heads：
 
@@ -172,20 +173,33 @@ R_preserve: 非编辑区域、身份、视角、光照、背景是否保留
 R_region: edit region 是否准确，是否 over-edit / under-edit
 R_tool: 工具调用是否必要、有效、无重复，证据是否被 program 使用
 R_format: JSON/schema/checklist/reference binding 是否合规
+R_program: 不看 render，仅看 edit program 是否逻辑正确、可执行、证据充分
 ```
 
-建议初始汇总：
+不建议简单 weighted sum。建议使用 gated/base-and-bonus reward：
 
 ```text
-R = 0.30 R_cognitive
-  + 0.25 R_visual
-  + 0.20 R_preserve
-  + 0.10 R_region
-  + 0.10 R_tool
+G_task = min(R_exec, R_cognitive_applicable)
+
+R_image =
+  G_task * (
+    0.45
+    + 0.20 R_preserve
+    + 0.15 R_region
+    + 0.10 R_quality
+    + 0.10 R_readability
+  )
+
+R_agent =
+  0.45 R_program
+  + 0.45 R_image
+  + 0.05 R_tool
   + 0.05 R_format
 ```
 
 训练时对同一 prompt 的 K 个 rollout 做 group 内归一化。日志中必须保留每个 head 的分数，避免一个高分 head 淹没另一个失败 head。
+
+如果判定为 `editor_fail`，即 plan/checklist/region 正确但 editor 没执行出来，不应把全部负反馈压到 reasoning/tool tokens。建议保留较高 `R_program`，主要降低 `editor_prompt`、`region phrase`、`negative_constraints` 相关 token 的优势。详细 reward 方案见 `reward_design.md`。
 
 ### Stage 3: Edit-GRPO for Agent Policy
 
@@ -219,6 +233,17 @@ Token credit 建议分区：
 - format tokens：主要受 `R_format` 影响。
 
 第一版可以用统一 rollout reward，第二版再做 token mask/head-aware advantage。
+
+结合 reward heads 后，第二版建议：
+
+```text
+tool_call tokens               <- R_tool + R_cognitive + R_program
+reasoning / knowledge tokens   <- R_cognitive + R_program
+region tokens                  <- R_region + R_preserve
+preservation / negative tokens <- R_preserve + over_edit penalty
+editor_prompt tokens           <- R_exec + R_region + R_quality
+format tokens                  <- R_format
+```
 
 ### Stage 4: Edit-OPD / Visual-Cognitive Experience Distillation
 
@@ -393,4 +418,3 @@ Diagnostics：
 | Programmatic data bias | add real-image source pool and strong-editor renders |
 | OPD teacher overfits stale memory | reward-gap + recency eviction, retrieval threshold, SFT replay |
 | Logical/symbolic rendering weak | route through `solve_symbolic`, specialized text rendering prompts, separate hard split |
-

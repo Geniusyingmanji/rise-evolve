@@ -897,3 +897,53 @@ v1 分布为 RISE-like 4,000、GRADE-like 3,500、KRIS-like 2,500。`scripts/dat
 4. 小规模 SFT 后跑 100-case dev eval。
 5. 做 K=4、50-100 step 的 GRPO debug，不开 OPD。
 6. 接入 experience memory、teacher context patch、SDL/Edit-OPD loss，再扩到 300-800 step。
+
+### 11.12 Reward Plan v2：RISE-Critic
+
+FIRM / Trust Your Critic 的关键结论是：图像编辑 reward 的瓶颈在 critic，且简单加权会 reward hacking。特别是 `0.5 * Execution + 0.5 * Consistency` 会诱导 editor 输出几乎不变的图来获取高 consistency。FIRM 用 `CME = Execution * (0.6 + 0.4 * Consistency)` 把 execution 设为高 reward 的必要条件。
+
+RISEvolve 不能只照搬 FIRM 的二头 reward，因为我们的任务是 reasoning/knowledge-heavy editing agent。建议 reward 模块升级为 **RISE-Critic**：
+
+```text
+expected diff planning
+  -> difference-first observation
+  -> checklist verification
+  -> gated/base-and-bonus reward
+  -> failure attribution
+  -> head-aware token credit
+```
+
+核心 heads：
+
+| Head | 用途 |
+|------|------|
+| `R_cog` | 推理、事实、学科、符号结果正确性 |
+| `R_exec` | 目标编辑是否执行 |
+| `R_preserve` | 非编辑区域、身份、视角、背景保持 |
+| `R_region` | 编辑区域和局部性 |
+| `R_quality` | 视觉自然度、artifact、可读性 |
+| `R_tool` | 工具调用必要性、有效性、证据使用 |
+| `R_format` | schema、reference binding、checklist 合规 |
+| `R_program` | 不看 render 的 plan correctness，降低 editor 噪声 |
+
+推荐 gated reward：
+
+```text
+G_task = min(R_exec, R_cog_applicable)
+
+R_image = G_task * (
+  0.45 + 0.20 R_preserve + 0.15 R_region + 0.10 R_quality + 0.10 R_readability
+)
+
+R_agent = 0.45 R_program + 0.45 R_image + 0.05 R_tool + 0.05 R_format
+```
+
+关键创新点：
+
+1. **Difference-first critic**：先比较 source/edited 的真实差异，再按 expected diff 和 checklist 打分，减少 VLM 直接打分漏细节。
+2. **Cognitive-gated CME**：在 FIRM 的 execution gate 之外加入 reasoning/knowledge gate，防止视觉上像但学科/逻辑错误的编辑得高分。
+3. **Editor-gap-aware reward**：区分 `planner_fail` 和 `editor_fail`。若 program 正确但 editor 失败，保留较高 `R_program`，主要更新 editor prompt / region phrase / negative constraints。
+4. **Head-aware token credit**：不同 token group 由不同 reward head 更新，避免一个 scalar reward 同时误伤工具、推理、区域和 prompt tokens。
+5. **Reward diagnostics feed Edit-OPD**：failed checklist、observed diff、failure attribution 和 head breakdown 进入 teacher-only context，成为 Edit-OPD 的 privileged signal。
+
+详细方案见 `reward_design.md`。下一步实现时，先做 verifier/reward 数据格式扩展：保存 `expected_diff`、`observed_diff`、`score_heads`、`failure_attribution`，再接入 GRPO。

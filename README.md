@@ -4,7 +4,7 @@ RISEvolve is a reasoning-informed image editing agent project. The core idea is 
 
 This repository currently contains:
 
-- A literature and project plan: [`survey.md`](survey.md), [`plan.md`](plan.md), [`data_pipeline.md`](data_pipeline.md), [`training_plan.md`](training_plan.md)
+- A literature and project plan: [`survey.md`](survey.md), [`plan.md`](plan.md), [`data_pipeline.md`](data_pipeline.md), [`training_plan.md`](training_plan.md), [`reward_design.md`](reward_design.md)
 - A runnable data construction pipeline: [`scripts/data/`](scripts/data/)
 - A first large-scale agentic editing dataset: `v1`, with 10k tasks and 30k generated images
 
@@ -30,7 +30,7 @@ source image + instruction
 
 The generated data is intended for SFT, RL prompt generation, verifier training, and visual-cognitive experience distillation.
 
-The current recommended training route is documented in [`training_plan.md`](training_plan.md): SFT cold start, checklist-first verifier calibration, Edit-GRPO, and Edit-OPD / visual-cognitive experience distillation.
+The current recommended training route is documented in [`training_plan.md`](training_plan.md): SFT cold start, checklist-first verifier calibration, Edit-GRPO, and Edit-OPD / visual-cognitive experience distillation. The reward design is documented in [`reward_design.md`](reward_design.md): difference-first critic, gated reward fusion, and editor-gap-aware credit assignment.
 
 ## Dataset v1
 
