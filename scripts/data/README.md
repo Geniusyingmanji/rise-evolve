@@ -92,3 +92,5 @@ Long collection outputs:
 - `logs/data_collection/<prefix>.jsonl`: per-command and per-cycle execution log.
 - `reports/data_sources/long_collection_status_<prefix>.json`: current job status.
 - `reports/data_sources/decontamination_<prefix>.json`: text benchmark decontamination report for candidates.
+
+The long runner rejects visual-input-dependent rows such as depth/reference/mask-guided edits because the current RISE/GRADE/KRIS-style training target is single-source-image editing.

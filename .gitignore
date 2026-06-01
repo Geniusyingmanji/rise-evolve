@@ -6,3 +6,4 @@ data/train_ready/
 data/benchmarks/manifests/
 outputs/
 reports/reward/
+data/quarantine/

@@ -48,6 +48,19 @@ SAFE_LICENSE_TOKENS = {
 
 EVAL_SPLIT_TOKENS = {"test", "eval", "evaluation", "dev", "validation", "val", "benchmark"}
 
+VISUAL_INPUT_DEPENDENT_PATTERNS = (
+    "[v",
+    "visual input",
+    "reference image",
+    "given depth image",
+    "given segmentation",
+    "given mask",
+    "refer to the given",
+    "follow the given",
+    "watch the given",
+    "according to the given",
+)
+
 
 def read_jsonl(path: Path) -> List[Dict[str, Any]]:
     if not path.exists():
@@ -70,24 +83,35 @@ def append_jsonl(path: Path, row: Dict[str, Any]) -> None:
 def run_cmd(cmd: List[str], log_path: Path, timeout: int | None = None) -> Tuple[int, str]:
     ensure_dir(log_path.parent)
     started = time.time()
-    proc = subprocess.run(
-        cmd,
-        cwd=str(repo_path()),
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.STDOUT,
-        timeout=timeout,
-    )
+    try:
+        proc = subprocess.run(
+            cmd,
+            cwd=str(repo_path()),
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            timeout=timeout,
+        )
+        returncode = proc.returncode
+        output = proc.stdout
+    except subprocess.TimeoutExpired as exc:
+        returncode = 124
+        stdout = exc.stdout or ""
+        stderr = exc.stderr or ""
+        output = "\n".join(str(x) for x in [stdout, stderr, f"TIMEOUT after {timeout}s"] if x)
+    except Exception as exc:
+        returncode = 1
+        output = f"ERROR: {exc}"
     elapsed = round(time.time() - started, 3)
     block = {
         "time": utc_now(),
         "cmd": cmd,
-        "returncode": proc.returncode,
+        "returncode": returncode,
         "elapsed_seconds": elapsed,
-        "output_tail": proc.stdout[-8000:],
+        "output_tail": output[-8000:],
     }
     append_jsonl(log_path, block)
-    return proc.returncode, proc.stdout
+    return returncode, output
 
 
 def pair_key(row: Dict[str, Any]) -> Tuple[str, str, str]:
@@ -127,6 +151,22 @@ def text_is_safe(row: Dict[str, Any]) -> bool:
         ensure_ascii=False,
     ).lower()
     return not any(token in text for token in TEXT_BLOCKLIST)
+
+
+def is_visual_input_dependent(row: Dict[str, Any]) -> bool:
+    """Reject rows that require an extra reference/depth/mask image not present in the normal benchmark setup."""
+    text = json.dumps(
+        {
+            "instruction": row.get("instruction"),
+            "input": row.get("input"),
+            "output": row.get("output"),
+            "edit_type": row.get("edit_type"),
+        },
+        ensure_ascii=False,
+    ).lower()
+    if row.get("visual_input_image"):
+        return True
+    return any(pattern in text for pattern in VISUAL_INPUT_DEPENDENT_PATTERNS)
 
 
 def image_ok(meta: Dict[str, Any], min_short_side: int, max_aspect: float) -> Tuple[bool, List[str]]:
@@ -182,6 +222,8 @@ def filter_pair(
         reasons.append("duplicate_pair_or_instruction")
     if not text_is_safe(row):
         reasons.append("unsafe_text")
+    if is_visual_input_dependent(row):
+        reasons.append("visual_input_dependent")
     leakage = row.get("leakage_tags") or {}
     if leakage.get("benchmark_text_exact_match"):
         reasons.append("exact_benchmark_text_match")
@@ -310,6 +352,7 @@ def main(argv: List[str]) -> int:
             "max_aspect": args.max_aspect,
             "allow_research_only": args.allow_research_only,
             "dedupe_existing_samples": args.dedupe_existing,
+            "reject_visual_input_dependent": True,
         },
         "cycles": [],
         "accepted_total": 0,
