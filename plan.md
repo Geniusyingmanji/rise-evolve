@@ -947,3 +947,13 @@ R_agent = 0.45 R_program + 0.45 R_image + 0.05 R_tool + 0.05 R_format
 5. **Reward diagnostics feed Edit-OPD**：failed checklist、observed diff、failure attribution 和 head breakdown 进入 teacher-only context，成为 Edit-OPD 的 privileged signal。
 
 详细方案见 `reward_design.md`。下一步实现时，先做 verifier/reward 数据格式扩展：保存 `expected_diff`、`observed_diff`、`score_heads`、`failure_attribution`，再接入 GRPO。
+
+## 15. 工程落地计划
+
+训练代码、reward/critic 服务、GRPO/Edit-OPD 脚本、benchmark 测试 harness 和防泄漏 gate 的详细工程计划已单独整理到 `engineering_plan.md`。该文档明确区分了：
+
+- 已有能力：v1 数据构造、数据质检、数据审计、review sheets。
+- 尚需实现：SFT 数据转换、LLaMA-Factory 配置、GenEvolve-style agent runtime、RISE-Critic reward server、verl GRPO rollout bridge、Edit-OPD experience memory、RISE/GRADE/KRIS eval scripts。
+- 防泄漏要求：benchmark eval-only 目录隔离、文本/图像 fingerprint、template/entity split、reward/OPD memory 不回灌 benchmark、训练前 CI gate。
+
+后续代码实现应优先按 `engineering_plan.md` 的第一阶段实施清单推进，先打通 `convert_sft.py -> train_sft.sh -> run_benchmark_agent.py -> score_benchmark_outputs.py -> check_decontamination.py` 这条最小闭环。

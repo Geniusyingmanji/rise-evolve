@@ -4,6 +4,8 @@
 
 目标：训练一个面向 RISEBench / GRADE / KRIS-Bench 的图像编辑规划 agent。训练对象优先是 VLM agent policy，而不是直接训练底层 diffusion editor。Agent 负责源图分析、知识检索、参考图选择、区域规划、checklist 合成和 editor prompt 生成；下游 editor 先保持固定。
 
+工程落地状态：当前仓库已经有数据构造和质检脚本，但 SFT/GRPO/Edit-OPD 训练脚本、RISE-Critic reward server、benchmark evaluation harness 还未实现。具体目录结构、脚本清单、验收标准和防数据泄漏 gate 见 [`engineering_plan.md`](engineering_plan.md)。
+
 ## 1. 从 GenEvolve 学到的训练范式
 
 GenEvolve 将开放式图像生成建模为工具编排轨迹：
