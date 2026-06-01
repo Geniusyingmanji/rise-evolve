@@ -1,0 +1,16 @@
+algorithm: grpo_edit_opd
+inherits: configs/grpo_agent_debug.yaml
+opd:
+  enabled: true
+  mode: joint_on_policy
+  loss_coef: 1.0
+  min_reward_gap: 0.20
+  buffer_size: 2000
+  retrieval_similarity_threshold: 0.84
+  top_token_fraction: 0.10
+  importance_ratio_clip: 2.0
+  teacher_context:
+    include_region_diagnostics: true
+    include_checklist_failures: true
+    include_failure_attribution: true
+    include_best_program_excerpt: true

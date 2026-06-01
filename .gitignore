@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+
+# Generated training/eval artifacts.
+data/train_ready/
+data/benchmarks/manifests/
+outputs/
+reports/reward/

@@ -1,0 +1,13 @@
+benchmark: rise
+manifest: data/benchmarks/manifests/rise_eval_manifest.jsonl
+output_dir: outputs/eval/rise/debug
+agent:
+  mode: dry_run_or_served_policy
+renderer:
+  backend: external_editor_required
+scoring:
+  official: optional
+  rise_critic: true
+decontamination:
+  benchmarks: data/benchmarks
+  fail_on: high

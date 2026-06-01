@@ -6,6 +6,7 @@ This repository currently contains:
 
 - A literature, method, and engineering plan: [`survey.md`](survey.md), [`plan.md`](plan.md), [`data_pipeline.md`](data_pipeline.md), [`training_plan.md`](training_plan.md), [`reward_design.md`](reward_design.md), [`engineering_plan.md`](engineering_plan.md)
 - A runnable data construction pipeline: [`scripts/data/`](scripts/data/)
+- First-pass training, reward, and evaluation plumbing: [`rise_evolve/`](rise_evolve/), [`scripts/train/`](scripts/train/), [`scripts/reward/`](scripts/reward/), [`scripts/eval/`](scripts/eval/), [`configs/`](configs/)
 - A first large-scale agentic editing dataset: `v1`, with 10k tasks and 30k generated images
 
 ## Why This Exists
@@ -136,6 +137,53 @@ python3 scripts/data/build_pilot_dataset.py --num-tasks 120 --version smoke --se
 python3 scripts/data/validate_dataset.py --version smoke
 ```
 
+## Training and Evaluation Plumbing
+
+The first implementation pass provides offline adapters and smoke-testable interfaces.
+
+Prepare SFT and RL prompt files:
+
+```bash
+python3 scripts/train/convert_sft.py --version v1 --split train
+python3 scripts/train/convert_sft.py --version v1 --split val
+python3 scripts/train/convert_rl_prompts.py --version v1
+```
+
+Build and score lightweight RISE-Critic reward items:
+
+```bash
+python3 scripts/reward/build_reward_items.py --version v1
+python3 scripts/reward/run_rise_critic.py --version v1
+```
+
+Run a benchmark dry-run harness:
+
+```bash
+python3 scripts/eval/prepare_benchmarks.py --benchmark rise
+python3 scripts/eval/run_benchmark_agent.py \
+  --manifest data/benchmarks/manifests/rise_eval_manifest.jsonl \
+  --output-dir outputs/eval/rise/debug \
+  --dry-run
+python3 scripts/eval/score_benchmark_outputs.py \
+  --programs outputs/eval/rise/debug/programs.jsonl \
+  --output outputs/eval/rise/debug/scores_rise_critic.jsonl \
+  --summary-output outputs/eval/rise/debug/summary.json
+python3 scripts/eval/make_eval_report.py \
+  --scores outputs/eval/rise/debug/scores_rise_critic.jsonl \
+  --output outputs/eval/rise/debug/report.md
+```
+
+Run the training decontamination gate:
+
+```bash
+python3 scripts/eval/check_decontamination.py \
+  --benchmarks data/benchmarks \
+  --train data/splits/sft_train_v1.jsonl data/splits/rl_prompt_train_v1.jsonl data/splits/verifier_train_v1.jsonl \
+  --fail-on high
+```
+
+The current RISE-Critic is a lightweight rule/programmatic-prior scorer for validating the pipeline on synthetic v1 renders. Production RL should replace the programmatic prior with VLM difference-first scoring as described in [`reward_design.md`](reward_design.md).
+
 ## Examples
 
 ### Visual Review Sheet
@@ -227,6 +275,11 @@ reports/
   data_quality/     # Validation, audit, distribution, contact sheets
 scripts/
   data/             # Data construction scripts
+  train/            # SFT/RL data conversion
+  reward/           # RISE-Critic reward item/scoring scripts
+  eval/             # Benchmark manifests, decontamination, dry-run eval
+rise_evolve/        # Shared schemas, reward, and eval utilities
+configs/            # SFT, GRPO, OPD, reward, and eval config stubs
 ```
 
 ## Current Limitations

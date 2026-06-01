@@ -1,0 +1,24 @@
+critic: rise_critic
+version: v1
+mode: lightweight_rule_programmatic
+inputs:
+  reward_items: data/train_ready/v1/reward_items.jsonl
+outputs:
+  scores: reports/reward/rise_critic_scores_v1.jsonl
+  summary: reports/reward/rise_critic_summary_v1.json
+heads:
+  - program
+  - cognitive
+  - execution
+  - preservation
+  - region
+  - quality
+  - readability
+  - tool
+  - format
+fusion:
+  image_gate: min(execution, cognitive)
+  agent_score: 0.45 * program + 0.45 * image + 0.05 * tool + 0.05 * format
+notes:
+  - The current implementation is a smoke-test critic for synthetic v1 renders.
+  - Replace programmatic_render_prior with VLM difference-first scoring before production RL.

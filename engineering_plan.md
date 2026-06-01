@@ -12,16 +12,16 @@
 - v1 数据：10k tasks、10k teacher trajectories、10k edit programs、10k source images、10k teacher renders、10k negative renders、20k verifier items。
 - 数据质检：`validate_dataset.py`、`audit_dataset.py`、review sheets、validation/audit reports。
 - 方法文档：`training_plan.md`、`reward_design.md`、`data_pipeline.md`、`survey.md`。
+- 第一版工程脚手架：`rise_evolve/` schemas/reward/eval utilities、`scripts/train/` SFT/RL 数据转换、`scripts/reward/` reward item/scoring、`scripts/eval/` benchmark dry-run/decontamination/report scripts、`configs/` 配置草案。
 
 尚未完成：
 
-- SFT 数据转换脚本和 LLaMA-Factory 配置。
-- Agent runtime，包括工具协议、schema 校验、rollout 记录。
-- RISE-Critic reward server，包括 difference-first report、checklist verification、failure attribution。
-- GRPO / Edit-OPD 训练入口，包括 rollout worker、reward bridge、experience memory、token/head-aware loss。
-- RISE/GRADE/KRIS benchmark evaluation harness，包括 benchmark snapshot、run/render/score/report/decontamination gate。
+- 真实模型版 agent runtime：当前只有 schema/dry-run，尚未接 served Qwen3-VL policy、真实 tool execution 和 rollout worker。
+- 生产版 RISE-Critic：当前是规则/程序图先验 smoke scorer，尚未接 VLM difference-first critic ensemble。
+- GRPO / Edit-OPD 训练入口：尚未接 verl actor、reward bridge、experience memory、token/head-aware loss。
+- RISE/GRADE/KRIS 正式 benchmark evaluation：当前有 manifest/dry-run/score/report/decontamination 脚手架，尚未接官方 evaluator 和固定 editor backend。
 
-结论：目前“数据和训练/评测设计”已经有基础，但“训练代码、训练脚本、benchmark eval 脚本”还需要按本文档落地。
+结论：目前已经具备“数据 -> SFT/RL 转换 -> reward smoke -> decontamination -> eval dry-run report”的最小离线闭环。下一步重点是把 dry-run 组件替换为真实 model serving、VLM critic、fixed editor rendering 和 verl joint GRPO+Edit-OPD。
 
 ## 1. 开源代码学习结论
 
