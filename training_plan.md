@@ -207,6 +207,8 @@ R_agent =
 
 目标：优化工具选择、推理、区域规划和 editor prompt tokens。
 
+先澄清 GRPO 和 OPD 的关系：**算法上不是两条彼此独立的训练主线**。GenEvolve 的 self-evolution objective 是 `L = L_GRPO + lambda * L_SDL`，SDL / Visual Experience Distillation 作用在同一批 on-policy responses 上，给 GRPO 的 trajectory-level reward 补充 dense token-level guidance。工程上建议分阶段 debug：先跑 GRPO-only，确认 rollout、renderer、reward、KL 和 schema 都稳定；然后在同一个 GRPO 训练循环里打开 Edit-OPD/SDL。不要把 OPD 做成“GRPO 训练完后，用旧轨迹离线蒸馏”的后处理，否则会丢掉 on-policy 的核心优势。
+
 Rollout：
 
 ```yaml
@@ -250,6 +252,8 @@ format tokens                  <- R_format
 ### Stage 4: Edit-OPD / Visual-Cognitive Experience Distillation
 
 用户提到的 OPD 在近期文献中主要指 On-Policy / Online Policy Distillation。与 DPO/IPO 这类离线偏好优化不同，OPD 用当前 policy 的 on-policy rollout 作为蒸馏路径，teacher 和 student 在同一批 tokens 上比较分布，从而降低 train-inference mismatch。
+
+因此 Stage 4 更准确地说是 **Stage 3 的增强项**，而不是完全独立的第二个 RL 阶段。它需要 Stage 3 产生的 K-rollout、reward head、best/worst pair 和 experience memory；一旦这些条件满足，就应和 GRPO 联合训练。只有在做 ablation 时，才单独比较 `GRPO-only`、`GRPO + experience collection only`、`GRPO + Edit-OPD loss`。
 
 RISEvolve 的二维图像编辑适配称为 `Edit-OPD`：
 
@@ -334,7 +338,7 @@ retrieval_embedder: Qwen3-Embedding-0.6B or bge-m3
 - 多 rollout 同 prompt 天然适配 group-relative advantage。
 - 不需要 value model，工程复杂度低于 PPO。
 - 可以直接把 final rendered image reward 传回 tool/reasoning/program tokens。
-- 与 OPD/SDL 互补：GRPO 告诉模型哪条轨迹更好，OPD 告诉模型具体哪些 token-level 决策应向 privileged teacher 靠拢。
+- 与 OPD/SDL 互补：GRPO 告诉模型哪条轨迹更好，OPD 告诉模型具体哪些 token-level 决策应向 privileged teacher 靠拢。最终主线应是 joint objective，而不是先完整 GRPO、再离线 OPD。
 
 其他算法定位：
 
@@ -345,7 +349,7 @@ retrieval_embedder: Qwen3-Embedding-0.6B or bge-m3
 | PPO | 暂不优先 | 需要 value model，成本高；除非 GRPO 不稳 |
 | GRPO | 主线 | planner/tool/program policy |
 | Listwise DPO/LPO/LAIR | 可做 editor 后训练 | 多候选 edited images 的 preference post-training |
-| DiffusionOPD / Flow-OPD | 第二阶段 | 统一多个 reward/domain 的 diffusion/flow editor，不是第一阶段 agent 训练 |
+| DiffusionOPD / Flow-OPD | editor 侧第二阶段 | 统一多个 reward/domain 的 diffusion/flow editor，不是第一阶段 agent 训练；它们常先训练 task-specific teachers，再 on-policy distill unified student |
 | Reward-weighted SFT | 可选 | 对高 reward trajectories 做稳定回放 |
 
 若后续训练底层 editor：
@@ -406,9 +410,10 @@ Diagnostics：
 4. Run 100-case dev failure taxonomy.
 5. SFT on current v1 + small real-image supplement.
 6. Run 50-100 GRPO debug steps with K=4 and no OPD.
-7. Add Edit-OPD memory, teacher context patching, token mask, and SDL loss.
-8. Scale to 300-800 GRPO+Edit-OPD steps.
-9. Run RISE/GRADE/KRIS eval and ablations.
+7. Turn on experience extraction only; inspect best/worst summaries and retrieval quality.
+8. Add Edit-OPD teacher context patching, token mask, and SDL loss into the same GRPO loop.
+9. Scale to 300-800 joint GRPO+Edit-OPD steps.
+10. Run RISE/GRADE/KRIS eval and ablations.
 
 ## 8. Expected Failure Modes and Controls
 

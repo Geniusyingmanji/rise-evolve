@@ -153,7 +153,7 @@ RISEvolve 改造：
 - Rollout worker：执行 agent tools，收集 full trace，生成 edit program。
 - Renderer bridge：调用固定 image editor，把 program 渲染成 edited image。
 - Reward bridge：调用 RISE-Critic server，返回 scalar reward + reward heads + attribution。
-- Loss extension：第一版用普通 GRPO；第二版加 head-aware token credit 和 Edit-OPD reverse-KL/SDL。
+- Loss extension：第一版用普通 GRPO 跑通；第二版在同一 on-policy GRPO loop 中加 head-aware token credit 和 Edit-OPD reverse-KL/SDL。Edit-OPD 不是基于旧轨迹的离线后处理。
 
 ## 2. 建议目标目录结构
 
@@ -419,10 +419,10 @@ reward_backend: rise_critic
 
 推进顺序：
 
-1. 只用 programmatic renderer 跑 50-100 steps，验证 RL 链路。
-2. 接固定开源 editor，跑 200-500 steps，观察 reward heads。
-3. 接强 editor / API editor，少量高质量 rollout。
-4. 扩大到 v1 RL prompts。
+1. 只用 programmatic renderer 跑 50-100 steps，验证 RL 链路，不启用 OPD loss。
+2. 接固定开源 editor，跑 200-500 steps，观察 reward heads，并开始写 best/worst experience buffer，但不反传 OPD。
+3. 当 reward gap、experience summary、retrieval similarity 和 KL 都稳定后，在同一 rollout/update loop 中启用 `L_GRPO + lambda_opd * L_EditOPD`。
+4. 接强 editor / API editor，少量高质量 rollout，再扩到 v1 RL prompts。
 
 验收：
 
@@ -434,6 +434,8 @@ reward_backend: rise_critic
 ### Phase F: Edit-OPD / visual-cognitive experience distillation
 
 创新点：把 OPD 从一般 language/task distillation 改成图像编辑特化的 on-policy visual-cognitive distillation。
+
+Phase F 不是独立于 Phase E 的离线蒸馏任务。它复用 Phase E 产生的同一批 on-policy trajectories、reward heads 和 best/worst pairs，只是在 actor loss 中额外加入 teacher-only context 的 sampled-token reverse-KL/SDL。工程实现可以把它做成 `--enable-opd` 开关，而不是另起一个只读旧轨迹的数据训练脚本。
 
 流程：
 
@@ -686,8 +688,8 @@ python3 scripts/eval/check_decontamination.py \
 11. `scripts/eval/render_benchmark_edits.py`：固定 editor rendering。
 12. `scripts/eval/score_benchmark_outputs.py`：official evaluator + RISE-Critic。
 13. `scripts/train/train_sft.sh`：启动 SFT。
-14. `scripts/train/train_grpo_debug.sh`：verl GRPO smoke。
-15. `scripts/train/train_grpo_opd.sh`：Edit-OPD 第二阶段。
+14. `scripts/train/train_grpo_debug.sh`：verl GRPO smoke，不开 OPD。
+15. `scripts/train/train_grpo_opd.sh`：同一 on-policy loop 中的 joint GRPO+Edit-OPD，不是离线第二阶段。
 
 ## 7. 我们的贡献表述
 
