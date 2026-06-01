@@ -188,7 +188,7 @@ python3 scripts/data/run_long_collection.py \
 
 This writes cumulative accepted candidates to `data/sources/real_edit_pairs_candidate_<prefix>.jsonl`, rejects to `data/sources/real_edit_pairs_rejected_<prefix>.jsonl`, cycle logs to `logs/data_collection/<prefix>.jsonl`, and status/decontamination reports to `reports/data_sources/`.
 
-The long runner applies stricter candidate gates than the raw sampler: train/non-eval split only, license allowlist, text safety, minimum image size, exact benchmark text decontamination, cross-run deduplication, and rejection of rows that require extra reference/depth/mask visual inputs.
+The long runner applies stricter candidate gates than the raw sampler: train/non-eval split only, license allowlist, text safety, minimum image size, exact benchmark text decontamination, cross-run deduplication, rejection of rows that require extra reference/depth/mask visual inputs, and exclusion of reasoning-trace sources that are not reliable same-image before/after edit pairs.
 
 ## Reproduce
 

@@ -93,4 +93,4 @@ Long collection outputs:
 - `reports/data_sources/long_collection_status_<prefix>.json`: current job status.
 - `reports/data_sources/decontamination_<prefix>.json`: text benchmark decontamination report for candidates.
 
-The long runner rejects visual-input-dependent rows such as depth/reference/mask-guided edits because the current RISE/GRADE/KRIS-style training target is single-source-image editing.
+The long runner rejects visual-input-dependent rows such as depth/reference/mask-guided edits because the current RISE/GRADE/KRIS-style training target is single-source-image editing. It also excludes reasoning-trace sources that are not reliable same-image before/after edit pairs.

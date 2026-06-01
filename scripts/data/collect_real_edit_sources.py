@@ -89,9 +89,9 @@ CURATED_HF_SOURCES: List[Dict[str, Any]] = [
         "split": "train",
         "config": "default",
         "schema": "anyedit_thinking",
-        "status": "usable_train_with_filtering",
-        "recommended_use": ["SFT", "reasoning_edit_bootstrap", "critic_rationale"],
-        "notes": "Reasoning-heavy AnyEdit subset with input/output images and thinking traces. Filter for hallucinated or weak target renders before training.",
+        "status": "reasoning_trace_candidate_not_default_pair_sample",
+        "recommended_use": ["reasoning_edit_bootstrap", "critic_rationale_candidate"],
+        "notes": "Reasoning-heavy AnyEdit subset with input/output images and thinking traces. Excluded from default long pair sampling until VLM pair-alignment checks verify same-image edit consistency.",
     },
     {
         "source_id": "hq_edit",
@@ -663,7 +663,7 @@ def materialize_hf_samples(
     sample_sources = [
         s
         for s in CURATED_HF_SOURCES
-        if s["source_id"] in {"magicbrush_train", "imagenhub_filtered", "anyedit_train", "omniedit_train", "anyedit_thinking_train"}
+        if s["source_id"] in {"magicbrush_train", "imagenhub_filtered", "anyedit_train", "omniedit_train"}
     ]
     rng = random.Random(seed)
     seen_pair_keys = set()
