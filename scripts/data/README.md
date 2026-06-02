@@ -36,6 +36,13 @@ python3 scripts/data/run_long_collection.py \
   --max-accepted 1000 \
   --hf-per-source 35 \
   --pause-seconds 120
+
+# VLM spot-check over accepted long-run candidates
+python3 scripts/data/vlm_audit_real_pairs.py \
+  --input data/sources/real_edit_pairs_candidate_v2_long_YYYYMMDD.jsonl \
+  --sample-size 120 \
+  --seed 6202 \
+  --provider auto
 ```
 
 Main outputs:
@@ -77,6 +84,9 @@ Real-image seed outputs:
 - `data/real_edits/v2_seed/`: downloaded seed images.
 - `reports/data_sources/real_source_audit_*.json`: automatic integrity, diversity, decontamination, and missing-image audit.
 - `reports/data_sources/real_pair_sheet_*.png`: stratified source/target review sheet.
+- `reports/data_sources/vlm_review_*.jsonl`: VLM spot-check decisions and score heads.
+- `reports/data_sources/vlm_review_summary_*.json`: VLM audit summary by decision/source/failure type.
+- `reports/data_sources/vlm_review_sheet_*.png`: contact sheet for the reviewed sample.
 
 Current expanded HF sample:
 
@@ -94,3 +104,11 @@ Long collection outputs:
 - `reports/data_sources/decontamination_<prefix>.json`: text benchmark decontamination report for candidates.
 
 The long runner rejects visual-input-dependent rows such as depth/reference/mask-guided edits because the current RISE/GRADE/KRIS-style training target is single-source-image editing. It also excludes reasoning-trace sources that are not reliable same-image before/after edit pairs.
+
+Suggested operating roles:
+
+- `source-scout`: proposes new train/non-eval sources and records license/split risk.
+- `collector`: runs `run_long_collection.py` and writes raw candidate/reject artifacts only.
+- `auditor`: monitors status, logs, decontamination, duplicate risk, reject reasons, source mix, and disk usage.
+- `vlm-critic`: runs `vlm_audit_real_pairs.py` and flags benchmark leakage, split/license risk, not-same-pair, reversed before/after order, under-editing, over-editing, wrong region, instruction mismatch, identity/background drift, artifacts, ambiguous instructions, unsafe/watermarked content, reasoning/knowledge failure, and judge uncertainty.
+- `promoter`: creates train-ready splits only after provenance, decontamination, VLM review, and human spot checks pass.

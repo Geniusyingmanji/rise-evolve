@@ -41,6 +41,8 @@ Done:
 - Data construction plan with explicit benchmark boundaries: RISE/GRADE/KRIS are used for taxonomy mining, rubrics, eval manifests, and decontamination, not as training sources.
 - Synthetic/programmatic `v1` dataset: 10,000 tasks, 10,000 source images, 10,000 teacher renders, 10,000 negative renders, 20,000 verifier items, and SFT/RL/verifier/VED split files.
 - Real-image candidate pool: `v2_seed` and `v2_hf150`, including 141 safety-filtered real edit pairs from training/non-eval source datasets plus source manifests, rejected rows, audit JSON, and visual contact sheets.
+- Long-running real-edit collection: `v2_long_hq_20260601_183256` completed 63 cycles over about 9 hours with 1,447 accepted and 3,593 rejected candidate rows from train/non-eval sources, with exact benchmark text decontamination passing and raw data kept as candidate-only artifacts.
+- Data-collection orchestration now has explicit roles: collector, auditor, VLM critic, source scout, and promoter. Raw generated data is not promoted until provenance, decontamination, VLM review, and human spot checks pass.
 - Data validation and audit scripts for JSONL integrity, image existence, exact benchmark text filtering, checklist coverage, review samples, and contact-sheet inspection.
 - First-pass training/eval plumbing: SFT conversion, RL prompt conversion, reward item construction, lightweight RISE-Critic dry run, benchmark dry-run agent, score summarization, report generation, and decontamination check.
 
@@ -57,7 +59,7 @@ P0 data quality:
 
 - Expand real-image and real-edit data to a 1K-3K high-quality curated set before formal SFT, then scale only after passing quality gates.
 - Add image-level decontamination against RISE/GRADE/KRIS assets using perceptual hash plus CLIP/DINO embedding nearest-neighbor checks.
-- Add VLM quality scoring for source quality, edit faithfulness, preservation, over-editing, artifact severity, and instruction ambiguity.
+- Run VLM quality scoring continuously with long collection for same-image context, edit faithfulness, preservation, over-editing, artifact severity, instruction clarity, and before/after ordering.
 - Produce a human review pack for at least 200-500 real-image candidates and record accept/reject reasons.
 - Keep benchmark-derived content out of train splits: no benchmark source images, target images, references, annotations, exact instructions, answer keys, or close paraphrases.
 
@@ -158,6 +160,7 @@ Current scripts:
 | [`build_pilot_dataset.py`](scripts/data/build_pilot_dataset.py) | Generate programmatic source/teacher/negative images, tasks, trajectories, programs, verifier items, and splits. |
 | [`collect_real_edit_sources.py`](scripts/data/collect_real_edit_sources.py) | Search and sample real image-editing datasets and licensed Wikimedia source images for the v2 real-image seed pool. |
 | [`run_long_collection.py`](scripts/data/run_long_collection.py) | Run multi-cycle, quality-gated, decontaminated real edit-pair collection for 8-10h background jobs. |
+| [`vlm_audit_real_pairs.py`](scripts/data/vlm_audit_real_pairs.py) | Run stratified VLM spot checks over accepted real-edit candidate manifests and write JSONL/summary/contact-sheet review artifacts. |
 | [`validate_dataset.py`](scripts/data/validate_dataset.py) | Validate JSONL integrity, required fields, image paths, checklist weights, and exact benchmark text matches. |
 | [`audit_dataset.py`](scripts/data/audit_dataset.py) | Export audit stats, stratified review JSONL, and source/teacher/negative contact sheets. |
 
@@ -189,6 +192,26 @@ python3 scripts/data/run_long_collection.py \
 This writes cumulative accepted candidates to `data/sources/real_edit_pairs_candidate_<prefix>.jsonl`, rejects to `data/sources/real_edit_pairs_rejected_<prefix>.jsonl`, cycle logs to `logs/data_collection/<prefix>.jsonl`, and status/decontamination reports to `reports/data_sources/`.
 
 The long runner applies stricter candidate gates than the raw sampler: train/non-eval split only, license allowlist, text safety, minimum image size, exact benchmark text decontamination, cross-run deduplication, rejection of rows that require extra reference/depth/mask visual inputs, and exclusion of reasoning-trace sources that are not reliable same-image before/after edit pairs.
+
+Completed HQ long run:
+
+- Prefix: `v2_long_hq_20260601_183256`
+- Accepted manifest: `data/sources/real_edit_pairs_candidate_v2_long_hq_20260601_183256.jsonl`
+- Rejected manifest: `data/sources/real_edit_pairs_rejected_v2_long_hq_20260601_183256.jsonl`
+- Status: `reports/data_sources/long_collection_status_v2_long_hq_20260601_183256.json`
+- Result: 1,447 accepted, 3,593 rejected, decontamination passed.
+
+VLM spot check:
+
+```bash
+python3 scripts/data/vlm_audit_real_pairs.py \
+  --input data/sources/real_edit_pairs_candidate_v2_long_hq_20260601_183256.jsonl \
+  --sample-size 120 \
+  --seed 6202 \
+  --provider auto
+```
+
+This writes `reports/data_sources/vlm_review_*.jsonl`, `reports/data_sources/vlm_review_summary_*.json`, and `reports/data_sources/vlm_review_sheet_*.png`. The VLM critic rejects or marks for review rows with benchmark leakage, split/license risk, not-same-pair, reversed before/after order, under-editing, over-editing, wrong region, instruction mismatch, identity/background drift, severe artifacts, unsafe or watermarked content, ambiguous instructions, reasoning/knowledge failure, or judge uncertainty.
 
 ## Reproduce
 
