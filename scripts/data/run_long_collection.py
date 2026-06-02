@@ -326,6 +326,16 @@ def main(argv: List[str]) -> int:
     parser.add_argument("--max-cycles", type=int, default=None)
     parser.add_argument("--max-accepted", type=int, default=1000)
     parser.add_argument("--hf-per-source", type=int, default=35)
+    parser.add_argument(
+        "--hf-source-ids",
+        default="",
+        help="Comma-separated HF source IDs to sample. Defaults to the standard train/non-eval pair sources.",
+    )
+    parser.add_argument(
+        "--exclude-edit-types",
+        default="",
+        help="Comma-separated normalized edit_type values to skip before image download, for example tune_transfer.",
+    )
     parser.add_argument("--wiki-per-query", type=int, default=0)
     parser.add_argument("--include-wikimedia", action="store_true")
     parser.add_argument("--pause-seconds", type=int, default=120)
@@ -346,6 +356,8 @@ def main(argv: List[str]) -> int:
         "max_cycles": args.max_cycles,
         "max_accepted": args.max_accepted,
         "hf_per_source": args.hf_per_source,
+        "hf_source_ids": [x.strip() for x in args.hf_source_ids.split(",") if x.strip()],
+        "exclude_edit_types": [x.strip() for x in args.exclude_edit_types.split(",") if x.strip()],
         "wiki_per_query": args.wiki_per_query if args.include_wikimedia else 0,
         "quality_gates": {
             "min_short_side": args.min_short_side,
@@ -386,6 +398,10 @@ def main(argv: List[str]) -> int:
             "--seed",
             str(cycle_seed),
         ]
+        if args.hf_source_ids:
+            cmd.extend(["--hf-source-ids", args.hf_source_ids])
+        if args.exclude_edit_types:
+            cmd.extend(["--exclude-edit-types", args.exclude_edit_types])
         if args.include_wikimedia:
             cmd.extend(["--wiki-per-query", str(args.wiki_per_query)])
         else:

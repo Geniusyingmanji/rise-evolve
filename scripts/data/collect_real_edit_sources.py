@@ -658,12 +658,17 @@ def materialize_hf_samples(
     benchmark_norms: set,
     randomize: bool,
     seed: int,
+    hf_source_ids: Optional[set] = None,
+    exclude_edit_types: Optional[set] = None,
 ) -> List[Dict[str, Any]]:
     rows_out: List[Dict[str, Any]] = []
+    default_source_ids = {"magicbrush_train", "imagenhub_filtered", "anyedit_train", "omniedit_train"}
+    selected_source_ids = hf_source_ids or default_source_ids
+    excluded_types = {normalize_text(x) for x in (exclude_edit_types or set()) if x}
     sample_sources = [
         s
         for s in CURATED_HF_SOURCES
-        if s["source_id"] in {"magicbrush_train", "imagenhub_filtered", "anyedit_train", "omniedit_train"}
+        if s["source_id"] in selected_source_ids
     ]
     rng = random.Random(seed)
     seen_pair_keys = set()
@@ -683,6 +688,9 @@ def materialize_hf_samples(
             for row in rows:
                 pair = normalize_hf_pair(source, row)
                 if not pair:
+                    continue
+                edit_type_norm = normalize_text(str(pair.get("edit_type") or ""))
+                if edit_type_norm and edit_type_norm in excluded_types:
                     continue
                 sample_id = f"{version}_{source['source_id']}_{pair['row_idx']:06d}"
                 pair_key = (source["source_id"], pair["row_idx"], pair["instruction"])
@@ -909,6 +917,12 @@ def _count(values: Iterable[str]) -> Dict[str, int]:
     return counts
 
 
+def csv_set(text: Optional[str]) -> set[str]:
+    if not text:
+        return set()
+    return {item.strip() for item in text.split(",") if item.strip()}
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Discover and sample real image-editing data sources.")
     parser.add_argument("--version", default="v2_seed")
@@ -919,6 +933,16 @@ def main() -> None:
     parser.add_argument("--skip-hf", action="store_true")
     parser.add_argument("--skip-wikimedia", action="store_true")
     parser.add_argument("--catalog-only", action="store_true")
+    parser.add_argument(
+        "--hf-source-ids",
+        default="",
+        help="Comma-separated HF source IDs to sample. Defaults to the standard train/non-eval pair sources.",
+    )
+    parser.add_argument(
+        "--exclude-edit-types",
+        default="",
+        help="Comma-separated normalized edit_type values to skip before image download, for example tune_transfer.",
+    )
     args = parser.parse_args()
 
     benchmark_norms = load_benchmark_norms()
@@ -927,7 +951,25 @@ def main() -> None:
     if args.catalog_only:
         print(json.dumps({"catalog_sources": len(catalog), "output": "data/sources/real_edit_source_catalog.json"}, indent=2))
         return
-    pairs = [] if args.skip_hf else materialize_hf_samples(args.version, args.hf_per_source, benchmark_norms, args.randomize, args.seed)
+    hf_source_ids = csv_set(args.hf_source_ids)
+    valid_source_ids = {source["source_id"] for source in CURATED_HF_SOURCES}
+    unknown_source_ids = sorted(hf_source_ids - valid_source_ids)
+    if unknown_source_ids:
+        parser.error(f"unknown --hf-source-ids: {', '.join(unknown_source_ids)}")
+    exclude_edit_types = csv_set(args.exclude_edit_types)
+    pairs = (
+        []
+        if args.skip_hf
+        else materialize_hf_samples(
+            args.version,
+            args.hf_per_source,
+            benchmark_norms,
+            args.randomize,
+            args.seed,
+            hf_source_ids=hf_source_ids,
+            exclude_edit_types=exclude_edit_types,
+        )
+    )
     if args.skip_wikimedia or args.wiki_per_query <= 0:
         wiki_images, wiki_tasks = [], []
         write_jsonl(repo_path("data", "sources", f"wikimedia_source_pool_{args.version}.jsonl"), wiki_images)

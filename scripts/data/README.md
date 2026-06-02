@@ -37,6 +37,16 @@ python3 scripts/data/run_long_collection.py \
   --hf-per-source 35 \
   --pause-seconds 120
 
+# Focused expansion after VLM spot checks identify better sources
+python3 scripts/data/run_long_collection.py \
+  --prefix v2_long_focus_YYYYMMDD \
+  --duration-hours 6 \
+  --max-accepted 700 \
+  --hf-per-source 30 \
+  --hf-source-ids omniedit_train,magicbrush_train \
+  --exclude-edit-types tune_transfer \
+  --pause-seconds 240
+
 # VLM spot-check over accepted long-run candidates
 python3 scripts/data/vlm_audit_real_pairs.py \
   --input data/sources/real_edit_pairs_candidate_v2_long_YYYYMMDD.jsonl \

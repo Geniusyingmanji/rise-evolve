@@ -193,6 +193,19 @@ This writes cumulative accepted candidates to `data/sources/real_edit_pairs_cand
 
 The long runner applies stricter candidate gates than the raw sampler: train/non-eval split only, license allowlist, text safety, minimum image size, exact benchmark text decontamination, cross-run deduplication, rejection of rows that require extra reference/depth/mask visual inputs, and exclusion of reasoning-trace sources that are not reliable same-image before/after edit pairs.
 
+Focused high-quality expansion can bias toward sources that pass VLM spot checks better:
+
+```bash
+python3 scripts/data/run_long_collection.py \
+  --prefix v2_long_focus_YYYYMMDD \
+  --duration-hours 6 \
+  --max-accepted 700 \
+  --hf-per-source 30 \
+  --hf-source-ids omniedit_train,magicbrush_train \
+  --exclude-edit-types tune_transfer \
+  --pause-seconds 240
+```
+
 Completed HQ long run:
 
 - Prefix: `v2_long_hq_20260601_183256`
