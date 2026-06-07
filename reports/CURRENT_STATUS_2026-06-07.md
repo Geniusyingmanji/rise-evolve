@@ -96,3 +96,20 @@ files needed by `scripts/train/convert_sft_lf.py`.
 4. Validate the rebuilt ShareGPT rows for count, image existence, full
    10-field schema, and absence of the old boilerplate target text.
 5. Re-run decontamination before launching any v3 SFT training.
+
+## Rebuild Result
+
+The clean v3 SFT snapshot was rebuilt after this status check:
+
+- Output: `data/sft_lf/rise_sft_v2r.json`.
+- Rows: 27,807.
+- Image existence failures: 0.
+- Assistant edit-program parse failures: 0.
+- Missing required 10-field edit-program keys: 0.
+- Empty `edit_operations`: 0.
+- Empty `editor_prompt`: 0.
+- Old boilerplate target descriptions: 0.
+- Old preservation/localization suffixes: 0.
+- Decontamination report: `reports/decontam_v2r_reann_sft_20260607.json`.
+- Decontamination result: pass, 27,807 rows checked, 3,580 benchmark text
+  items, 0 hits.
