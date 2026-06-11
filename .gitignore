@@ -7,3 +7,9 @@ data/benchmarks/manifests/
 outputs/
 reports/reward/
 data/quarantine/
+
+# Runtime logs and in-flight refinement outputs.
+logs/
+data/tasks/tasks_v1_refined_full.jsonl
+data/tasks/tasks_v1_refined_full.failures.jsonl
+reports/data_quality/refine_full_judge.jsonl

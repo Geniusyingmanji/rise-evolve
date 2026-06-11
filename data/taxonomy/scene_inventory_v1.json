@@ -1,0 +1,587 @@
+{
+  "factual_order_correction": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "dark rounded vertical traffic light housing",
+      "three circular signal lamps with light outlines",
+      "top green lamp, middle red lamp, bottom yellow lamp"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "traffic light housing": "upper center to lower center",
+      "top green lamp": "upper center, inside the housing",
+      "middle red lamp": "middle center, inside the housing",
+      "bottom yellow lamp": "lower center, inside the housing"
+    },
+    "teacher_change": "The teacher render reorders the lamps to red on top, yellow in the middle, and green on the bottom.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "traffic pole",
+      "road or intersection background",
+      "lamp labels",
+      "glow effects or photorealistic lens detail"
+    ],
+    "style": "flat 2D programmatic icon with solid color shapes"
+  },
+  "species_trait": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "light blue ground band",
+      "gray penguin body ellipse",
+      "gray belly ellipse",
+      "gray head ellipse",
+      "two white eye dots",
+      "orange triangular beak",
+      "two orange triangular feet"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "ground band": "lower left to lower right, bottom of the frame",
+      "penguin body": "middle center to lower center, standing on the ground band",
+      "belly": "middle center, inside the body",
+      "head": "upper center, above the body",
+      "eye dots": "upper center, on the head",
+      "beak": "upper center, between the eyes and body",
+      "feet": "lower center, at the base of the body"
+    },
+    "teacher_change": "The teacher render changes the penguin to a dark body and head with a white belly while preserving the pose and background.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "wings or flippers drawn as separate shapes",
+      "eye pupils",
+      "feather texture",
+      "water, snow detail, or habitat objects"
+    ],
+    "style": "flat 2D cartoon-like animal diagram with solid color shapes"
+  },
+  "social_convention": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "white oval plate with gray outline",
+      "black fork on the right side of the plate",
+      "gray knife on the left side of the plate"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "plate": "middle center",
+      "fork": "middle right, beside the plate",
+      "knife": "middle left, beside the plate"
+    },
+    "teacher_change": "The teacher render moves the fork to the left of the plate and the knife to the right of the plate.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "table texture or tablecloth",
+      "spoon",
+      "napkin",
+      "glass or cup",
+      "realistic utensil detail"
+    ],
+    "style": "flat 2D top-down place-setting diagram"
+  },
+  "process_result": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "gray toaster body rectangle with dark outline",
+      "two dark toaster slot rectangles",
+      "pale rounded bread slice with brown outline"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "toaster body": "lower center",
+      "toaster slots": "middle center, on top of the toaster body",
+      "bread slice": "upper center to middle center, rising from the toaster"
+    },
+    "teacher_change": "The teacher render changes the pale bread into brown toast and adds dark toasted spots while leaving the toaster unchanged.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "toaster lever or buttons",
+      "heating coils",
+      "crumbs",
+      "steam or smoke",
+      "plate or countertop"
+    ],
+    "style": "flat 2D appliance diagram with simple geometric shapes"
+  },
+  "aging_decay": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "light gray counter band",
+      "light gray oval plate with slate outline",
+      "yellow oval fruit with brown outline"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "counter band": "lower left to lower right, bottom of the frame",
+      "plate": "lower center, on the counter band",
+      "fruit": "middle center, on the plate"
+    },
+    "teacher_change": "The teacher render darkens the fruit and adds dark brown decay spots while preserving the plate and counter.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "fruit stem or leaves",
+      "bowl",
+      "kitchen background",
+      "text label or caption",
+      "photorealistic skin texture"
+    ],
+    "style": "flat 2D programmatic still life with solid color shapes"
+  },
+  "growth": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "dark brown ground or soil band",
+      "orange-brown plant pot with dark outline",
+      "short green sprout stem",
+      "one small green leaf ellipse"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "ground or soil band": "lower left to lower right, bottom of the frame",
+      "plant pot": "lower center, on the soil band",
+      "sprout stem": "middle center to lower center, emerging from the pot",
+      "small leaf": "middle center, near the top of the sprout"
+    },
+    "teacher_change": "The teacher render replaces the short sprout with a taller green stem and four larger leaves in the same pot.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "sun",
+      "watering can",
+      "roots",
+      "soil texture",
+      "flowers"
+    ],
+    "style": "flat 2D growth diagram with solid color shapes"
+  },
+  "thermal_phase_change": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "yellow sun circle with orange outline",
+      "orange sun rays",
+      "light gray surface band",
+      "light blue irregular ice polygon with blue outline"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "sun circle": "upper right",
+      "sun rays": "upper right, around the sun",
+      "surface band": "lower left to lower right, bottom of the frame",
+      "ice polygon": "middle center, above the surface band"
+    },
+    "teacher_change": "The teacher render replaces the ice polygon with a blue water puddle and adds a green water label.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "thermometer",
+      "snow or cold background",
+      "water droplets in the source",
+      "shadows",
+      "photorealistic melting detail"
+    ],
+    "style": "flat 2D causal physics diagram with solid color shapes"
+  },
+  "force_deformation": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "light gray table or surface band",
+      "yellow rounded sponge rectangle with brown outline",
+      "small brown sponge-hole dots"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "table or surface band": "lower left to lower right, bottom of the frame",
+      "sponge": "middle center, above the surface band",
+      "sponge-hole dots": "middle center, inside the sponge"
+    },
+    "teacher_change": "The teacher render makes the sponge flatter and wider and adds a red downward force arrow above it.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "hand or press object",
+      "water or soap bubbles",
+      "force arrow in the source",
+      "text labels",
+      "detailed sponge texture beyond dots"
+    ],
+    "style": "flat 2D physical deformation diagram with solid color shapes"
+  },
+  "3d_rotation": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "single sky-blue polygon arrow pointing right",
+      "dark blue arrow outline"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "polygon arrow": "middle center, spanning middle left to middle right",
+      "arrow outline": "middle center, around the polygon arrow"
+    },
+    "teacher_change": "The teacher render rotates the same arrow shape so it points downward.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "3D object",
+      "depth cues or perspective grid",
+      "rotation axis",
+      "angle label",
+      "shadow"
+    ],
+    "style": "flat 2D geometric shape diagram with solid fill"
+  },
+  "occlusion": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "light gray floor band",
+      "blue rectangular block with dark blue outline",
+      "red circle with dark red outline drawn partly in front of the block"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "floor band": "lower left to lower right, bottom of the frame",
+      "blue block": "middle center to middle right",
+      "red circle": "middle left to middle center, partly overlapping the block"
+    },
+    "teacher_change": "The teacher render moves the red circle behind the blue block so the block visibly occludes part of it.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "3D perspective",
+      "cast shadows",
+      "transparency",
+      "depth labels",
+      "room or scene background"
+    ],
+    "style": "flat 2D occlusion diagram with solid color shapes"
+  },
+  "rule_based_pattern": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "3 by 3 grid of white square cells with black outlines",
+      "centered digits 1, 2, and 3",
+      "muted question mark in the bottom-right cell"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "3 by 3 grid": "middle center",
+      "number digits": "middle center, centered inside grid cells",
+      "question mark": "middle center, in the bottom-right grid cell"
+    },
+    "teacher_change": "The teacher render replaces the bottom-right question mark with a green 1.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "full 9 by 9 Sudoku grid",
+      "thick subgrid separators",
+      "pencil marks",
+      "row or column labels",
+      "instruction caption"
+    ],
+    "style": "flat 2D logic grid with centered text"
+  },
+  "maze_path": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "5 by 5 square maze grid",
+      "black wall cells",
+      "white open cells",
+      "gray cell outlines",
+      "green S label in the top-left cell",
+      "red G label in the bottom-right cell"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "5 by 5 maze grid": "upper center to lower center",
+      "black wall cells": "upper center to lower center, scattered inside the maze grid",
+      "white open cells": "upper center to lower center, throughout the maze grid",
+      "gray cell outlines": "upper center to lower center, around each maze cell",
+      "S label": "upper left, in the top-left maze cell",
+      "G label": "lower right, in the bottom-right maze cell"
+    },
+    "teacher_change": "The teacher render adds a green path line from S to G through open cells.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "path line in the source",
+      "arrowheads",
+      "character or marker icon",
+      "entrance or exit openings beyond S and G",
+      "3D maze walls"
+    ],
+    "style": "flat 2D grid maze with solid cell fills"
+  },
+  "symbolic_math": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "centered linear equation text with randomized coefficients",
+      "white rounded answer box",
+      "muted answer-box outline",
+      "muted x = ? placeholder text"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "linear equation text": "upper center",
+      "answer box": "middle center",
+      "answer-box outline": "middle center, around the answer box",
+      "x = ? placeholder": "middle center, inside the answer box"
+    },
+    "teacher_change": "The teacher render replaces x = ? with the solved x value and changes the answer box outline and text to green.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "worked solution steps",
+      "coordinate graph",
+      "calculator",
+      "multiple-choice answers",
+      "rendered title or subtitle"
+    ],
+    "style": "flat 2D text-and-card math diagram"
+  },
+  "physics_refraction": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "light blue lower glass region",
+      "horizontal air-glass boundary line",
+      "vertical normal line",
+      "normal text label",
+      "air text label",
+      "glass text label",
+      "orange incoming ray arrow ending at the boundary"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "lower glass region": "middle left to lower right, lower half of the frame",
+      "air-glass boundary line": "middle left to middle right",
+      "normal line": "upper center to lower center",
+      "normal label": "upper center, right of the normal line",
+      "air label": "middle left, above the boundary",
+      "glass label": "middle left, below the boundary",
+      "incoming ray arrow": "upper left to middle center, ending at the boundary"
+    },
+    "teacher_change": "The teacher render adds a green refracted ray inside the glass bending toward the normal.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "angle markings",
+      "protractor",
+      "reflected ray",
+      "lens or prism",
+      "outgoing ray in the source"
+    ],
+    "style": "flat 2D labeled physics ray diagram"
+  },
+  "chemistry_indicator": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "beaker-like shape made from a rectangle and ellipses",
+      "light blue liquid fill",
+      "acid text label",
+      "vertical blue litmus strip with dark outline",
+      "litmus text label"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "beaker shape": "middle center",
+      "liquid fill": "middle center to lower center, inside the beaker",
+      "acid label": "lower center, below the beaker",
+      "litmus strip": "upper center to middle center, inside the beaker",
+      "litmus label": "upper center to upper right, beside the strip"
+    },
+    "teacher_change": "The teacher render changes the litmus strip from blue to red while keeping the beaker and labels unchanged.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "pH scale",
+      "droppers",
+      "bubbles",
+      "hand holding the strip",
+      "flame or lab apparatus"
+    ],
+    "style": "flat 2D labeled chemistry diagram"
+  },
+  "biology_lifecycle": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "light green ground band",
+      "large green leaf ellipse with dark outline",
+      "green caterpillar made from multiple ellipses",
+      "caterpillar text label"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "ground band": "lower left to lower right, bottom of the frame",
+      "leaf": "lower center, across the ground band",
+      "caterpillar": "middle center, on the leaf",
+      "caterpillar label": "lower center, below the leaf"
+    },
+    "teacher_change": "The teacher render replaces the caterpillar with a hanging green chrysalis and changes the label to chrysalis.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "butterfly",
+      "eggs",
+      "flower",
+      "detailed leaf veins",
+      "habitat background"
+    ],
+    "style": "flat 2D lifecycle illustration with a text label"
+  },
+  "computer_science_tree": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "binary tree edges as gray lines",
+      "white circular nodes with black outlines",
+      "node value labels 8, 4, 12, 2, and 6",
+      "Insert 10 text label"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "tree edges": "upper center to lower center, connecting the nodes",
+      "root node 8": "upper center",
+      "node 4": "middle left, below the root",
+      "node 12": "middle right, below the root",
+      "node 2": "lower left, below node 4",
+      "node 6": "lower center, below node 4",
+      "node value labels": "upper center to lower center, centered inside the nodes",
+      "Insert 10 label": "lower left"
+    },
+    "teacher_change": "The teacher render adds a green node 10 as the left child of node 12 with a connecting edge.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "null leaf markers",
+      "balancing or rotation markers",
+      "code snippet",
+      "arrowheads on edges",
+      "tree traversal annotations"
+    ],
+    "style": "flat 2D binary tree diagram with node labels"
+  },
+  "economics_curve_shift": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "price and quantity axes drawn as arrows",
+      "P axis label",
+      "Q axis label",
+      "orange upward-sloping supply line labeled S",
+      "blue downward-sloping demand line labeled D1"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "price axis": "lower left to upper left",
+      "quantity axis": "lower left to lower right",
+      "P axis label": "upper left",
+      "Q axis label": "lower right",
+      "supply line": "lower left to upper right",
+      "S label": "upper right, beside the supply line",
+      "demand line": "upper left to lower right",
+      "D1 label": "lower right, beside the demand line"
+    },
+    "teacher_change": "The teacher render adds a green right-shifted demand line labeled D2 while preserving the axes, supply line, and D1.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "grid lines",
+      "equilibrium point",
+      "numeric tick marks",
+      "price or quantity values",
+      "legend box"
+    ],
+    "style": "flat 2D labeled economics graph"
+  },
+  "history_architecture_restoration": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "light gray ground band",
+      "two solid stone column rectangles",
+      "thin curved arch arc",
+      "light background-colored missing keystone rectangle",
+      "missing keystone text label"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "ground band": "lower left to lower right, bottom of the frame",
+      "left stone column": "middle left to lower left",
+      "right stone column": "middle right to lower right",
+      "curved arch arc": "upper center to middle center, spanning between the columns",
+      "missing keystone rectangle": "upper center, at the top of the arch",
+      "missing keystone label": "lower center, below the columns"
+    },
+    "teacher_change": "The teacher render thickens the curved arch, fills the keystone with stone color and outline, and changes the label to restored arch.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "individual stone block segmentation",
+      "cracks or rubble",
+      "ancient ruin background",
+      "scaffolding",
+      "people"
+    ],
+    "style": "flat 2D architectural restoration diagram"
+  },
+  "geography_river_process": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "green land rectangle",
+      "wide light-blue winding river stroke",
+      "narrow darker blue center river line"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "land rectangle": "upper left to lower right, below the top margin",
+      "wide river stroke": "upper left to lower left, winding through middle center and middle right",
+      "center river line": "upper left to lower left, centered within the river stroke"
+    },
+    "teacher_change": "The teacher render adds erosion and deposition text labels at different sides of the river bend.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "erosion or deposition labels in the source",
+      "direction arrows",
+      "sediment bar shapes",
+      "trees or terrain features",
+      "topographic contours"
+    ],
+    "style": "flat 2D map-like river diagram with solid strokes"
+  },
+  "music_notation": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "five black horizontal staff lines",
+      "black note head ellipse",
+      "black vertical note stem"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "staff lines": "middle left to middle right",
+      "note head": "middle center, on the staff",
+      "note stem": "upper center to middle center, rising from the note head"
+    },
+    "teacher_change": "The teacher render adds a green sharp sign immediately before the note without moving the note or staff.",
+    "text_labels_present": false,
+    "commonly_assumed_but_absent": [
+      "clef",
+      "time signature",
+      "measure bars",
+      "note name label",
+      "sharp or flat sign in the source"
+    ],
+    "style": "flat 2D music notation sketch"
+  },
+  "sports_rule_spatial": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "green rectangular field with dark green outline",
+      "dark green midfield line",
+      "blue vertical onside line",
+      "onside line text label",
+      "three blue defender circles",
+      "red attacker circle",
+      "red A label below the attacker"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "field": "upper left to lower right, centered in the frame",
+      "midfield line": "upper center to lower center",
+      "onside line": "upper center to lower center, right of the midfield line",
+      "onside line label": "upper center to upper right, beside the onside line",
+      "defender circles": "middle center to lower center, on the onside line",
+      "attacker circle": "middle right, right of the onside line",
+      "A label": "middle right, below the attacker"
+    },
+    "teacher_change": "The teacher render moves the red attacker and its A label left of the onside line while preserving the field, defenders, and onside line.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "ball",
+      "goals",
+      "player bodies or uniforms",
+      "referee",
+      "field markings beyond the rectangle and midfield line"
+    ],
+    "style": "flat 2D sports-field rule diagram with labels"
+  }
+}
