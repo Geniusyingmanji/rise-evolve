@@ -1,0 +1,2794 @@
+{
+  "sampled": 48,
+  "errors": 0,
+  "teacher_pass_rate": 0.771,
+  "negative_reject_rate": 0.938,
+  "per_subtask": {
+    "arithmetic_chain": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "balance_scale": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "block_stack_view": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "circuit_bulb": {
+      "teacher_pass": 0,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "clock_arithmetic": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "food_chain": {
+      "teacher_pass": 2,
+      "teacher_n": 3,
+      "neg_reject": 2,
+      "neg_n": 3
+    },
+    "fraction_shade": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "geometry_angle": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 1,
+      "neg_n": 3
+    },
+    "graph_path": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "mirror_reflection": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "moon_phase": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "ph_indicator": {
+      "teacher_pass": 2,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "process_order": {
+      "teacher_pass": 0,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "sequence_pattern": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "sorting_step": {
+      "teacher_pass": 0,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "sudoku4": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    }
+  },
+  "rows": [
+    {
+      "task_id": "rv2_math_arithmetic_chain_00002",
+      "sub_task": "arithmetic_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is in the final result box?",
+            "expected": "32",
+            "got": "32",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What is the first number in the chain?",
+            "expected": "9",
+            "got": "9",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown?",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What number is in the final result box?",
+            "expected": "32",
+            "got": "27",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What is the first number in the chain?",
+            "expected": "9",
+            "got": "9",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown?",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_arithmetic_chain_00001",
+      "sub_task": "arithmetic_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is in the final result box?",
+            "expected": "13",
+            "got": "13",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What is the first number in the chain?",
+            "expected": "8",
+            "got": "8",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown?",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What number is in the final result box?",
+            "expected": "13",
+            "got": "16",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What is the first number in the chain?",
+            "expected": "8",
+            "got": "8",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown?",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_arithmetic_chain_00000",
+      "sub_task": "arithmetic_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is in the final result box?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What is the first number in the chain?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What number is in the final result box?",
+            "expected": "3",
+            "got": "6",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What is the first number in the chain?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sudoku4_00002",
+      "sub_task": "sudoku4",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What digit is in row 4, column 1?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.5
+          },
+          {
+            "question": "How many cells are blank?",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What grid size is shown?",
+            "expected": "4x4",
+            "got": "4x4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.5,
+        "checks": [
+          {
+            "question": "What digit is in row 4, column 1?",
+            "expected": "3",
+            "got": "1",
+            "pass": false,
+            "weight": 0.5
+          },
+          {
+            "question": "How many cells are blank?",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What grid size is shown?",
+            "expected": "4x4",
+            "got": "4x4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sudoku4_00000",
+      "sub_task": "sudoku4",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What digit is in row 2, column 2?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.5
+          },
+          {
+            "question": "How many cells are blank?",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What grid size is shown?",
+            "expected": "4x4",
+            "got": "4x4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.5,
+        "checks": [
+          {
+            "question": "What digit is in row 2, column 2?",
+            "expected": "3",
+            "got": "4",
+            "pass": false,
+            "weight": 0.5
+          },
+          {
+            "question": "How many cells are blank?",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What grid size is shown?",
+            "expected": "4x4",
+            "got": "4x4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sudoku4_00001",
+      "sub_task": "sudoku4",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What digit is in row 1, column 1?",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.5
+          },
+          {
+            "question": "How many cells are blank?",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What grid size is shown?",
+            "expected": "4x4",
+            "got": "4x4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.5,
+        "checks": [
+          {
+            "question": "What digit is in row 1, column 1?",
+            "expected": "1",
+            "got": "3",
+            "pass": false,
+            "weight": 0.5
+          },
+          {
+            "question": "How many cells are blank?",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What grid size is shown?",
+            "expected": "4x4",
+            "got": "4x4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sequence_pattern_00001",
+      "sub_task": "sequence_pattern",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What is shown in the final slot?",
+            "expected": "24",
+            "got": "24",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is shown in the final slot?",
+            "expected": "24",
+            "got": "27",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty?",
+            "expected": "no",
+            "got": "No",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sequence_pattern_00002",
+      "sub_task": "sequence_pattern",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What is shown in the final slot?",
+            "expected": "16",
+            "got": "16",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty?",
+            "expected": "no",
+            "got": "No",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is shown in the final slot?",
+            "expected": "16",
+            "got": "17",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sequence_pattern_00000",
+      "sub_task": "sequence_pattern",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What is shown in the final slot?",
+            "expected": "green square",
+            "got": "green square",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is shown in the final slot?",
+            "expected": "green square",
+            "got": "blue circle",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_balance_scale_00001",
+      "sub_task": "balance_scale",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box?",
+            "expected": "8",
+            "got": "8",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight?",
+            "expected": "right",
+            "got": "right",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box?",
+            "expected": "8",
+            "got": "9",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight?",
+            "expected": "right",
+            "got": "right",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_graph_graph_path_00000",
+      "sub_task": "graph_path",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which node path is highlighted?",
+            "expected": "A-B-E-F",
+            "got": "A-B-E-F",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the shortest path?",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What is the start node?",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which node path is highlighted?",
+            "expected": "A-B-E-F",
+            "got": "A-B-D-F",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the shortest path?",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.2
+          },
+          {
+            "question": "What is the start node?",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_time_clock_arithmetic_00000",
+      "sub_task": "clock_arithmetic",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What time is shown on the clock?",
+            "expected": "12:00",
+            "got": "12:00",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show?",
+            "expected": "00",
+            "got": "0",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What time is shown on the clock?",
+            "expected": "12:00",
+            "got": "1:00",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show?",
+            "expected": "00",
+            "got": "00",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_time_clock_arithmetic_00001",
+      "sub_task": "clock_arithmetic",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What time is shown on the clock?",
+            "expected": "4:00",
+            "got": "4:00",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show?",
+            "expected": "00",
+            "got": "0",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What time is shown on the clock?",
+            "expected": "4:00",
+            "got": "5:00",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show?",
+            "expected": "00",
+            "got": "0",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_balance_scale_00002",
+      "sub_task": "balance_scale",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight?",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box?",
+            "expected": "4",
+            "got": "5",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight?",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_balance_scale_00000",
+      "sub_task": "balance_scale",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight?",
+            "expected": "right",
+            "got": "right",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box?",
+            "expected": "5",
+            "got": "6",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight?",
+            "expected": "right",
+            "got": "right",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_graph_graph_path_00002",
+      "sub_task": "graph_path",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which node path is highlighted?",
+            "expected": "A-C-E-F",
+            "got": "A-C-E-F",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the shortest path?",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What is the start node?",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which node path is highlighted?",
+            "expected": "A-C-E-F",
+            "got": "A-B-D-F",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the shortest path?",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.2
+          },
+          {
+            "question": "What is the start node?",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_mirror_reflection_00000",
+      "sub_task": "mirror_reflection",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point?",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point?",
+            "expected": "left",
+            "got": "right",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_mirror_reflection_00001",
+      "sub_task": "mirror_reflection",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point?",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point?",
+            "expected": "left",
+            "got": "right",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_time_clock_arithmetic_00002",
+      "sub_task": "clock_arithmetic",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What time is shown on the clock?",
+            "expected": "6:30",
+            "got": "6:30",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show?",
+            "expected": "30",
+            "got": "30",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What time is shown on the clock?",
+            "expected": "6:30",
+            "got": "7:30",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show?",
+            "expected": "30",
+            "got": "30",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_graph_graph_path_00001",
+      "sub_task": "graph_path",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which node path is highlighted?",
+            "expected": "A-C-E-F",
+            "got": "A-C-E-F",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the shortest path?",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What is the start node?",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which node path is highlighted?",
+            "expected": "A-C-E-F",
+            "got": "A-C-D-F",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the shortest path?",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.2
+          },
+          {
+            "question": "What is the start node?",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_mirror_reflection_00002",
+      "sub_task": "mirror_reflection",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point?",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point?",
+            "expected": "left",
+            "got": "right",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_circuit_bulb_00000",
+      "sub_task": "circuit_bulb",
+      "teacher": {
+        "score": 0.6,
+        "checks": [
+          {
+            "question": "What state is the switch in?",
+            "expected": "closed",
+            "got": "closed",
+            "pass": true,
+            "weight": 0.4
+          },
+          {
+            "question": "What state is the bulb in?",
+            "expected": "lit",
+            "got": "on",
+            "pass": false,
+            "weight": 0.4
+          },
+          {
+            "question": "What color is the lit bulb?",
+            "expected": "yellow",
+            "got": "yellow",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What state is the switch in?",
+            "expected": "closed",
+            "got": "closed",
+            "pass": true,
+            "weight": 0.4
+          },
+          {
+            "question": "What state is the bulb in?",
+            "expected": "lit",
+            "got": "off",
+            "pass": false,
+            "weight": 0.4
+          },
+          {
+            "question": "What color is the lit bulb?",
+            "expected": "yellow",
+            "got": "gray",
+            "pass": false,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_circuit_bulb_00001",
+      "sub_task": "circuit_bulb",
+      "teacher": {
+        "score": 0.6,
+        "checks": [
+          {
+            "question": "What state is the switch in?",
+            "expected": "closed",
+            "got": "closed",
+            "pass": true,
+            "weight": 0.4
+          },
+          {
+            "question": "What state is the bulb in?",
+            "expected": "lit",
+            "got": "on",
+            "pass": false,
+            "weight": 0.4
+          },
+          {
+            "question": "What color is the lit bulb?",
+            "expected": "yellow",
+            "got": "yellow",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What state is the switch in?",
+            "expected": "closed",
+            "got": "closed",
+            "pass": true,
+            "weight": 0.4
+          },
+          {
+            "question": "What state is the bulb in?",
+            "expected": "lit",
+            "got": "off",
+            "pass": false,
+            "weight": 0.4
+          },
+          {
+            "question": "What color is the lit bulb?",
+            "expected": "yellow",
+            "got": "gray",
+            "pass": false,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_block_stack_view_00002",
+      "sub_task": "block_stack_view",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many blocks are in column 2?",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 2?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.65,
+        "checks": [
+          {
+            "question": "How many blocks are in column 2?",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 2?",
+            "expected": "no",
+            "got": "yes",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_block_stack_view_00000",
+      "sub_task": "block_stack_view",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many blocks are in column 3?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 3?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.55,
+        "checks": [
+          {
+            "question": "How many blocks are in column 3?",
+            "expected": "3",
+            "got": "4",
+            "pass": false,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 3?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_circuit_bulb_00002",
+      "sub_task": "circuit_bulb",
+      "teacher": {
+        "score": 0.6,
+        "checks": [
+          {
+            "question": "What state is the switch in?",
+            "expected": "closed",
+            "got": "closed",
+            "pass": true,
+            "weight": 0.4
+          },
+          {
+            "question": "What state is the bulb in?",
+            "expected": "lit",
+            "got": "on",
+            "pass": false,
+            "weight": 0.4
+          },
+          {
+            "question": "What color is the lit bulb?",
+            "expected": "yellow",
+            "got": "yellow",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What state is the switch in?",
+            "expected": "closed",
+            "got": "closed",
+            "pass": true,
+            "weight": 0.4
+          },
+          {
+            "question": "What state is the bulb in?",
+            "expected": "lit",
+            "got": "off",
+            "pass": false,
+            "weight": 0.4
+          },
+          {
+            "question": "What color is the lit bulb?",
+            "expected": "yellow",
+            "got": "none",
+            "pass": false,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_chemistry_ph_indicator_00000",
+      "sub_task": "ph_indicator",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color is the indicator strip?",
+            "expected": "red",
+            "got": "red",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What solution label is on the beaker?",
+            "expected": "lemon juice",
+            "got": "lemon juice",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What pH category is indicated?",
+            "expected": "acid",
+            "got": "acidic",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.25,
+        "checks": [
+          {
+            "question": "What color is the indicator strip?",
+            "expected": "red",
+            "got": "purple",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What solution label is on the beaker?",
+            "expected": "lemon juice",
+            "got": "lemon juice",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What pH category is indicated?",
+            "expected": "acid",
+            "got": "alkaline",
+            "pass": false,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_block_stack_view_00001",
+      "sub_task": "block_stack_view",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many blocks are in column 3?",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 3?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.55,
+        "checks": [
+          {
+            "question": "How many blocks are in column 3?",
+            "expected": "2",
+            "got": "3",
+            "pass": false,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 3?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_chemistry_ph_indicator_00002",
+      "sub_task": "ph_indicator",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color is the indicator strip?",
+            "expected": "red",
+            "got": "red",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What solution label is on the beaker?",
+            "expected": "lemon juice",
+            "got": "lemon juice",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What pH category is indicated?",
+            "expected": "acid",
+            "got": "acidic",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.25,
+        "checks": [
+          {
+            "question": "What color is the indicator strip?",
+            "expected": "red",
+            "got": "purple",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What solution label is on the beaker?",
+            "expected": "lemon juice",
+            "got": "lemon juice",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What pH category is indicated?",
+            "expected": "acid",
+            "got": "alkaline",
+            "pass": false,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_biology_food_chain_00001",
+      "sub_task": "food_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which organism does the corrected arrow start from?",
+            "expected": "algae",
+            "got": "algae",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "Which organism does the corrected arrow point to?",
+            "expected": "small fish",
+            "got": "small fish",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "Are the organism boxes still in the same order?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3
+          }
+        ]
+      },
+      "negative": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which organism does the corrected arrow start from?",
+            "expected": "algae",
+            "got": "algae",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "Which organism does the corrected arrow point to?",
+            "expected": "small fish",
+            "got": "small fish",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "Are the organism boxes still in the same order?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_geometry_angle_00000",
+      "sub_task": "geometry_angle",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What is the missing angle value?",
+            "expected": "70",
+            "got": "70 deg",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is shown?",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What is the missing angle value?",
+            "expected": "70",
+            "got": "70 deg",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is shown?",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_geometry_angle_00001",
+      "sub_task": "geometry_angle",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What is the missing angle value?",
+            "expected": "50",
+            "got": "50 deg",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is shown?",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is the missing angle value?",
+            "expected": "50",
+            "got": "60 deg",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is shown?",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_geometry_angle_00002",
+      "sub_task": "geometry_angle",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What is the missing angle value?",
+            "expected": "70",
+            "got": "70 deg",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is shown?",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What is the missing angle value?",
+            "expected": "70",
+            "got": "70 deg",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown?",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is shown?",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_biology_food_chain_00000",
+      "sub_task": "food_chain",
+      "teacher": {
+        "score": 0.3,
+        "checks": [
+          {
+            "question": "Which organism does the corrected arrow start from?",
+            "expected": "leaf",
+            "got": "caterpillar",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "Which organism does the corrected arrow point to?",
+            "expected": "caterpillar",
+            "got": "bird",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "Are the organism boxes still in the same order?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.65,
+        "checks": [
+          {
+            "question": "Which organism does the corrected arrow start from?",
+            "expected": "leaf",
+            "got": "bird",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "Which organism does the corrected arrow point to?",
+            "expected": "caterpillar",
+            "got": "cat",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "Are the organism boxes still in the same order?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_biology_food_chain_00002",
+      "sub_task": "food_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which organism does the corrected arrow start from?",
+            "expected": "algae",
+            "got": "algae",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "Which organism does the corrected arrow point to?",
+            "expected": "small fish",
+            "got": "small fish",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "Are the organism boxes still in the same order?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.3,
+        "checks": [
+          {
+            "question": "Which organism does the corrected arrow start from?",
+            "expected": "algae",
+            "got": "small fish",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "Which organism does the corrected arrow point to?",
+            "expected": "small fish",
+            "got": "algae",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "Are the organism boxes still in the same order?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_chemistry_ph_indicator_00001",
+      "sub_task": "ph_indicator",
+      "teacher": {
+        "score": 0.8,
+        "checks": [
+          {
+            "question": "What color is the indicator strip?",
+            "expected": "blue",
+            "got": "blue",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What solution label is on the beaker?",
+            "expected": "soap",
+            "got": "soap",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What pH category is indicated?",
+            "expected": "base",
+            "got": "alkaline",
+            "pass": false,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.25,
+        "checks": [
+          {
+            "question": "What color is the indicator strip?",
+            "expected": "blue",
+            "got": "red",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What solution label is on the beaker?",
+            "expected": "soap",
+            "got": "soap",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "What pH category is indicated?",
+            "expected": "base",
+            "got": "acidic",
+            "pass": false,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_fraction_shade_00000",
+      "sub_task": "fraction_shade",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many cells are shaded?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is requested?",
+            "expected": "1/3",
+            "got": "1/3",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid?",
+            "expected": "12",
+            "got": "12",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "How many cells are shaded?",
+            "expected": "4",
+            "got": "3",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is requested?",
+            "expected": "1/3",
+            "got": "1/3",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid?",
+            "expected": "12",
+            "got": "12",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_cs_sorting_step_00002",
+      "sub_task": "sorting_step",
+      "teacher": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which two adjacent indices were swapped?",
+            "expected": "1,2",
+            "got": "1 and 2",
+            "pass": false,
+            "weight": 0.45
+          },
+          {
+            "question": "What is the resulting array?",
+            "expected": "[2, 3, 9, 4, 7]",
+            "got": "2, 9, 3, 4, 7",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many bars are shown?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which two adjacent indices were swapped?",
+            "expected": "1,2",
+            "got": "0 and 1",
+            "pass": false,
+            "weight": 0.45
+          },
+          {
+            "question": "What is the resulting array?",
+            "expected": "[2, 3, 9, 4, 7]",
+            "got": "[2, 9, 3, 4, 7]",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many bars are shown?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_fraction_shade_00002",
+      "sub_task": "fraction_shade",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many cells are shaded?",
+            "expected": "6",
+            "got": "6",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is requested?",
+            "expected": "3/8",
+            "got": "3/8",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid?",
+            "expected": "16",
+            "got": "16",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "How many cells are shaded?",
+            "expected": "6",
+            "got": "7",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is requested?",
+            "expected": "3/8",
+            "got": "3/8",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid?",
+            "expected": "16",
+            "got": "16",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_fraction_shade_00001",
+      "sub_task": "fraction_shade",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many cells are shaded?",
+            "expected": "12",
+            "got": "12",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is requested?",
+            "expected": "3/5",
+            "got": "3/5",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid?",
+            "expected": "20",
+            "got": "20",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "How many cells are shaded?",
+            "expected": "12",
+            "got": "11",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is requested?",
+            "expected": "3/5",
+            "got": "3/5",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid?",
+            "expected": "20",
+            "got": "20",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_cs_sorting_step_00000",
+      "sub_task": "sorting_step",
+      "teacher": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which two adjacent indices were swapped?",
+            "expected": "0,1",
+            "got": "0 and 1",
+            "pass": false,
+            "weight": 0.45
+          },
+          {
+            "question": "What is the resulting array?",
+            "expected": "[2, 3, 5, 4, 9]",
+            "got": "[2,3,5,4,9]",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many bars are shown?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which two adjacent indices were swapped?",
+            "expected": "0,1",
+            "got": "2 and 3",
+            "pass": false,
+            "weight": 0.45
+          },
+          {
+            "question": "What is the resulting array?",
+            "expected": "[2, 3, 5, 4, 9]",
+            "got": "[3,2,5,4,9]",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many bars are shown?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_kris_process_order_00000",
+      "sub_task": "process_order",
+      "teacher": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is the correct step order?",
+            "expected": "wash -> cut -> cook -> serve",
+            "got": "wash, cut, cook, serve",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many steps are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Are all steps used once?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is the correct step order?",
+            "expected": "wash -> cut -> cook -> serve",
+            "got": "cut, wash, cook, serve",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many steps are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Are all steps used once?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_kris_process_order_00001",
+      "sub_task": "process_order",
+      "teacher": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is the correct step order?",
+            "expected": "wake -> dress -> eat -> leave",
+            "got": "wake, dress, eat, leave",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many steps are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Are all steps used once?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is the correct step order?",
+            "expected": "wake -> dress -> eat -> leave",
+            "got": "wake, eat, dress, leave",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many steps are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Are all steps used once?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_kris_process_order_00002",
+      "sub_task": "process_order",
+      "teacher": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is the correct step order?",
+            "expected": "mix -> pour -> bake -> cool",
+            "got": "mix, pour, bake, cool",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many steps are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Are all steps used once?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What is the correct step order?",
+            "expected": "mix -> pour -> bake -> cool",
+            "got": "mix, bake, pour, cool",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many steps are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Are all steps used once?",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_cs_sorting_step_00001",
+      "sub_task": "sorting_step",
+      "teacher": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which two adjacent indices were swapped?",
+            "expected": "0,1",
+            "got": "0 and 1",
+            "pass": false,
+            "weight": 0.45
+          },
+          {
+            "question": "What is the resulting array?",
+            "expected": "[4, 8, 6, 3, 7]",
+            "got": "[8, 4, 6, 3, 7]",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many bars are shown?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Which two adjacent indices were swapped?",
+            "expected": "0,1",
+            "got": "2 and 3",
+            "pass": false,
+            "weight": 0.45
+          },
+          {
+            "question": "What is the resulting array?",
+            "expected": "[4, 8, 6, 3, 7]",
+            "got": "[8,4,6,3,7]",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many bars are shown?",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_geo_moon_phase_00001",
+      "sub_task": "moon_phase",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What moon phase is in the final slot?",
+            "expected": "new moon",
+            "got": "new",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What moon phase is in the final slot?",
+            "expected": "new moon",
+            "got": "first quarter",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_geo_moon_phase_00000",
+      "sub_task": "moon_phase",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What moon phase is in the final slot?",
+            "expected": "first quarter",
+            "got": "first quarter",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What moon phase is in the final slot?",
+            "expected": "first quarter",
+            "got": "last quarter",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_geo_moon_phase_00002",
+      "sub_task": "moon_phase",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What moon phase is in the final slot?",
+            "expected": "full moon",
+            "got": "full",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What moon phase is in the final slot?",
+            "expected": "full moon",
+            "got": "waning crescent",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown?",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark?",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    }
+  ]
+}

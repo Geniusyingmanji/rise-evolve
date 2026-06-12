@@ -1,0 +1,8 @@
+{
+  "judged": 1648,
+  "errors": 0,
+  "same_edit_semantics_ratio": 0.9939,
+  "instruction_leak_ratio": 0.0018,
+  "invented_claims_ratio": 0.0831,
+  "mean_quality": 4.75
+}

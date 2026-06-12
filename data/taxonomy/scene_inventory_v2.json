@@ -1,0 +1,431 @@
+{
+  "sudoku4": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "4x4 white Sudoku grid",
+      "thicker separators between 2x2 boxes",
+      "black pre-filled digits",
+      "one question-mark empty cell in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "Sudoku grid": "middle center",
+      "empty or filled target cell": "inside the middle grid area at a randomized row and column",
+      "2x2 box separators": "middle center, crossing the grid vertically and horizontally"
+    },
+    "teacher_change": "The teacher render replaces the question mark with the unique green Sudoku digit.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "timer",
+      "pencil marks",
+      "multiple blanks",
+      "9x9 grid",
+      "handwritten notes"
+    ],
+    "style": "flat 2D programmatic puzzle diagram with crisp grid lines"
+  },
+  "arithmetic_chain": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "title text",
+      "start number box",
+      "two or three operation boxes",
+      "rightward arrow connectors",
+      "rightmost question-mark result box in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "flow boxes": "middle left to middle right",
+      "arrow connectors": "middle row between boxes",
+      "result box": "middle right"
+    },
+    "teacher_change": "The teacher render fills the rightmost result box with the computed final value in green.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "calculator UI",
+      "equation proof steps",
+      "extra result boxes",
+      "vertical layout"
+    ],
+    "style": "flat 2D flowchart with rounded boxes and arrows"
+  },
+  "balance_scale": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "level balance beam",
+      "central triangular stand and pivot",
+      "left and right pan arcs",
+      "numbered rectangular weight boxes",
+      "one question-mark weight box in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "pivot and stand": "middle center to lower center",
+      "left pan and weights": "middle left",
+      "right pan and weights": "middle right",
+      "missing weight box": "middle left or middle right depending on randomized side"
+    },
+    "teacher_change": "The teacher render replaces the question mark with the numeric weight that makes both pan totals equal.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "kilogram unit labels",
+      "spring scale dial",
+      "tilted beam in the source",
+      "realistic shadows"
+    ],
+    "style": "flat 2D educational balance-scale diagram"
+  },
+  "sequence_pattern": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "pattern title text",
+      "row of four or five rounded slots",
+      "numbers or colored geometric shapes",
+      "rightmost question-mark slot in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "pattern title text": "upper left",
+      "sequence row": "middle left to middle right",
+      "known sequence items": "middle left through middle center",
+      "final slot": "middle right"
+    },
+    "teacher_change": "The teacher render fills the final slot with the number or shape that continues the visible pattern.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "multiple rows",
+      "hidden legend",
+      "random distractor items",
+      "animation"
+    ],
+    "style": "flat 2D pattern-completion card row"
+  },
+  "clock_arithmetic": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "analog clock face",
+      "hour tick marks",
+      "12, 3, 6, and 9 numerals",
+      "hour hand",
+      "minute hand",
+      "time or add-hours label"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "time label": "upper left",
+      "clock face": "middle center to lower center",
+      "hour and minute hands": "middle center",
+      "cardinal numerals": "upper center, middle right, lower center, and middle left around the face"
+    },
+    "teacher_change": "The teacher render redraws the hands to the time after the requested whole-hour addition, with the minute hand preserved.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "second hand",
+      "digital clock",
+      "date",
+      "alarm icons",
+      "roman numerals"
+    ],
+    "style": "flat 2D analog clock diagram with simple hands"
+  },
+  "graph_path": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "six labeled circular nodes A through F",
+      "undirected weighted edges",
+      "small white edge-weight labels",
+      "shortest-path instruction title"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "start node A": "middle left",
+      "nodes B and D": "upper center",
+      "nodes C and E": "lower center",
+      "goal node F": "middle right",
+      "weighted edges": "middle left through middle right"
+    },
+    "teacher_change": "The teacher render highlights the unique shortest A-to-F path edges in green.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "directed arrowheads",
+      "coordinates",
+      "adjacency matrix",
+      "negative edge weights"
+    ],
+    "style": "flat 2D weighted graph diagram with labeled nodes and edges"
+  },
+  "mirror_reflection": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "vertical teal mirror line",
+      "mirror text label",
+      "asymmetric flag-like object on the left",
+      "empty right side in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "mirror line": "upper center to lower center",
+      "mirror label": "upper center just right of the mirror line",
+      "source object": "middle left",
+      "reflected-object region": "middle right"
+    },
+    "teacher_change": "The teacher render adds a mirrored right-side copy whose flag points left toward the mirror line.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "horizontal mirror",
+      "glass reflection texture",
+      "shadow",
+      "second mirror",
+      "rotation guide"
+    ],
+    "style": "flat 2D geometry reflection diagram with solid colored shapes"
+  },
+  "block_stack_view": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "three vertical columns of colored square blocks",
+      "ground line",
+      "column number labels",
+      "marked block with an X in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "block columns": "middle left to middle right, sitting on lower ground line",
+      "ground line": "lower left to lower right",
+      "column labels": "lower left to lower right below stacks",
+      "marked block": "within one randomized column, below at least one block"
+    },
+    "teacher_change": "The teacher render removes the marked block and shifts any blocks above it downward so no gap remains.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "3D perspective",
+      "side view",
+      "falling animation",
+      "physics arrows",
+      "block labels by color name"
+    ],
+    "style": "flat 2D front-view block stack diagram with solid colors"
+  },
+  "circuit_bulb": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "battery with polarity marks",
+      "rectangular series wire loop",
+      "top switch that is open in the source",
+      "bottom bulb that is gray/off in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "switch label and switch": "upper center",
+      "battery": "middle left",
+      "wire loop": "middle left through middle right",
+      "bulb": "lower center"
+    },
+    "teacher_change": "The teacher render closes the switch and changes the bulb to a lit yellow state.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "ammeter",
+      "voltage value",
+      "parallel branch",
+      "extra bulb",
+      "current arrows"
+    ],
+    "style": "flat 2D physics circuit diagram with simple symbolic components"
+  },
+  "ph_indicator": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "labeled beaker",
+      "blue liquid fill",
+      "universal indicator strip",
+      "white strip in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "beaker rim": "upper center",
+      "solution label": "middle center above the liquid",
+      "indicator strip": "middle center to lower center",
+      "liquid fill": "lower center"
+    },
+    "teacher_change": "The teacher render colors the strip according to the labeled solution's pH category.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "pH number scale",
+      "litmus paper label",
+      "dropper",
+      "thermometer",
+      "chemical equation"
+    ],
+    "style": "flat 2D chemistry beaker diagram with a single editable color strip"
+  },
+  "food_chain": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "three or four organism label boxes",
+      "horizontal arrow connectors",
+      "one arrow pointing the wrong way in the source",
+      "energy-flow title"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "first organism box": "middle left",
+      "middle organism boxes": "middle center",
+      "last organism box": "middle right",
+      "arrow connectors": "middle left through middle right"
+    },
+    "teacher_change": "The teacher render flips only the wrong arrow so energy flows from food or prey to consumer.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "ecosystem photo",
+      "nutrient cycle",
+      "decomposer loop",
+      "population counts",
+      "trophic pyramid"
+    ],
+    "style": "flat 2D biology flow diagram with labeled rounded boxes"
+  },
+  "geometry_angle": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "triangle outline",
+      "two numeric interior angle labels",
+      "one question-mark interior angle label in the source",
+      "triangle-angle title"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "triangle top vertex": "upper center",
+      "triangle base": "lower left to lower right",
+      "known angle labels": "lower left and lower right inside the triangle",
+      "missing angle label": "middle center below the top vertex"
+    },
+    "teacher_change": "The teacher render replaces the question mark with the angle value that makes the triangle total 180 degrees.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "protractor",
+      "side lengths",
+      "coordinate grid",
+      "right-angle marker unless sampled",
+      "external angles"
+    ],
+    "style": "flat 2D math geometry diagram with boxed angle labels"
+  },
+  "sorting_step": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "five vertical value bars",
+      "numeric bar value labels",
+      "index labels under the bars",
+      "highlighted adjacent compared pair in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "caption text": "upper left",
+      "bar chart": "middle left through middle right",
+      "highlighted compared pair": "middle row at a randomized adjacent pair",
+      "value labels": "above each bar in the middle row",
+      "index labels": "lower row below the bars"
+    },
+    "teacher_change": "The teacher render swaps only the highlighted adjacent pair and leaves all other bars in place.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "full sorted output",
+      "pseudocode panel",
+      "animation trail",
+      "non-adjacent swap",
+      "more than five bars"
+    ],
+    "style": "flat 2D computer-science bar-array diagram"
+  },
+  "fraction_shade": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "rectangular grid of cells",
+      "some shaded cells",
+      "fraction caption asking for an exact shaded fraction",
+      "shaded-cell count label"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "fraction caption": "upper left",
+      "grid": "middle center",
+      "shaded cells": "middle center within the grid",
+      "unshaded cells": "middle center within the grid",
+      "shaded-cell count label": "lower center"
+    },
+    "teacher_change": "The teacher render adjusts the shaded cells so the count exactly equals the requested fraction of the grid.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "pie chart",
+      "decimal conversion",
+      "mixed numbers",
+      "irregular cells",
+      "multiple grids"
+    ],
+    "style": "flat 2D math fraction grid with solid shaded cells"
+  },
+  "process_order": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "four step boxes",
+      "step number labels",
+      "rightward process arrows",
+      "two step labels swapped in the source"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "step 1 box": "middle left",
+      "step 2 and 3 boxes": "middle center",
+      "step 4 box": "middle right",
+      "process arrows": "middle row between boxes"
+    },
+    "teacher_change": "The teacher render reorders the four boxes into the correct start-to-finish process sequence.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "branching workflow",
+      "timer",
+      "checklist marks",
+      "photo panels",
+      "more than four steps"
+    ],
+    "style": "flat 2D procedural strip with rounded step boxes and arrows"
+  },
+  "moon_phase": {
+    "present_elements": [
+      "light canvas background with thin border",
+      "row of four rounded phase slots",
+      "three moon phase icons",
+      "rightmost question-mark slot in the source",
+      "small phase labels under filled icons"
+    ],
+    "layout": {
+      "canvas background and border": "full frame",
+      "title text": "upper left",
+      "first phase slot": "middle left",
+      "second and third phase slots": "middle center",
+      "empty or filled final phase slot": "middle right",
+      "phase labels": "lower row inside each filled slot"
+    },
+    "teacher_change": "The teacher render replaces the question mark with the next moon phase icon in the cycle.",
+    "text_labels_present": true,
+    "commonly_assumed_but_absent": [
+      "Earth diagram",
+      "Sun rays",
+      "calendar dates",
+      "telescope view",
+      "lunar eclipse"
+    ],
+    "style": "flat 2D astronomy sequence diagram with simple moon icons"
+  }
+}

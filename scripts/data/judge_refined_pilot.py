@@ -61,6 +61,8 @@ def main():
     ap.add_argument("--effort", default="low")
     ap.add_argument("--no-resume", action="store_true",
                     help="re-judge everything instead of skipping ids already in output")
+    ap.add_argument("--inventory", nargs="*", default=None,
+                    help="extra scene inventory JSON files merged over the v1 default")
     args = ap.parse_args()
 
     tasks = {}
@@ -94,7 +96,7 @@ def main():
     lock = threading.Lock()
     stats = Counter()
     results = []
-    inventories = load_scene_inventory()
+    inventories = load_scene_inventory(args.inventory)
 
     def judge(row):
         task = tasks[row["task_id"]]
@@ -105,6 +107,10 @@ def main():
             "edit_operations": task.get("edit_operations"),
             "required_knowledge": task.get("required_knowledge"),
         }
+        if task.get("ground_truth"):
+            original["ground_truth"] = task["ground_truth"]
+        if task.get("verifier_spec"):
+            original["verifier_spec"] = task["verifier_spec"]
         refined = {
             k: row["refined"].get(k)
             for k in ["instruction", "editor_prompt", "rational_target_description",

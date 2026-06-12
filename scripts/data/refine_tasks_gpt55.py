@@ -172,10 +172,13 @@ def call_gpt55(prompt: str, effort: str, max_retries: int = 4, timeout: int = 30
     raise RuntimeError(f"gpt-5.5 call failed after {max_retries} retries: {last_err}")
 
 
-def load_scene_inventory():
-    if SCENE_INVENTORY.exists():
-        return json.loads(SCENE_INVENTORY.read_text())
-    return {}
+def load_scene_inventory(extra_paths=None):
+    merged = {}
+    paths = [SCENE_INVENTORY] + [Path(p) for p in (extra_paths or [])]
+    for path in paths:
+        if path.exists():
+            merged.update(json.loads(path.read_text()))
+    return merged
 
 
 def build_prompt(task: dict, style: str, scene_inventory: dict = None) -> str:
@@ -193,6 +196,11 @@ def build_prompt(task: dict, style: str, scene_inventory: dict = None) -> str:
         "preservation_constraints": task.get("preservation_constraints"),
         "negative_constraints": task.get("negative_constraints"),
     }
+    # verifiable tasks (v2+) carry exact per-task facts — ground rewrites in them
+    if task.get("ground_truth"):
+        ctx["ground_truth"] = task["ground_truth"]
+    if task.get("verifier_spec"):
+        ctx["verifier_spec"] = task["verifier_spec"]
     if scene_inventory:
         ctx["scene_inventory"] = scene_inventory
     return (
@@ -312,6 +320,8 @@ def main():
     ap.add_argument("--effort", default="low", choices=["minimal", "low", "medium", "high", "xhigh"])
     ap.add_argument("--stratify", action="store_true",
                     help="with --limit, sample evenly across sub_task instead of head-of-file")
+    ap.add_argument("--inventory", nargs="*", default=None,
+                    help="extra scene inventory JSON files merged over the v1 default")
     args = ap.parse_args()
 
     out_path = Path(args.output)
@@ -353,7 +363,7 @@ def main():
         return
 
     bench_texts = load_benchmark_texts()
-    inventories = load_scene_inventory()
+    inventories = load_scene_inventory(args.inventory)
     print(f"scene inventory entries: {len(inventories)}")
     stats = Counter()
     t0 = time.time()

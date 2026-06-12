@@ -1,0 +1,2780 @@
+{
+  "sampled": 48,
+  "errors": 0,
+  "teacher_pass_rate": 1.0,
+  "negative_reject_rate": 1.0,
+  "per_subtask": {
+    "arithmetic_chain": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "balance_scale": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "block_stack_view": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "circuit_bulb": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "clock_arithmetic": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "food_chain": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "fraction_shade": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "geometry_angle": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "graph_path": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "mirror_reflection": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "moon_phase": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "ph_indicator": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "process_order": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "sequence_pattern": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "sorting_step": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    },
+    "sudoku4": {
+      "teacher_pass": 3,
+      "teacher_n": 3,
+      "neg_reject": 3,
+      "neg_n": 3
+    }
+  },
+  "rows": [
+    {
+      "task_id": "rv2_logic_sudoku4_00001",
+      "sub_task": "sudoku4",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What digit is written in row 1, column 1? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.5
+          },
+          {
+            "question": "How many blank cells are shown? Answer digits only.",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many columns are in the grid? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.5,
+        "checks": [
+          {
+            "question": "What digit is written in row 1, column 1? Answer digits only.",
+            "expected": "1",
+            "got": "3",
+            "pass": false,
+            "weight": 0.5
+          },
+          {
+            "question": "How many blank cells are shown? Answer digits only.",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many columns are in the grid? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sudoku4_00002",
+      "sub_task": "sudoku4",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What digit is written in row 4, column 1? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.5
+          },
+          {
+            "question": "How many blank cells are shown? Answer digits only.",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many columns are in the grid? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.5,
+        "checks": [
+          {
+            "question": "What digit is written in row 4, column 1? Answer digits only.",
+            "expected": "3",
+            "got": "1",
+            "pass": false,
+            "weight": 0.5
+          },
+          {
+            "question": "How many blank cells are shown? Answer digits only.",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many columns are in the grid? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sudoku4_00000",
+      "sub_task": "sudoku4",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What digit is written in row 2, column 2? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.5
+          },
+          {
+            "question": "How many blank cells are shown? Answer digits only.",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many columns are in the grid? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.5,
+        "checks": [
+          {
+            "question": "What digit is written in row 2, column 2? Answer digits only.",
+            "expected": "3",
+            "got": "4",
+            "pass": false,
+            "weight": 0.5
+          },
+          {
+            "question": "How many blank cells are shown? Answer digits only.",
+            "expected": "0",
+            "got": "0",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many columns are in the grid? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.25
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_arithmetic_chain_00002",
+      "sub_task": "arithmetic_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What signed number is written in the final result box? Answer the signed number only.",
+            "expected": "32",
+            "got": "32",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What signed number is written in the first box of the chain? Answer the signed number only.",
+            "expected": "9",
+            "got": "9",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown? Answer digits only.",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What signed number is written in the final result box? Answer the signed number only.",
+            "expected": "32",
+            "got": "27",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What signed number is written in the first box of the chain? Answer the signed number only.",
+            "expected": "9",
+            "got": "9",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown? Answer digits only.",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_arithmetic_chain_00000",
+      "sub_task": "arithmetic_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What signed number is written in the final result box? Answer the signed number only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What signed number is written in the first box of the chain? Answer the signed number only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What signed number is written in the final result box? Answer the signed number only.",
+            "expected": "3",
+            "got": "6",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What signed number is written in the first box of the chain? Answer the signed number only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_arithmetic_chain_00001",
+      "sub_task": "arithmetic_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What signed number is written in the final result box? Answer the signed number only.",
+            "expected": "13",
+            "got": "13",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What signed number is written in the first box of the chain? Answer the signed number only.",
+            "expected": "8",
+            "got": "8",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown? Answer digits only.",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What signed number is written in the final result box? Answer the signed number only.",
+            "expected": "13",
+            "got": "16",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What signed number is written in the first box of the chain? Answer the signed number only.",
+            "expected": "8",
+            "got": "8",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many operation boxes are shown? Answer digits only.",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sequence_pattern_00000",
+      "sub_task": "sequence_pattern",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color and shape are drawn in the final slot? Answer as '<color> <shape>'.",
+            "expected": "green square",
+            "got": "green square",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What color and shape are drawn in the final slot? Answer as '<color> <shape>'.",
+            "expected": "green square",
+            "got": "blue circle",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sequence_pattern_00002",
+      "sub_task": "sequence_pattern",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written in the final slot? Answer the signed number only.",
+            "expected": "16",
+            "got": "16",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What number is written in the final slot? Answer the signed number only.",
+            "expected": "16",
+            "got": "17",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_logic_sequence_pattern_00001",
+      "sub_task": "sequence_pattern",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written in the final slot? Answer the signed number only.",
+            "expected": "24",
+            "got": "24",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What number is written in the final slot? Answer the signed number only.",
+            "expected": "24",
+            "got": "27",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the final slot empty? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "How many slots are in the row? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_time_clock_arithmetic_00000",
+      "sub_task": "clock_arithmetic",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What time is shown on the clock? Answer H:MM only.",
+            "expected": "12:00",
+            "got": "12:00",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show? Answer two digits.",
+            "expected": "00",
+            "got": "00",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What time is shown on the clock? Answer H:MM only.",
+            "expected": "12:00",
+            "got": "1:00",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show? Answer two digits.",
+            "expected": "00",
+            "got": "00",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_balance_scale_00002",
+      "sub_task": "balance_scale",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight? Answer one word.",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box? Answer digits only.",
+            "expected": "4",
+            "got": "5",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight? Answer one word.",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_graph_graph_path_00000",
+      "sub_task": "graph_path",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Reading the highlighted nodes from start to end, which node path is highlighted? Answer hyphen-separated capital letters.",
+            "expected": "A-B-E-F",
+            "got": "A-B-E-F",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the path? Answer one word.",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What letter is written on the leftmost start node? Answer one capital letter.",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Reading the highlighted nodes from start to end, which node path is highlighted? Answer hyphen-separated capital letters.",
+            "expected": "A-B-E-F",
+            "got": "A-B-D-F",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the path? Answer one word.",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.2
+          },
+          {
+            "question": "What letter is written on the leftmost start node? Answer one capital letter.",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_balance_scale_00001",
+      "sub_task": "balance_scale",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box? Answer digits only.",
+            "expected": "8",
+            "got": "8",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight? Answer one word.",
+            "expected": "right",
+            "got": "right",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box? Answer digits only.",
+            "expected": "8",
+            "got": "9",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight? Answer one word.",
+            "expected": "right",
+            "got": "right",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_balance_scale_00000",
+      "sub_task": "balance_scale",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight? Answer one word.",
+            "expected": "right",
+            "got": "right",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "What number is written in the formerly missing weight box? Answer digits only.",
+            "expected": "5",
+            "got": "6",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Which side contains the filled missing weight? Answer one word.",
+            "expected": "right",
+            "got": "right",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the scale beam level? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_time_clock_arithmetic_00001",
+      "sub_task": "clock_arithmetic",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What time is shown on the clock? Answer H:MM only.",
+            "expected": "4:00",
+            "got": "4:00",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show? Answer two digits.",
+            "expected": "00",
+            "got": "00",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What time is shown on the clock? Answer H:MM only.",
+            "expected": "4:00",
+            "got": "5:00",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show? Answer two digits.",
+            "expected": "00",
+            "got": "00",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_time_clock_arithmetic_00002",
+      "sub_task": "clock_arithmetic",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What time is shown on the clock? Answer H:MM only.",
+            "expected": "6:30",
+            "got": "6:30",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show? Answer two digits.",
+            "expected": "30",
+            "got": "30",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What time is shown on the clock? Answer H:MM only.",
+            "expected": "6:30",
+            "got": "7:30",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What minute value does the minute hand show? Answer two digits.",
+            "expected": "30",
+            "got": "30",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is there one clock face? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_mirror_reflection_00001",
+      "sub_task": "mirror_reflection",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point? Answer one word.",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point? Answer one word.",
+            "expected": "left",
+            "got": "right",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_graph_graph_path_00001",
+      "sub_task": "graph_path",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Reading the highlighted nodes from start to end, which node path is highlighted? Answer hyphen-separated capital letters.",
+            "expected": "A-C-E-F",
+            "got": "A-C-E-F",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the path? Answer one word.",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What letter is written on the leftmost start node? Answer one capital letter.",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Reading the highlighted nodes from start to end, which node path is highlighted? Answer hyphen-separated capital letters.",
+            "expected": "A-C-E-F",
+            "got": "A-C-D-F",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the path? Answer one word.",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.2
+          },
+          {
+            "question": "What letter is written on the leftmost start node? Answer one capital letter.",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_graph_graph_path_00002",
+      "sub_task": "graph_path",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Reading the highlighted nodes from start to end, which node path is highlighted? Answer hyphen-separated capital letters.",
+            "expected": "A-C-E-F",
+            "got": "A-C-E-F",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the path? Answer one word.",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What letter is written on the leftmost start node? Answer one capital letter.",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Reading the highlighted nodes from start to end, which node path is highlighted? Answer hyphen-separated capital letters.",
+            "expected": "A-C-E-F",
+            "got": "A-B-D-F",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What color highlights the path? Answer one word.",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.2
+          },
+          {
+            "question": "What letter is written on the leftmost start node? Answer one capital letter.",
+            "expected": "A",
+            "got": "A",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_mirror_reflection_00002",
+      "sub_task": "mirror_reflection",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point? Answer one word.",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point? Answer one word.",
+            "expected": "left",
+            "got": "right",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_mirror_reflection_00000",
+      "sub_task": "mirror_reflection",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point? Answer one word.",
+            "expected": "left",
+            "got": "left",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "Which direction does the reflected flag point? Answer one word.",
+            "expected": "left",
+            "got": "right",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "Is the copy on the right side of the mirror? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the mirror line vertical? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_circuit_bulb_00000",
+      "sub_task": "circuit_bulb",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color is the bulb, yellow or gray? Answer one word.",
+            "expected": "yellow",
+            "got": "yellow",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the switch visibly closed? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many bulbs are shown? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What color is the bulb, yellow or gray? Answer one word.",
+            "expected": "yellow",
+            "got": "gray",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the switch visibly closed? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many bulbs are shown? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_circuit_bulb_00001",
+      "sub_task": "circuit_bulb",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color is the bulb, yellow or gray? Answer one word.",
+            "expected": "yellow",
+            "got": "yellow",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the switch visibly closed? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many bulbs are shown? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What color is the bulb, yellow or gray? Answer one word.",
+            "expected": "yellow",
+            "got": "gray",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the switch visibly closed? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many bulbs are shown? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_physics_circuit_bulb_00002",
+      "sub_task": "circuit_bulb",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color is the bulb, yellow or gray? Answer one word.",
+            "expected": "yellow",
+            "got": "yellow",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the switch visibly closed? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many bulbs are shown? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What color is the bulb, yellow or gray? Answer one word.",
+            "expected": "yellow",
+            "got": "gray",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "Is the switch visibly closed? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many bulbs are shown? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_block_stack_view_00002",
+      "sub_task": "block_stack_view",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many blocks are in column 2? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 2? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.65,
+        "checks": [
+          {
+            "question": "How many blocks are in column 2? Answer digits only.",
+            "expected": "1",
+            "got": "1",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 2? Answer yes or no.",
+            "expected": "no",
+            "got": "yes",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_block_stack_view_00001",
+      "sub_task": "block_stack_view",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many blocks are in column 3? Answer digits only.",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 3? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.65,
+        "checks": [
+          {
+            "question": "How many blocks are in column 3? Answer digits only.",
+            "expected": "2",
+            "got": "2",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 3? Answer yes or no.",
+            "expected": "no",
+            "got": "yes",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_chemistry_ph_indicator_00000",
+      "sub_task": "ph_indicator",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color is the indicator strip? Answer one word.",
+            "expected": "orange",
+            "got": "orange",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What text is written on the beaker label? Answer exactly as written.",
+            "expected": "vinegar",
+            "got": "vinegar",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the indicator strip inside the beaker? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What color is the indicator strip? Answer one word.",
+            "expected": "orange",
+            "got": "purple",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What text is written on the beaker label? Answer exactly as written.",
+            "expected": "vinegar",
+            "got": "vinegar",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the indicator strip inside the beaker? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_chemistry_ph_indicator_00002",
+      "sub_task": "ph_indicator",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color is the indicator strip? Answer one word.",
+            "expected": "red",
+            "got": "red",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What text is written on the beaker label? Answer exactly as written.",
+            "expected": "lemon juice",
+            "got": "lemon juice",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the indicator strip inside the beaker? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What color is the indicator strip? Answer one word.",
+            "expected": "red",
+            "got": "purple",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What text is written on the beaker label? Answer exactly as written.",
+            "expected": "lemon juice",
+            "got": "lemon juice",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the indicator strip inside the beaker? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_chemistry_ph_indicator_00001",
+      "sub_task": "ph_indicator",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What color is the indicator strip? Answer one word.",
+            "expected": "blue",
+            "got": "blue",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "What text is written on the beaker label? Answer exactly as written.",
+            "expected": "soap",
+            "got": "soap",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the indicator strip inside the beaker? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.15,
+        "checks": [
+          {
+            "question": "What color is the indicator strip? Answer one word.",
+            "expected": "blue",
+            "got": "red",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "What text is written on the beaker label? Answer exactly as written.",
+            "expected": "soap",
+            "got": "solution",
+            "pass": false,
+            "weight": 0.25
+          },
+          {
+            "question": "Is the indicator strip inside the beaker? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.15
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_biology_food_chain_00001",
+      "sub_task": "food_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Is there an arrow pointing from algae to small fish? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.5
+          },
+          {
+            "question": "Is there an arrow pointing from small fish to heron? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.5
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.0,
+        "checks": [
+          {
+            "question": "Is there an arrow pointing from algae to small fish? Answer yes or no.",
+            "expected": "yes",
+            "got": "no",
+            "pass": false,
+            "weight": 0.5
+          },
+          {
+            "question": "Is there an arrow pointing from small fish to heron? Answer yes or no.",
+            "expected": "yes",
+            "got": "no",
+            "pass": false,
+            "weight": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_biology_food_chain_00000",
+      "sub_task": "food_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Is there an arrow pointing from leaf to caterpillar? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3333333333333333
+          },
+          {
+            "question": "Is there an arrow pointing from caterpillar to bird? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3333333333333333
+          },
+          {
+            "question": "Is there an arrow pointing from bird to cat? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3333333333333333
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.333,
+        "checks": [
+          {
+            "question": "Is there an arrow pointing from leaf to caterpillar? Answer yes or no.",
+            "expected": "yes",
+            "got": "no",
+            "pass": false,
+            "weight": 0.3333333333333333
+          },
+          {
+            "question": "Is there an arrow pointing from caterpillar to bird? Answer yes or no.",
+            "expected": "yes",
+            "got": "no",
+            "pass": false,
+            "weight": 0.3333333333333333
+          },
+          {
+            "question": "Is there an arrow pointing from bird to cat? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3333333333333333
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_biology_food_chain_00002",
+      "sub_task": "food_chain",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Is there an arrow pointing from corn to mouse? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3333333333333333
+          },
+          {
+            "question": "Is there an arrow pointing from mouse to snake? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3333333333333333
+          },
+          {
+            "question": "Is there an arrow pointing from snake to hawk? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3333333333333333
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.333,
+        "checks": [
+          {
+            "question": "Is there an arrow pointing from corn to mouse? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.3333333333333333
+          },
+          {
+            "question": "Is there an arrow pointing from mouse to snake? Answer yes or no.",
+            "expected": "yes",
+            "got": "no",
+            "pass": false,
+            "weight": 0.3333333333333333
+          },
+          {
+            "question": "Is there an arrow pointing from snake to hawk? Answer yes or no.",
+            "expected": "yes",
+            "got": "no",
+            "pass": false,
+            "weight": 0.3333333333333333
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_spatial_block_stack_view_00000",
+      "sub_task": "block_stack_view",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many blocks are in column 3? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 3? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.65,
+        "checks": [
+          {
+            "question": "How many blocks are in column 3? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.45
+          },
+          {
+            "question": "Is there an empty gap in column 3? Answer yes or no.",
+            "expected": "no",
+            "got": "yes",
+            "pass": false,
+            "weight": 0.35
+          },
+          {
+            "question": "How many block columns are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_geometry_angle_00000",
+      "sub_task": "geometry_angle",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written at the top vertex inside the triangle? Answer digits only.",
+            "expected": "70",
+            "got": "70",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is drawn? Answer one word.",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What number is written at the top vertex inside the triangle? Answer digits only.",
+            "expected": "70",
+            "got": "50",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is drawn? Answer one word.",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_geometry_angle_00001",
+      "sub_task": "geometry_angle",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written at the top vertex inside the triangle? Answer digits only.",
+            "expected": "95",
+            "got": "95",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is drawn? Answer one word.",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What number is written at the top vertex inside the triangle? Answer digits only.",
+            "expected": "95",
+            "got": "115",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is drawn? Answer one word.",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_geometry_angle_00002",
+      "sub_task": "geometry_angle",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What number is written at the top vertex inside the triangle? Answer digits only.",
+            "expected": "55",
+            "got": "55",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is drawn? Answer one word.",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What number is written at the top vertex inside the triangle? Answer digits only.",
+            "expected": "55",
+            "got": "65",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many angle labels are shown? Answer digits only.",
+            "expected": "3",
+            "got": "3",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What shape is drawn? Answer one word.",
+            "expected": "triangle",
+            "got": "triangle",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_cs_sorting_step_00000",
+      "sub_task": "sorting_step",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Reading the bar labels left to right, what are the five numbers? Answer comma-separated digits.",
+            "expected": "6, 3, 7, 5, 2",
+            "got": "6,3,7,5,2",
+            "pass": true,
+            "weight": 0.7
+          },
+          {
+            "question": "How many bars are shown? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What color outlines the compared pair? Answer one word.",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Reading the bar labels left to right, what are the five numbers? Answer comma-separated digits.",
+            "expected": "6, 3, 7, 5, 2",
+            "got": "6,7,5,3,2",
+            "pass": false,
+            "weight": 0.7
+          },
+          {
+            "question": "How many bars are shown? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What color outlines the compared pair? Answer one word.",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_cs_sorting_step_00001",
+      "sub_task": "sorting_step",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Reading the bar labels left to right, what are the five numbers? Answer comma-separated digits.",
+            "expected": "4, 9, 2, 5, 6",
+            "got": "4,9,2,5,6",
+            "pass": true,
+            "weight": 0.7
+          },
+          {
+            "question": "How many bars are shown? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What color outlines the compared pair? Answer one word.",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Reading the bar labels left to right, what are the five numbers? Answer comma-separated digits.",
+            "expected": "4, 9, 2, 5, 6",
+            "got": "4,5,9,2,6",
+            "pass": false,
+            "weight": 0.7
+          },
+          {
+            "question": "How many bars are shown? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What color outlines the compared pair? Answer one word.",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_cs_sorting_step_00002",
+      "sub_task": "sorting_step",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "Reading the bar labels left to right, what are the five numbers? Answer comma-separated digits.",
+            "expected": "6, 8, 4, 3, 7",
+            "got": "6,8,4,3,7",
+            "pass": true,
+            "weight": 0.7
+          },
+          {
+            "question": "How many bars are shown? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What color outlines the compared pair? Answer one word.",
+            "expected": "green",
+            "got": "green",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.2,
+        "checks": [
+          {
+            "question": "Reading the bar labels left to right, what are the five numbers? Answer comma-separated digits.",
+            "expected": "6, 8, 4, 3, 7",
+            "got": "6,4,8,7,3",
+            "pass": false,
+            "weight": 0.7
+          },
+          {
+            "question": "How many bars are shown? Answer digits only.",
+            "expected": "5",
+            "got": "5",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "What color outlines the compared pair? Answer one word.",
+            "expected": "green",
+            "got": "red",
+            "pass": false,
+            "weight": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_fraction_shade_00000",
+      "sub_task": "fraction_shade",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many cells are shaded? Answer digits only.",
+            "expected": "6",
+            "got": "6",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is written in the caption? Answer slash-separated digits.",
+            "expected": "3/8",
+            "got": "3/8",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid? Answer digits only.",
+            "expected": "16",
+            "got": "16",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "How many cells are shaded? Answer digits only.",
+            "expected": "6",
+            "got": "5",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is written in the caption? Answer slash-separated digits.",
+            "expected": "3/8",
+            "got": "3/8",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid? Answer digits only.",
+            "expected": "16",
+            "got": "16",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_kris_process_order_00000",
+      "sub_task": "process_order",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "List the four steps left to right, separated by commas.",
+            "expected": "mix, pour, bake, cool",
+            "got": "mix, pour, bake, cool",
+            "pass": true,
+            "weight": 0.7
+          },
+          {
+            "question": "How many steps are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Do the arrows point left to right? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.3,
+        "checks": [
+          {
+            "question": "List the four steps left to right, separated by commas.",
+            "expected": "mix, pour, bake, cool",
+            "got": "mix, pour, cool, bake",
+            "pass": false,
+            "weight": 0.7
+          },
+          {
+            "question": "How many steps are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Do the arrows point left to right? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_kris_process_order_00002",
+      "sub_task": "process_order",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "List the four steps left to right, separated by commas.",
+            "expected": "wake, dress, eat, leave",
+            "got": "wake, dress, eat, leave",
+            "pass": true,
+            "weight": 0.7
+          },
+          {
+            "question": "How many steps are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Do the arrows point left to right? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.3,
+        "checks": [
+          {
+            "question": "List the four steps left to right, separated by commas.",
+            "expected": "wake, dress, eat, leave",
+            "got": "dress, wake, eat, leave",
+            "pass": false,
+            "weight": 0.7
+          },
+          {
+            "question": "How many steps are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Do the arrows point left to right? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_fraction_shade_00002",
+      "sub_task": "fraction_shade",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many cells are shaded? Answer digits only.",
+            "expected": "12",
+            "got": "12",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is written in the caption? Answer slash-separated digits.",
+            "expected": "3/5",
+            "got": "3/5",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid? Answer digits only.",
+            "expected": "20",
+            "got": "20",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "How many cells are shaded? Answer digits only.",
+            "expected": "12",
+            "got": "11",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is written in the caption? Answer slash-separated digits.",
+            "expected": "3/5",
+            "got": "3/5",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid? Answer digits only.",
+            "expected": "20",
+            "got": "20",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_kris_process_order_00001",
+      "sub_task": "process_order",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "List the four steps left to right, separated by commas.",
+            "expected": "wake, dress, eat, leave",
+            "got": "wake, dress, eat, leave",
+            "pass": true,
+            "weight": 0.7
+          },
+          {
+            "question": "How many steps are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Do the arrows point left to right? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.3,
+        "checks": [
+          {
+            "question": "List the four steps left to right, separated by commas.",
+            "expected": "wake, dress, eat, leave",
+            "got": "wake, eat, dress, leave",
+            "pass": false,
+            "weight": 0.7
+          },
+          {
+            "question": "How many steps are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Do the arrows point left to right? Answer yes or no.",
+            "expected": "yes",
+            "got": "yes",
+            "pass": true,
+            "weight": 0.1
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_math_fraction_shade_00001",
+      "sub_task": "fraction_shade",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "How many cells are shaded? Answer digits only.",
+            "expected": "12",
+            "got": "12",
+            "pass": true,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is written in the caption? Answer slash-separated digits.",
+            "expected": "3/5",
+            "got": "3/5",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid? Answer digits only.",
+            "expected": "20",
+            "got": "20",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.45,
+        "checks": [
+          {
+            "question": "How many cells are shaded? Answer digits only.",
+            "expected": "12",
+            "got": "11",
+            "pass": false,
+            "weight": 0.55
+          },
+          {
+            "question": "What fraction is written in the caption? Answer slash-separated digits.",
+            "expected": "3/5",
+            "got": "3/5",
+            "pass": true,
+            "weight": 0.25
+          },
+          {
+            "question": "How many total cells are in the grid? Answer digits only.",
+            "expected": "20",
+            "got": "20",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_geo_moon_phase_00001",
+      "sub_task": "moon_phase",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What phase label is written in the final slot? Answer with the exact words.",
+            "expected": "last quarter",
+            "got": "last quarter",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What phase label is written in the final slot? Answer with the exact words.",
+            "expected": "last quarter",
+            "got": "waning gibbous",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_geo_moon_phase_00002",
+      "sub_task": "moon_phase",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What phase label is written in the final slot? Answer with the exact words.",
+            "expected": "last quarter",
+            "got": "last quarter",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What phase label is written in the final slot? Answer with the exact words.",
+            "expected": "last quarter",
+            "got": "new moon",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    },
+    {
+      "task_id": "rv2_geo_moon_phase_00000",
+      "sub_task": "moon_phase",
+      "teacher": {
+        "score": 1.0,
+        "checks": [
+          {
+            "question": "What phase label is written in the final slot? Answer with the exact words.",
+            "expected": "waxing crescent",
+            "got": "waxing crescent",
+            "pass": true,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      },
+      "negative": {
+        "score": 0.4,
+        "checks": [
+          {
+            "question": "What phase label is written in the final slot? Answer with the exact words.",
+            "expected": "waxing crescent",
+            "got": "new moon",
+            "pass": false,
+            "weight": 0.6
+          },
+          {
+            "question": "How many moon phase slots are shown? Answer digits only.",
+            "expected": "4",
+            "got": "4",
+            "pass": true,
+            "weight": 0.2
+          },
+          {
+            "question": "Is the final slot still a question mark? Answer yes or no.",
+            "expected": "no",
+            "got": "no",
+            "pass": true,
+            "weight": 0.2
+          }
+        ]
+      }
+    }
+  ]
+}

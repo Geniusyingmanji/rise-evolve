@@ -1,0 +1,33 @@
+{
+  "version": "v2",
+  "total_tasks": 2400,
+  "usable": 2302,
+  "dropped": {
+    "no_refinement": 54,
+    "judge_rejected": 44
+  },
+  "splits": {
+    "sft_train": 1382,
+    "sft_val": 113,
+    "rl_prompt": 577,
+    "hard_heldout": 230
+  },
+  "per_subtask_usable": {
+    "arithmetic_chain": 146,
+    "balance_scale": 150,
+    "block_stack_view": 148,
+    "circuit_bulb": 148,
+    "clock_arithmetic": 142,
+    "food_chain": 150,
+    "fraction_shade": 150,
+    "geometry_angle": 148,
+    "graph_path": 149,
+    "mirror_reflection": 149,
+    "moon_phase": 118,
+    "ph_indicator": 149,
+    "process_order": 126,
+    "sequence_pattern": 133,
+    "sorting_step": 148,
+    "sudoku4": 148
+  }
+}
